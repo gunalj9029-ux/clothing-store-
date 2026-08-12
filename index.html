@@ -1,740 +1,1879 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LAKSHMI — Traditional Wear Boutique</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --maroon:#7A1E3C;
-    --maroon-dark:#5A1329; 
-    --gold:#CC9A2E;
-    --gold-light:#E8C877;
-    --teal:#134E48;
-    --ivory:#FBF4EA;
-    --ivory-deep:#F3E7D6;
-    --ink:#2A1B22;
-    --rose:#C1596A;
-    --blush:#F3DEDD;
-    --radius-arch:26px;
-    --shadow:0 10px 30px rgba(42,27,34,0.14);
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    font-family:'Poppins',sans-serif;
-    background:var(--ivory);
-    color:var(--ink);
-    padding-bottom:0;
-    overflow-x:hidden;
-  }
-  h1,h2,h3,h4{font-family:'Marcellus',serif; font-weight:400; letter-spacing:.3px;}
-  .eyebrow{font-family:'Poppins',sans-serif; font-size:.72rem; letter-spacing:3px; text-transform:uppercase; color:var(--gold); font-weight:600;}
-  img,svg{display:block; max-width:100%;}
-  button{font-family:inherit; cursor:pointer; border:none;}
-  a{color:inherit; text-decoration:none;}
-  ::selection{background:var(--gold-light); color:var(--maroon-dark);}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LAKSHMI — Traditional Wear Boutique</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Marcellus&family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --maroon: #7A1E3C;
+      --maroon-dark: #5A1329;
+      --gold: #CC9A2E;
+      --gold-light: #E8C877;
+      --teal: #134E48;
+      --ivory: #FBF4EA;
+      --ivory-deep: #F3E7D6;
+      --ink: #2A1B22;
+      --rose: #C1596A;
+      --blush: #F3DEDD;
+      --radius-arch: 26px;
+      --shadow: 0 10px 30px rgba(42, 27, 34, 0.14);
+    }
 
-  /* ---------- TOPBAR ---------- */
-  .topbar{
-    background:var(--maroon-dark); color:var(--ivory-deep);
-    font-size:.78rem; padding:7px 20px;
-    display:flex; justify-content:space-between; align-items:center;
-    flex-wrap:wrap; gap:6px;
-  }
-  .topbar .tb-left{display:flex; gap:18px; flex-wrap:wrap; align-items:center;}
-  .topbar a.tb-link{display:flex; align-items:center; gap:6px; opacity:.92;}
-  .topbar a.tb-link:hover{opacity:1; color:var(--gold-light);}
-  .tb-social{display:flex; gap:10px;}
-  .tb-social a{width:26px; height:26px; border-radius:50%; background:rgba(255,255,255,.1); display:flex; align-items:center; justify-content:center; transition:.2s;}
-  .tb-social a:hover{background:var(--gold); color:var(--maroon-dark);}
-  .tb-social svg{width:14px; height:14px; fill:currentColor;}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  /* ---------- OFFER MARQUEE ---------- */
-  .offer-strip{
-    background:linear-gradient(90deg, var(--gold) 0%, #E4B23F 50%, var(--gold) 100%);
-    color:var(--maroon-dark); font-weight:600; font-size:.85rem;
-    overflow:hidden; white-space:nowrap; position:relative;
-    border-bottom:1px solid rgba(0,0,0,.08);
-  }
-  .offer-strip .marquee-track{
-    display:inline-flex; gap:60px; padding:9px 0;
-    animation:scroll-left 18s linear infinite;
-  }
-  .offer-strip span{display:inline-flex; align-items:center; gap:8px; letter-spacing:.5px;}
-  @keyframes scroll-left{
-    0%{transform:translateX(0);}
-    100%{transform:translateX(-50%);}
-  }
+    html {
+      scroll-behavior: smooth;
+    }
 
-  /* ---------- HEADER ---------- */
-  header.main-header{
-    background:var(--ivory); position:sticky; top:0; z-index:40;
-    box-shadow:0 2px 14px rgba(42,27,34,.06);
-  }
-  .nav-wrap{
-    max-width:1240px; margin:0 auto; padding:14px 24px;
-    display:flex; align-items:center; justify-content:space-between; gap:20px;
-  }
-  .logo{display:flex; align-items:center; gap:10px;}
-  .logo .mark{width:42px; height:42px;}
-  .logo .word{font-family:'Marcellus',serif; font-size:1.55rem; color:var(--maroon); letter-spacing:1px;}
-  .logo .tagline{display:block; font-family:'Poppins'; font-size:.62rem; letter-spacing:2.5px; color:var(--gold); text-transform:uppercase; margin-top:-2px;}
-  nav.primary-nav{display:flex; gap:32px; align-items:center;}
-  nav.primary-nav a{
-    font-size:.92rem; font-weight:500; color:var(--ink); position:relative; padding:4px 0;
-  }
-  nav.primary-nav a::after{
-    content:""; position:absolute; left:0; bottom:-2px; height:2px; width:0; background:var(--gold);
-    transition:width .25s ease;
-  }
-  nav.primary-nav a:hover::after{width:100%;}
-  .header-actions{display:flex; align-items:center; gap:14px;}
-  .icon-btn{
-    width:42px; height:42px; border-radius:50%; background:var(--ivory-deep);
-    display:flex; align-items:center; justify-content:center; position:relative;
-    transition:.2s; color:var(--maroon);
-  }
-  .icon-btn:hover{background:var(--maroon); color:var(--ivory);}
-  .icon-btn svg{width:19px; height:19px; fill:none; stroke:currentColor; stroke-width:1.7;}
-  .cart-count{
-    position:absolute; top:-4px; right:-4px; background:var(--rose); color:#fff;
-    font-size:.65rem; font-weight:700; width:19px; height:19px; border-radius:50%;
-    display:flex; align-items:center; justify-content:center; border:2px solid var(--ivory);
-  }
-  .hamburger{display:none; width:42px; height:42px; border-radius:50%; background:var(--ivory-deep); align-items:center; justify-content:center;}
-  .hamburger svg{width:20px; height:20px; stroke:var(--maroon); fill:none; stroke-width:1.8;}
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--ivory);
+      color: var(--ink);
+      padding-bottom: 0;
+      overflow-x: hidden;
+    }
 
-  /* ---------- HERO ---------- */
-  .hero{
-    max-width:1240px; margin:0 auto; padding:56px 24px 40px;
-    display:grid; grid-template-columns:1.05fr 1fr; gap:50px; align-items:center;
-  }
-  .hero-copy .eyebrow{margin-bottom:14px; display:block;}
-  .hero-copy h1{font-size:3.1rem; line-height:1.12; color:var(--maroon-dark); margin-bottom:18px;}
-  .hero-copy h1 em{font-style:normal; color:var(--gold); border-bottom:3px solid var(--gold-light);}
-  .hero-copy p{font-size:1.02rem; color:#5c4a52; max-width:440px; margin-bottom:28px; line-height:1.65;}
-  .hero-ctas{display:flex; gap:16px; align-items:center; flex-wrap:wrap;}
-  .btn-primary{
-    background:var(--maroon); color:var(--ivory); padding:15px 34px; border-radius:32px;
-    font-weight:600; font-size:.95rem; letter-spacing:.4px; transition:.2s; box-shadow:var(--shadow);
-  }
-  .btn-primary:hover{background:var(--maroon-dark); transform:translateY(-2px);}
-  .btn-ghost{
-    padding:15px 26px; border-radius:32px; font-weight:600; font-size:.92rem;
-    border:1.5px solid var(--maroon); color:var(--maroon); transition:.2s;
-  }
-  .btn-ghost:hover{background:var(--maroon); color:var(--ivory);}
-  .hero-visual{position:relative; display:flex; justify-content:center;}
-  .arch-frame{
-    width:100%; max-width:420px; aspect-ratio:3/3.6;
-    background:linear-gradient(160deg, var(--blush), var(--ivory-deep));
-    border-radius:220px 220px 20px 20px; position:relative; overflow:hidden;
-    box-shadow:var(--shadow); border:8px solid #fff;
-  }
-  .arch-frame .ring{position:absolute; inset:14px; border:1.5px dashed var(--gold); border-radius:210px 210px 8px 8px; opacity:.55;}
-  .badge-seal{
-    position:absolute; top:-14px; right:-10px; width:118px; height:118px; border-radius:50%;
-    background:var(--maroon); color:var(--ivory); display:flex; flex-direction:column; align-items:center; justify-content:center;
-    box-shadow:0 8px 20px rgba(122,30,60,.4); border:3px solid var(--gold-light);
-    transform:rotate(12deg); z-index:5;
-  }
-  .badge-seal b{font-size:1.7rem; font-family:'Marcellus',serif; line-height:1;}
-  .badge-seal span{font-size:.62rem; letter-spacing:1.5px; text-transform:uppercase; margin-top:2px;}
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Marcellus', serif;
+      font-weight: 400;
+      letter-spacing: .3px;
+    }
 
-  /* ---------- SECTION SHELL ---------- */
-  .section{max-width:1240px; margin:0 auto; padding:64px 24px;}
-  .section-head{display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:30px; flex-wrap:wrap; gap:12px;}
-  .section-head h2{font-size:2.1rem; color:var(--maroon-dark);}
-  .section-head p{color:#7a6870; font-size:.92rem; margin-top:4px;}
-  .divider-motif{display:flex; align-items:center; gap:10px; justify-content:center; margin:6px 0 44px;}
-  .divider-motif .line{height:1px; width:70px; background:var(--gold);}
-  .divider-motif svg{width:22px; height:22px; fill:var(--gold);}
+    .eyebrow {
+      font-family: 'Poppins', sans-serif;
+      font-size: .72rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+    }
 
-  /* category quick tiles */
-  .cat-tiles{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
-  .cat-tile{
-    background:#fff; border-radius:var(--radius-arch) var(--radius-arch) 10px 10px; padding:26px 16px 20px;
-    text-align:center; box-shadow:0 6px 18px rgba(42,27,34,.07); cursor:pointer; transition:.25s;
-    border:1px solid transparent;
-  }
-  .cat-tile:hover{transform:translateY(-6px); border-color:var(--gold-light); box-shadow:var(--shadow);}
-  .cat-tile .cat-img{width:64px; height:64px; margin:0 auto 12px; border-radius:50%; object-fit:cover; display:block; box-shadow:0 4px 10px rgba(0,0,0,0.08);}
-  .cat-tile h4{font-size:1.05rem; color:var(--maroon-dark);}
-  .cat-tile span{font-size:.78rem; color:#8a7880;}
+    img,
+    svg {
+      display: block;
+      max-width: 100%;
+    }
 
-  /* ---------- PRODUCT GRID ---------- */
-  .product-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:24px;}
-  .product-card{
-    background:#fff; border-radius:var(--radius-arch) var(--radius-arch) 12px 12px;
-    overflow:hidden; box-shadow:0 6px 16px rgba(42,27,34,.08); transition:.25s; position:relative;
-    display:flex; flex-direction:column;
-  }
-  .product-card:hover{transform:translateY(-5px); box-shadow:var(--shadow);}
-  .product-media{
-    aspect-ratio:3/3.4; position:relative; display:flex; align-items:center; justify-content:center;
-    overflow:hidden;
-  }
-  .product-photo{width:100%; height:100%; object-fit:cover; object-position:top center; transition:transform .4s ease;}
-  .product-card:hover .product-photo{transform:scale(1.05);}
-  .discount-flag{
-    position:absolute; top:12px; left:0; background:var(--rose); color:#fff; font-size:.68rem; font-weight:700;
-    padding:5px 12px 5px 10px; border-radius:0 20px 20px 0; letter-spacing:.4px; z-index:2;
-  }
-  .wishlist-dot{position:absolute; top:10px; right:10px; width:32px; height:32px; border-radius:50%; background:rgba(255,255,255,.85); display:flex; align-items:center; justify-content:center; z-index:2;}
-  .wishlist-dot svg{width:15px; height:15px; stroke:var(--maroon); fill:none; stroke-width:1.8;}
-  .product-info{padding:14px 16px 18px; display:flex; flex-direction:column; gap:8px; flex:1;}
-  .product-info h4{font-size:.98rem; color:var(--ink); font-weight:600; font-family:'Poppins'; line-height:1.3;}
-  .product-info .cat-label{font-size:.68rem; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold);}
-  .price-row{display:flex; align-items:baseline; gap:8px;}
-  .price-row .now{font-weight:700; color:var(--maroon-dark); font-size:1.02rem;}
-  .price-row .was{font-size:.8rem; color:#a89aa0; text-decoration:line-through;}
-  .price-row .off{font-size:.74rem; color:var(--rose); font-weight:600;}
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+    }
 
-  .add-row{margin-top:auto; display:flex; align-items:center; gap:8px;}
-  .btn-add{
-    flex:1; background:var(--maroon); color:var(--ivory); padding:11px 10px; border-radius:24px;
-    font-size:.82rem; font-weight:600; transition:.2s; text-align:center;
-  }
-  .btn-add:hover{background:var(--maroon-dark);}
-  .qty-control{
-    display:none; align-items:center; justify-content:space-between; background:var(--ivory-deep);
-    border-radius:24px; padding:6px 6px; flex:1;
-  }
-  .qty-control.active{display:flex;}
-  .qty-control button{
-    width:26px; height:26px; border-radius:50%; background:#fff; color:var(--maroon); font-weight:700;
-    display:flex; align-items:center; justify-content:center; box-shadow:0 2px 4px rgba(0,0,0,.08); font-size:1rem;
-  }
-  .qty-control .qty-num{font-weight:600; font-size:.9rem;}
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-  /* ---------- MORE COLLECTIONS STRIP ---------- */
-  .collections-scroll{display:flex; gap:20px; overflow-x:auto; padding-bottom:14px; scroll-snap-type:x mandatory;}
-  .collections-scroll::-webkit-scrollbar{height:6px;}
-  .collections-scroll::-webkit-scrollbar-thumb{background:var(--gold-light); border-radius:10px;}
-  .collection-card{
-    min-width:250px; scroll-snap-align:start; border-radius:var(--radius-arch) var(--radius-arch) 10px 10px;
-    padding:26px 20px; color:#fff; position:relative; overflow:hidden; height:190px; display:flex; flex-direction:column; justify-content:flex-end;
-  }
-  .collection-card h4{font-size:1.15rem; margin-bottom:4px;}
-  .collection-card span{font-size:.78rem; opacity:.9;}
-  .collection-card::before{content:""; position:absolute; inset:0; background:radial-gradient(circle at 80% 0%, rgba(255,255,255,.18), transparent 60%);}
+    ::selection {
+      background: var(--gold-light);
+      color: var(--maroon-dark);
+    }
 
-  /* ---------- TRUST STRIP ---------- */
-  .trust-strip{background:var(--maroon-dark); color:var(--ivory-deep);}
-  .trust-inner{max-width:1240px; margin:0 auto; padding:40px 24px; display:grid; grid-template-columns:repeat(4,1fr); gap:24px; text-align:center;}
-  .trust-inner div h3{color:var(--gold-light); font-size:1.6rem;}
-  .trust-inner div p{font-size:.8rem; opacity:.85; margin-top:4px;}
+    /* ---------- TOPBAR ---------- */
+    .topbar {
+      background: var(--maroon-dark);
+      color: var(--ivory-deep);
+      font-size: .78rem;
+      padding: 7px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
 
-  /* ---------- STORE INFO ---------- */
-  .store-info{
-    display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;
-    background:var(--blush); border-radius:32px; padding:40px; margin:0 24px;
-  }
-  .store-info h2{color:var(--maroon-dark); font-size:1.9rem; margin-bottom:14px;}
-  .store-info p{color:#6b5860; margin-bottom:10px; line-height:1.6; font-size:.95rem;}
-  .store-info .contact-line{display:flex; align-items:center; gap:10px; font-weight:600; color:var(--maroon-dark); margin-top:6px;}
-  .store-info .contact-line svg{width:18px; height:18px; stroke:var(--maroon-dark); fill:none; stroke-width:1.8;}
-  .map-box{
-    background:#fff; border-radius:24px; padding:26px; box-shadow:var(--shadow);
-    display:flex; flex-direction:column; gap:14px;
-  }
-  .map-box svg{width:100%; height:160px;}
+    .topbar .tb-left {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
 
-  /* ---------- FOOTER ---------- */
-  footer{background:var(--ink); color:#e8dde0;}
-  .footer-inner{max-width:1240px; margin:0 auto; padding:56px 24px 24px; display:grid; grid-template-columns:1.4fr 1fr 1fr 1.2fr; gap:36px;}
-  .footer-inner h4{font-family:'Marcellus'; font-size:1.1rem; color:var(--gold-light); margin-bottom:16px;}
-  .footer-inner .logo .word{color:var(--ivory);}
-  .footer-inner p{font-size:.85rem; line-height:1.7; opacity:.8; max-width:280px;}
-  .footer-inner ul{list-style:none;}
-  .footer-inner ul li{margin-bottom:10px; font-size:.85rem; opacity:.85;}
-  .footer-inner ul li a:hover{color:var(--gold-light);}
-  .footer-social{display:flex; gap:12px; margin-top:16px;}
-  .footer-social a{width:38px; height:38px; border-radius:50%; background:rgba(255,255,255,.08); display:flex; align-items:center; justify-content:center; transition:.2s;}
-  .footer-social a:hover{background:var(--gold);}
-  .footer-social svg{width:17px; height:17px; fill:#fff;}
-  .footer-bottom{border-top:1px solid rgba(255,255,255,.1); text-align:center; padding:18px; font-size:.78rem; opacity:.65;}
+    .topbar a.tb-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      opacity: .92;
+    }
 
-  /* ---------- LOGIN / CUSTOMER DETAILS VIEW ---------- */
-  .view{display:none;}
-  .view.active{display:block;}
-  .login-shell{
-    min-height:70vh; display:flex; align-items:center; justify-content:center; padding:60px 24px;
-    background:radial-gradient(circle at 20% 20%, var(--blush), transparent 55%), var(--ivory);
-  }
-  .login-card{
-    width:100%; max-width:460px; background:#fff; border-radius:32px 32px 14px 14px; box-shadow:var(--shadow);
-    padding:44px 38px; position:relative; overflow:hidden;
-  }
-  .login-card .ring-deco{position:absolute; top:-60px; right:-60px; width:160px; height:160px; border:14px solid var(--ivory-deep); border-radius:50%;}
-  .login-card h2{color:var(--maroon-dark); font-size:1.9rem; margin-bottom:6px;}
-  .login-card p.sub{color:#8a7880; font-size:.9rem; margin-bottom:28px;}
-  .field{margin-bottom:20px;}
-  .field label{display:block; font-size:.8rem; font-weight:600; color:var(--maroon-dark); margin-bottom:7px; letter-spacing:.3px;}
-  .field input{
-    width:100%; padding:13px 16px; border-radius:14px; border:1.5px solid #e8dbe0; font-size:.94rem;
-    font-family:'Poppins'; background:var(--ivory); transition:.2s; color:var(--ink);
-  }
-  .field input:focus{outline:none; border-color:var(--gold); background:#fff;}
-  .field .err{color:var(--rose); font-size:.75rem; margin-top:5px; display:none;}
-  .field.invalid input{border-color:var(--rose);}
-  .field.invalid .err{display:block;}
-  .btn-submit{
-    width:100%; background:var(--maroon); color:var(--ivory); padding:15px; border-radius:16px;
-    font-weight:600; font-size:.98rem; margin-top:6px; transition:.2s;
-  }
-  .btn-submit:hover{background:var(--maroon-dark);}
-  .login-success{display:none; text-align:center; padding:10px 0;}
-  .login-success.active{display:block;}
-  .login-success .tick{width:64px; height:64px; border-radius:50%; background:var(--ivory-deep); display:flex; align-items:center; justify-content:center; margin:0 auto 16px;}
-  .login-success .tick svg{width:30px; height:30px; stroke:var(--maroon); fill:none; stroke-width:2.4;}
-  .login-success h3{color:var(--maroon-dark); margin-bottom:8px;}
-  .login-success p{color:#7a6870; font-size:.9rem; line-height:1.6;}
+    .topbar a.tb-link:hover {
+      opacity: 1;
+      color: var(--gold-light);
+    }
 
-  /* ---------- CART DRAWER ---------- */
-  .overlay{position:fixed; inset:0; background:rgba(42,27,34,.5); opacity:0; pointer-events:none; transition:.3s; z-index:60;}
-  .overlay.active{opacity:1; pointer-events:auto;}
-  .cart-drawer{
-    position:fixed; top:0; right:-420px; width:400px; max-width:92vw; height:100%; background:var(--ivory);
-    z-index:70; transition:right .35s ease; display:flex; flex-direction:column; box-shadow:-14px 0 40px rgba(0,0,0,.2);
-  }
-  .cart-drawer.active{right:0;}
-  .cart-head{padding:22px 24px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--ivory-deep);}
-  .cart-head h3{color:var(--maroon-dark);}
-  .cart-close{width:36px; height:36px; border-radius:50%; background:var(--ivory-deep); display:flex; align-items:center; justify-content:center;}
-  .cart-close svg{width:16px; height:16px; stroke:var(--maroon); fill:none; stroke-width:2;}
-  .cart-items{flex:1; overflow-y:auto; padding:16px 24px;}
-  .cart-empty{text-align:center; padding:60px 20px; color:#a89aa0;}
-  .cart-empty svg{width:60px; height:60px; margin:0 auto 14px; stroke:#cdbcc4; fill:none; stroke-width:1.4;}
-  .cart-line{display:flex; gap:14px; padding:14px 0; border-bottom:1px solid var(--ivory-deep); align-items:center;}
-  .cart-line .thumb{width:60px; height:68px; border-radius:12px; flex-shrink:0; display:flex; align-items:center; justify-content:center;}
-  .cart-line .thumb svg{width:36px; height:36px;}
-  .cart-line-info{flex:1;}
-  .cart-line-info h5{font-size:.88rem; margin-bottom:3px;}
-  .cart-line-info .cat-label{font-size:.65rem;}
-  .cart-line-info .line-price{font-size:.82rem; color:var(--maroon-dark); font-weight:600; margin-top:4px;}
-  .cart-line .qty-control{max-width:104px;}
-  .cart-remove{font-size:.72rem; color:var(--rose); margin-top:6px; text-decoration:underline; cursor:pointer;}
-  .cart-foot{padding:20px 24px 26px; border-top:1px solid var(--ivory-deep);}
-  .cart-sumrow{display:flex; justify-content:space-between; font-size:.88rem; margin-bottom:8px; color:#6b5860;}
-  .cart-sumrow.total{font-size:1.05rem; font-weight:700; color:var(--maroon-dark); margin-top:10px;}
-  .toast{
-    position:fixed; bottom:26px; left:50%; transform:translate(-50%,20px); background:var(--maroon-dark); color:#fff;
-    padding:13px 24px; border-radius:30px; font-size:.86rem; box-shadow:var(--shadow); z-index:100; opacity:0;
-    transition:.3s; pointer-events:none; display:flex; align-items:center; gap:8px;
-  }
-  .toast.active{opacity:1; transform:translate(-50%,0);}
+    .tb-social {
+      display: flex;
+      gap: 10px;
+    }
 
-  /* ---------- RESPONSIVE ---------- */
-  @media (max-width:980px){
-    nav.primary-nav{display:none;}
-    .hamburger{display:flex;}
-    .hero{grid-template-columns:1fr; text-align:center;}
-    .hero-copy p{margin:0 auto 28px;}
-    .hero-ctas{justify-content:center;}
-    .hero-visual{order:-1;}
-    .cat-tiles{grid-template-columns:repeat(2,1fr);}
-    .product-grid{grid-template-columns:repeat(2,1fr);}
-    .store-info{grid-template-columns:1fr; margin:0 16px;}
-    .footer-inner{grid-template-columns:1fr 1fr; gap:28px;}
-    .trust-inner{grid-template-columns:repeat(2,1fr);}
-  }
-  @media (max-width:560px){
-    .hero-copy h1{font-size:2.2rem;}
-    .cat-tiles{grid-template-columns:repeat(2,1fr);}
-    .product-grid{grid-template-columns:repeat(2,1fr); gap:14px;}
-    .product-info h4{font-size:.85rem;}
-    .footer-inner{grid-template-columns:1fr;}
-    .cart-drawer{width:100vw;}
-    .login-card{padding:32px 22px;}
-    .topbar{font-size:.7rem;}
-  }
-</style>
+    .tb-social a {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: .2s;
+    }
+
+    .tb-social a:hover {
+      background: var(--gold);
+      color: var(--maroon-dark);
+    }
+
+    .tb-social svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
+
+    /* ---------- OFFER MARQUEE ---------- */
+    .offer-strip {
+      background: linear-gradient(90deg, var(--gold) 0%, #E4B23F 50%, var(--gold) 100%);
+      color: var(--maroon-dark);
+      font-weight: 600;
+      font-size: .85rem;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      border-bottom: 1px solid rgba(0, 0, 0, .08);
+    }
+
+    .offer-strip .marquee-track {
+      display: inline-flex;
+      gap: 60px;
+      padding: 9px 0;
+      animation: scroll-left 18s linear infinite;
+    }
+
+    .offer-strip span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: .5px;
+    }
+
+    @keyframes scroll-left {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* ---------- HEADER ---------- */
+    header.main-header {
+      background: var(--ivory);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      box-shadow: 0 2px 14px rgba(42, 27, 34, .06);
+    }
+
+    .nav-wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo .mark {
+      width: 42px;
+      height: 42px;
+    }
+
+    .logo .word {
+      font-family: 'Marcellus', serif;
+      font-size: 1.55rem;
+      color: var(--maroon);
+      letter-spacing: 1px;
+    }
+
+    .logo .tagline {
+      display: block;
+      font-family: 'Poppins';
+      font-size: .62rem;
+      letter-spacing: 2.5px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-top: -2px;
+    }
+
+    nav.primary-nav {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    nav.primary-nav a {
+      font-size: .92rem;
+      font-weight: 500;
+      color: var(--ink);
+      position: relative;
+      padding: 4px 0;
+    }
+
+    nav.primary-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      height: 2px;
+      width: 0;
+      background: var(--gold);
+      transition: width .25s ease;
+    }
+
+    nav.primary-nav a:hover::after {
+      width: 100%;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .icon-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--ivory-deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transition: .2s;
+      color: var(--maroon);
+    }
+
+    .icon-btn:hover {
+      background: var(--maroon);
+      color: var(--ivory);
+    }
+
+    .icon-btn svg {
+      width: 19px;
+      height: 19px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.7;
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background: var(--rose);
+      color: #fff;
+      font-size: .65rem;
+      font-weight: 700;
+      width: 19px;
+      height: 19px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--ivory);
+    }
+
+    .hamburger {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--ivory-deep);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hamburger svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--maroon);
+      fill: none;
+      stroke-width: 1.8;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 56px 24px 40px;
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .hero-copy .eyebrow {
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .hero-copy h1 {
+      font-size: 3.1rem;
+      line-height: 1.12;
+      color: var(--maroon-dark);
+      margin-bottom: 18px;
+    }
+
+    .hero-copy h1 em {
+      font-style: normal;
+      color: var(--gold);
+      border-bottom: 3px solid var(--gold-light);
+    }
+
+    .hero-copy p {
+      font-size: 1.02rem;
+      color: #5c4a52;
+      max-width: 440px;
+      margin-bottom: 28px;
+      line-height: 1.65;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--maroon);
+      color: var(--ivory);
+      padding: 15px 34px;
+      border-radius: 32px;
+      font-weight: 600;
+      font-size: .95rem;
+      letter-spacing: .4px;
+      transition: .2s;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover {
+      background: var(--maroon-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      padding: 15px 26px;
+      border-radius: 32px;
+      font-weight: 600;
+      font-size: .92rem;
+      border: 1.5px solid var(--maroon);
+      color: var(--maroon);
+      transition: .2s;
+    }
+
+    .btn-ghost:hover {
+      background: var(--maroon);
+      color: var(--ivory);
+    }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .arch-frame {
+      width: 100%;
+      max-width: 420px;
+      aspect-ratio: 3/3.6;
+      background: linear-gradient(160deg, var(--blush), var(--ivory-deep));
+      border-radius: 220px 220px 20px 20px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 8px solid #fff;
+    }
+
+    .arch-frame .ring {
+      position: absolute;
+      inset: 14px;
+      border: 1.5px dashed var(--gold);
+      border-radius: 210px 210px 8px 8px;
+      opacity: .55;
+    }
+
+    .badge-seal {
+      position: absolute;
+      top: -14px;
+      right: -10px;
+      width: 118px;
+      height: 118px;
+      border-radius: 50%;
+      background: var(--maroon);
+      color: var(--ivory);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(122, 30, 60, .4);
+      border: 3px solid var(--gold-light);
+      transform: rotate(12deg);
+      z-index: 5;
+    }
+
+    .badge-seal b {
+      font-size: 1.7rem;
+      font-family: 'Marcellus', serif;
+      line-height: 1;
+    }
+
+    .badge-seal span {
+      font-size: .62rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* ---------- SECTION SHELL ---------- */
+    .section {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 64px 24px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .section-head h2 {
+      font-size: 2.1rem;
+      color: var(--maroon-dark);
+    }
+
+    .section-head p {
+      color: #7a6870;
+      font-size: .92rem;
+      margin-top: 4px;
+    }
+
+    .divider-motif {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+      margin: 6px 0 44px;
+    }
+
+    .divider-motif .line {
+      height: 1px;
+      width: 70px;
+      background: var(--gold);
+    }
+
+    .divider-motif svg {
+      width: 22px;
+      height: 22px;
+      fill: var(--gold);
+    }
+
+    /* category quick tiles */
+    .cat-tiles {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .cat-tile {
+      background: #fff;
+      border-radius: var(--radius-arch) var(--radius-arch) 10px 10px;
+      padding: 26px 16px 20px;
+      text-align: center;
+      box-shadow: 0 6px 18px rgba(42, 27, 34, .07);
+      cursor: pointer;
+      transition: .25s;
+      border: 1px solid transparent;
+    }
+
+    .cat-tile:hover {
+      transform: translateY(-6px);
+      border-color: var(--gold-light);
+      box-shadow: var(--shadow);
+    }
+
+    .cat-tile .cat-img {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 12px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .cat-tile h4 {
+      font-size: 1.05rem;
+      color: var(--maroon-dark);
+    }
+
+    .cat-tile span {
+      font-size: .78rem;
+      color: #8a7880;
+    }
+
+    /* ---------- PRODUCT GRID ---------- */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: var(--radius-arch) var(--radius-arch) 12px 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 16px rgba(42, 27, 34, .08);
+      transition: .25s;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .product-media {
+      aspect-ratio: 3/3.4;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .product-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      transition: transform .4s ease;
+    }
+
+    .product-card:hover .product-photo {
+      transform: scale(1.05);
+    }
+
+    .discount-flag {
+      position: absolute;
+      top: 12px;
+      left: 0;
+      background: var(--rose);
+      color: #fff;
+      font-size: .68rem;
+      font-weight: 700;
+      padding: 5px 12px 5px 10px;
+      border-radius: 0 20px 20px 0;
+      letter-spacing: .4px;
+      z-index: 2;
+    }
+
+    .wishlist-dot {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .wishlist-dot svg {
+      width: 15px;
+      height: 15px;
+      stroke: var(--maroon);
+      fill: none;
+      stroke-width: 1.8;
+    }
+
+    .product-info {
+      padding: 14px 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+    }
+
+    .product-info h4 {
+      font-size: .98rem;
+      color: var(--ink);
+      font-weight: 600;
+      font-family: 'Poppins';
+      line-height: 1.3;
+    }
+
+    .product-info .cat-label {
+      font-size: .68rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .price-row .now {
+      font-weight: 700;
+      color: var(--maroon-dark);
+      font-size: 1.02rem;
+    }
+
+    .price-row .was {
+      font-size: .8rem;
+      color: #a89aa0;
+      text-decoration: line-through;
+    }
+
+    .price-row .off {
+      font-size: .74rem;
+      color: var(--rose);
+      font-weight: 600;
+    }
+
+    .add-row {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-add {
+      flex: 1;
+      background: var(--maroon);
+      color: var(--ivory);
+      padding: 11px 10px;
+      border-radius: 24px;
+      font-size: .82rem;
+      font-weight: 600;
+      transition: .2s;
+      text-align: center;
+    }
+
+    .btn-add:hover {
+      background: var(--maroon-dark);
+    }
+
+    .qty-control {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--ivory-deep);
+      border-radius: 24px;
+      padding: 6px 6px;
+      flex: 1;
+    }
+
+    .qty-control.active {
+      display: flex;
+    }
+
+    .qty-control button {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #fff;
+      color: var(--maroon);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, .08);
+      font-size: 1rem;
+    }
+
+    .qty-control .qty-num {
+      font-weight: 600;
+      font-size: .9rem;
+    }
+
+    /* ---------- MORE COLLECTIONS STRIP ---------- */
+    .collections-scroll {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding-bottom: 14px;
+      scroll-snap-type: x mandatory;
+    }
+
+    .collections-scroll::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .collections-scroll::-webkit-scrollbar-thumb {
+      background: var(--gold-light);
+      border-radius: 10px;
+    }
+
+    .collection-card {
+      min-width: 250px;
+      scroll-snap-align: start;
+      border-radius: var(--radius-arch) var(--radius-arch) 10px 10px;
+      padding: 26px 20px;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      height: 190px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .collection-card h4 {
+      font-size: 1.15rem;
+      margin-bottom: 4px;
+    }
+
+    .collection-card span {
+      font-size: .78rem;
+      opacity: .9;
+    }
+
+    .collection-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 80% 0%, rgba(255, 255, 255, .18), transparent 60%);
+    }
+
+    /* ---------- TRUST STRIP ---------- */
+    .trust-strip {
+      background: var(--maroon-dark);
+      color: var(--ivory-deep);
+    }
+
+    .trust-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 40px 24px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      text-align: center;
+    }
+
+    .trust-inner div h3 {
+      color: var(--gold-light);
+      font-size: 1.6rem;
+    }
+
+    .trust-inner div p {
+      font-size: .8rem;
+      opacity: .85;
+      margin-top: 4px;
+    }
+
+    /* ---------- STORE INFO ---------- */
+    .store-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      background: var(--blush);
+      border-radius: 32px;
+      padding: 40px;
+      margin: 0 24px;
+    }
+
+    .store-info h2 {
+      color: var(--maroon-dark);
+      font-size: 1.9rem;
+      margin-bottom: 14px;
+    }
+
+    .store-info p {
+      color: #6b5860;
+      margin-bottom: 10px;
+      line-height: 1.6;
+      font-size: .95rem;
+    }
+
+    .store-info .contact-line {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      color: var(--maroon-dark);
+      margin-top: 6px;
+    }
+
+    .store-info .contact-line svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--maroon-dark);
+      fill: none;
+      stroke-width: 1.8;
+    }
+
+    .map-box {
+      background: #fff;
+      border-radius: 24px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .map-box svg {
+      width: 100%;
+      height: 160px;
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      background: var(--ink);
+      color: #e8dde0;
+    }
+
+    .footer-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 56px 24px 24px;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+      gap: 36px;
+    }
+
+    .footer-inner h4 {
+      font-family: 'Marcellus';
+      font-size: 1.1rem;
+      color: var(--gold-light);
+      margin-bottom: 16px;
+    }
+
+    .footer-inner .logo .word {
+      color: var(--ivory);
+    }
+
+    .footer-inner p {
+      font-size: .85rem;
+      line-height: 1.7;
+      opacity: .8;
+      max-width: 280px;
+    }
+
+    .footer-inner ul {
+      list-style: none;
+    }
+
+    .footer-inner ul li {
+      margin-bottom: 10px;
+      font-size: .85rem;
+      opacity: .85;
+    }
+
+    .footer-inner ul li a:hover {
+      color: var(--gold-light);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .footer-social a {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: .2s;
+    }
+
+    .footer-social a:hover {
+      background: var(--gold);
+    }
+
+    .footer-social svg {
+      width: 17px;
+      height: 17px;
+      fill: #fff;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, .1);
+      text-align: center;
+      padding: 18px;
+      font-size: .78rem;
+      opacity: .65;
+    }
+
+    /* ---------- LOGIN / CUSTOMER DETAILS VIEW ---------- */
+    .view {
+      display: none;
+    }
+
+    .view.active {
+      display: block;
+    }
+
+    .login-shell {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 24px;
+      background: radial-gradient(circle at 20% 20%, var(--blush), transparent 55%), var(--ivory);
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 460px;
+      background: #fff;
+      border-radius: 32px 32px 14px 14px;
+      box-shadow: var(--shadow);
+      padding: 44px 38px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .login-card .ring-deco {
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 160px;
+      height: 160px;
+      border: 14px solid var(--ivory-deep);
+      border-radius: 50%;
+    }
+
+    .login-card h2 {
+      color: var(--maroon-dark);
+      font-size: 1.9rem;
+      margin-bottom: 6px;
+    }
+
+    .login-card p.sub {
+      color: #8a7880;
+      font-size: .9rem;
+      margin-bottom: 28px;
+    }
+
+    .field {
+      margin-bottom: 20px;
+    }
+
+    .field label {
+      display: block;
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--maroon-dark);
+      margin-bottom: 7px;
+      letter-spacing: .3px;
+    }
+
+    .field input {
+      width: 100%;
+      padding: 13px 16px;
+      border-radius: 14px;
+      border: 1.5px solid #e8dbe0;
+      font-size: .94rem;
+      font-family: 'Poppins';
+      background: var(--ivory);
+      transition: .2s;
+      color: var(--ink);
+    }
+
+    .field input:focus {
+      outline: none;
+      border-color: var(--gold);
+      background: #fff;
+    }
+
+    .field .err {
+      color: var(--rose);
+      font-size: .75rem;
+      margin-top: 5px;
+      display: none;
+    }
+
+    .field.invalid input {
+      border-color: var(--rose);
+    }
+
+    .field.invalid .err {
+      display: block;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--maroon);
+      color: var(--ivory);
+      padding: 15px;
+      border-radius: 16px;
+      font-weight: 600;
+      font-size: .98rem;
+      margin-top: 6px;
+      transition: .2s;
+    }
+
+    .btn-submit:hover {
+      background: var(--maroon-dark);
+    }
+
+    .login-success {
+      display: none;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    .login-success.active {
+      display: block;
+    }
+
+    .login-success .tick {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--ivory-deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+
+    .login-success .tick svg {
+      width: 30px;
+      height: 30px;
+      stroke: var(--maroon);
+      fill: none;
+      stroke-width: 2.4;
+    }
+
+    .login-success h3 {
+      color: var(--maroon-dark);
+      margin-bottom: 8px;
+    }
+
+    .login-success p {
+      color: #7a6870;
+      font-size: .9rem;
+      line-height: 1.6;
+    }
+
+    /* ---------- CART DRAWER ---------- */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(42, 27, 34, .5);
+      opacity: 0;
+      pointer-events: none;
+      transition: .3s;
+      z-index: 60;
+    }
+
+    .overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: -420px;
+      width: 400px;
+      max-width: 92vw;
+      height: 100%;
+      background: var(--ivory);
+      z-index: 70;
+      transition: right .35s ease;
+      display: flex;
+      flex-direction: column;
+      box-shadow: -14px 0 40px rgba(0, 0, 0, .2);
+    }
+
+    .cart-drawer.active {
+      right: 0;
+    }
+
+    .cart-head {
+      padding: 22px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--ivory-deep);
+    }
+
+    .cart-head h3 {
+      color: var(--maroon-dark);
+    }
+
+    .cart-close {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--ivory-deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cart-close svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--maroon);
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 24px;
+    }
+
+    .cart-empty {
+      text-align: center;
+      padding: 60px 20px;
+      color: #a89aa0;
+    }
+
+    .cart-empty svg {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 14px;
+      stroke: #cdbcc4;
+      fill: none;
+      stroke-width: 1.4;
+    }
+
+    .cart-line {
+      display: flex;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--ivory-deep);
+      align-items: center;
+    }
+
+    .cart-line .thumb {
+      width: 60px;
+      height: 68px;
+      border-radius: 12px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cart-line .thumb svg {
+      width: 36px;
+      height: 36px;
+    }
+
+    .cart-line-info {
+      flex: 1;
+    }
+
+    .cart-line-info h5 {
+      font-size: .88rem;
+      margin-bottom: 3px;
+    }
+
+    .cart-line-info .cat-label {
+      font-size: .65rem;
+    }
+
+    .cart-line-info .line-price {
+      font-size: .82rem;
+      color: var(--maroon-dark);
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    .cart-line .qty-control {
+      max-width: 104px;
+    }
+
+    .cart-remove {
+      font-size: .72rem;
+      color: var(--rose);
+      margin-top: 6px;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .cart-foot {
+      padding: 20px 24px 26px;
+      border-top: 1px solid var(--ivory-deep);
+    }
+
+    .cart-sumrow {
+      display: flex;
+      justify-content: space-between;
+      font-size: .88rem;
+      margin-bottom: 8px;
+      color: #6b5860;
+    }
+
+    .cart-sumrow.total {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--maroon-dark);
+      margin-top: 10px;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 26px;
+      left: 50%;
+      transform: translate(-50%, 20px);
+      background: var(--maroon-dark);
+      color: #fff;
+      padding: 13px 24px;
+      border-radius: 30px;
+      font-size: .86rem;
+      box-shadow: var(--shadow);
+      z-index: 100;
+      opacity: 0;
+      transition: .3s;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toast.active {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width:980px) {
+      nav.primary-nav {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-copy p {
+        margin: 0 auto 28px;
+      }
+
+      .hero-ctas {
+        justify-content: center;
+      }
+
+      .hero-visual {
+        order: -1;
+      }
+
+      .cat-tiles {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .store-info {
+        grid-template-columns: 1fr;
+        margin: 0 16px;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+      }
+
+      .trust-inner {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width:560px) {
+      .hero-copy h1 {
+        font-size: 2.2rem;
+      }
+
+      .cat-tiles {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+      }
+
+      .product-info h4 {
+        font-size: .85rem;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .cart-drawer {
+        width: 100vw;
+      }
+
+      .login-card {
+        padding: 32px 22px;
+      }
+
+      .topbar {
+        font-size: .7rem;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- ================= TOPBAR ================= -->
-<div class="topbar">
-  <div class="tb-left">
-    <a class="tb-link" href="tel:9361173087">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      +91 93611 73087
-    </a>
-    <a class="tb-link" href="#" onclick="return false;">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      No 3, Shree Nagar, Periyasamy Layout, Coimbatore, Tamil Nadu
-    </a>
-  </div>
-  <div class="tb-social">
-    <a href="#" aria-label="Instagram" onclick="return false;"><svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.55.55.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43C21.99 8.94 22 9.3 22 12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.64.25-1.37.42-2.43.47C15.06 21.99 14.7 22 12 22s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.7 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77A4.9 4.9 0 0 1 5.45 2.53c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.3 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2A3.2 3.2 0 1 1 12 8.8a3.2 3.2 0 0 1 0 6.4zm5.4-8.4a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg></a>
-    <a href="#" aria-label="YouTube" onclick="return false;"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.5v-7l6.3 3.5-6.3 3.5z"/></svg></a>
-    <a href="#" aria-label="Facebook" onclick="return false;"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
-  </div>
-</div>
-
-<!-- ================= OFFER MARQUEE ================= -->
-<div class="offer-strip">
-  <div class="marquee-track">
-    <span>✦ FLAT 30% OFF SITEWIDE — USE CODE LAKSHMI30 ✦</span>
-    <span>✦ FREE SHIPPING ACROSS INDIA ON ORDERS ABOVE ₹1999 ✦</span>
-    <span>✦ NEW FESTIVE COLLECTION JUST LANDED ✦</span>
-    <span>✦ FLAT 30% OFF SITEWIDE — USE CODE LAKSHMI30 ✦</span>
-    <span>✦ FREE SHIPPING ACROSS INDIA ON ORDERS ABOVE ₹1999 ✦</span>
-    <span>✦ NEW FESTIVE COLLECTION JUST LANDED ✦</span>
-  </div>
-</div>
-
-<!-- ================= HEADER ================= -->
-<header class="main-header">
-  <div class="nav-wrap">
-    <div class="logo">
-      <a href="./">
-      <svg class="mark" viewBox="0 0 48 48">
-        <circle cx="24" cy="24" r="23" fill="#7A1E3C"/>
-        <path d="M24 10c5 4 8 9 8 14a8 8 0 0 1-16 0c0-5 3-10 8-14z" fill="#E8C877"/>
-        <circle cx="24" cy="24" r="3" fill="#7A1E3C"/>
-      </svg>
-      <div>
-        <div class="word">LAKSHMI</div>
-        <span class="tagline">Traditional Wear Boutique</span>
-      </div>
+  <!-- ================= TOPBAR ================= -->
+  <div class="topbar">
+    <div class="tb-left">
+      <a class="tb-link" href="tel:9361173087">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path
+            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+        </svg>
+        +91 93611 73087
+      </a>
+      <a class="tb-link" href="#" onclick="return false;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+          <circle cx="12" cy="10" r="3" />
+        </svg>
+        No 3, Shree Nagar, Periyasamy Layout, Coimbatore, Tamil Nadu
       </a>
     </div>
-    <nav class="primary-nav">
-      <a href="#home" onclick="showView('home')">Home</a>
-      <a href="#sarees" onclick="showView('home')">Sarees</a>
-      <a href="#women" onclick="showView('home')">Women</a>
-      <a href="#men" onclick="showView('home')">Men</a>
-      <a href="#kids" onclick="showView('home')">Kids</a>
-      <a href="#contact" onclick="showView('home')">Contact</a>
-    </nav>
-    <div class="header-actions">
-      <button class="icon-btn" title="Account / Login" onclick="showView('login')">
-        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-      </button>
-      <button class="icon-btn" title="Cart" onclick="openCart()">
-        <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-        <span class="cart-count" id="cartCount">0</span>
-      </button>
-      <button class="hamburger" onclick="toggleMobileNav()">
-        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
-    </div>
-  </div>
-</header>
-
-<!-- ================= HOME VIEW ================= -->
-<div class="view active" id="view-home">
-
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="hero-copy">
-      <span class="eyebrow">Since Every Thread Tells A Story</span>
-      <h1>Drape yourself <br>in <em>timeless</em> tradition</h1>
-      <p>Handpicked sarees, kurtis, kurtas and kidswear crafted for every occasion — from daily grace to festive glory. Shop authentic traditional wear, delivered across India.</p>
-      <div class="hero-ctas">
-        <a class="btn-primary" href="#sarees">Shop New Arrivals</a>
-        <a class="btn-ghost" href="#contact">Visit Our Store</a>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <div class="badge-seal"><b>30%</b><span>Off Today</span></div>
-      <div class="arch-frame">
-        <div class="ring"></div>
-        <img src="images/saree_banarasi_gold.png" alt="Traditional saree" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top center;" onerror="this.style.display='none';">
-      </div>
-    </div>
-  </section>
-
-  <!-- CATEGORY TILES -->
-  <section class="section" style="padding-top:10px;">
-    <div class="cat-tiles">
-      <div class="cat-tile" onclick="scrollToCat('sarees')">
-        <img class="cat-img" src="images/saree.png" alt="Sarees">
-        <h4>Sarees</h4><span>42 designs</span>
-      </div>
-      <div class="cat-tile" onclick="scrollToCat('women')">
-        <img class="cat-img" src="images/women_anarkali.png" alt="Women">
-        <h4>Women</h4><span>68 designs</span>
-      </div>
-      <div class="cat-tile" onclick="scrollToCat('men')">
-        <img class="cat-img" src="images/men_silk_kurta.png" alt="Men">
-        <h4>Men</h4><span>31 designs</span>
-      </div>
-      <div class="cat-tile" onclick="scrollToCat('kids')">
-        <img class="cat-img" src="images/kids_pattu_silk.png" alt="Kids">
-        <h4>Kids</h4><span>24 designs</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- SAREES -->
-  <section class="section" id="sarees">
-    <div class="section-head">
-      <div><h2>Sarees</h2><p>Handloom, silk & festive drapes</p></div>
-    </div>
-    <div class="product-grid" id="grid-sarees"></div>
-  </section>
-
-  <!-- WOMEN -->
-  <section class="section" id="women" style="background:var(--ivory-deep); border-radius:40px;">
-    <div class="section-head">
-      <div><h2>Women's Traditional Wear</h2><p>Kurtis, Anarkalis & festive sets</p></div>
-    </div>
-    <div class="product-grid" id="grid-women"></div>
-  </section>
-
-  <!-- MEN -->
-  <section class="section" id="men">
-    <div class="section-head">
-      <div><h2>Men's Traditional Wear</h2><p>Kurtas, dhotis & festive sets</p></div>
-    </div>
-    <div class="product-grid" id="grid-men"></div>
-  </section>
-
-  <!-- KIDS -->
-  <section class="section" id="kids" style="background:var(--ivory-deep); border-radius:40px;">
-    <div class="section-head">
-      <div><h2>Kids Traditional Wear</h2><p>Pattu pavadais, frocks & kurta sets</p></div>
-    </div>
-    <div class="product-grid" id="grid-kids"></div>
-  </section>
-
-  <!-- MORE COLLECTIONS -->
-  <section class="section">
-    <div class="section-head">
-      <div><h2>More Collections</h2><p>Keep scrolling — new edits every season</p></div>
-    </div>
-    <div class="collections-scroll">
-      <div class="collection-card" style="background:linear-gradient(to bottom, rgba(122,30,60,0.2), rgba(122,30,60,0.9)), url('images/saree.png') center/cover;"><h4>Bridal Edit</h4><span>Grand silks for the big day</span></div>
-      <div class="collection-card" style="background:linear-gradient(to bottom, rgba(193,89,106,0.2), rgba(193,89,106,0.9)), url('images/womens_wear.png') center/cover;"><h4>Festive Picks</h4><span>Vibrant hues for celebrations</span></div>
-      <div class="collection-card" style="background:linear-gradient(to bottom, rgba(19,78,72,0.2), rgba(19,78,72,0.9)), url('images/mens_wear.png') center/cover;"><h4>Handloom Classics</h4><span>Woven by master artisans</span></div>
-      <div class="collection-card" style="background:linear-gradient(to bottom, rgba(204,154,46,0.2), rgba(204,154,46,0.9)), url('images/saree.png') center/cover;"><h4>Office Wear Edit</h4><span>Comfort meets elegance</span></div>
-      <div class="collection-card" style="background:linear-gradient(to bottom, rgba(138,74,90,0.2), rgba(90,19,41,0.9)), url('images/womens_wear.png') center/cover;"><h4>Mix &amp; Match</h4><span>Build your own combination</span></div>
-      <div class="collection-card" style="background:linear-gradient(to bottom, rgba(58,111,104,0.2), rgba(19,78,72,0.9)), url('images/mens_wear.png') center/cover;"><h4>Daily Comfort Wear</h4><span>Soft cotton essentials</span></div>
-    </div>
-  </section>
-
-  <!-- TRUST STRIP -->
-  <div class="trust-strip">
-    <div class="trust-inner">
-      <div><h3>2005</h3><p>Trusted heritage since</p></div>
-      <div><h3>50k+</h3><p>Happy customers</p></div>
-      <div><h3>4.8★</h3><p>Average rating</p></div>
-      <div><h3>5-6 Days</h3><p>All India shipping</p></div>
+    <div class="tb-social">
+      <a href="#" aria-label="Instagram" onclick="return false;"><svg viewBox="0 0 24 24">
+          <path
+            d="M12 2c2.7 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.55.55.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43C21.99 8.94 22 9.3 22 12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.64.25-1.37.42-2.43.47C15.06 21.99 14.7 22 12 22s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.7 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77A4.9 4.9 0 0 1 5.45 2.53c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.3 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2A3.2 3.2 0 1 1 12 8.8a3.2 3.2 0 0 1 0 6.4zm5.4-8.4a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z" />
+        </svg></a>
+      <a href="#" aria-label="YouTube" onclick="return false;"><svg viewBox="0 0 24 24">
+          <path
+            d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.5v-7l6.3 3.5-6.3 3.5z" />
+        </svg></a>
+      <a href="#" aria-label="Facebook" onclick="return false;"><svg viewBox="0 0 24 24">
+          <path
+            d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z" />
+        </svg></a>
     </div>
   </div>
 
-  <!-- STORE / CONTACT -->
-  <section class="section" id="contact">
-    <div class="store-info">
-      <div>
-        <span class="eyebrow">Visit / Reach Us</span>
-        <h2>Our Store</h2>
-        <p>Step into LAKSHMI for a personal styling experience — feel the fabric, try the fit, and take home tradition.</p>
-        <div class="contact-line">
-          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          +91 93611 73087
-        </div>
-        <div class="contact-line">
-          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          No 3, Shree Nagar, Periyasamy Layout, Coimbatore, Tamil Nadu, India
-        </div>
-      </div>
-      <div class="map-box">
-        <svg viewBox="0 0 300 160">
-          <rect width="300" height="160" rx="18" fill="#F3E7D6"/>
-          <path d="M20 130 Q80 60 150 100 T280 60" stroke="#CC9A2E" stroke-width="3" fill="none" stroke-dasharray="6 6"/>
-          <circle cx="150" cy="80" r="9" fill="#7A1E3C"/>
-          <circle cx="150" cy="80" r="16" fill="none" stroke="#7A1E3C" stroke-width="2" opacity="0.4"/>
-        </svg>
-        <p style="font-size:.85rem; color:#6b5860;">Store Timing: 10:30 AM – 8:00 PM (All days)</p>
-        <a class="btn-primary" style="text-align:center;" href="tel:9361173087">Call Now: 93611 73087</a>
-      </div>
-    </div>
-  </section>
-
-</div>
-
-<!-- ================= LOGIN / CUSTOMER DETAILS VIEW ================= -->
-<div class="view" id="view-login">
-  <div class="login-shell">
-    <div class="login-card">
-      <div class="ring-deco"></div>
-
-      <div id="loginFormWrap">
-        <h2>Welcome to LAKSHMI</h2>
-        <p class="sub">Enter your details to login and enjoy a personalised shopping experience.</p>
-        <form id="customerForm" onsubmit="return submitCustomerForm(event)" novalidate>
-          <div class="field" id="field-name">
-            <label for="custName">Full Name</label>
-            <input type="text" id="custName" placeholder="Enter your full name" autocomplete="name">
-            <div class="err">Please enter your name.</div>
-          </div>
-          <div class="field" id="field-mobile">
-            <label for="custMobile">Mobile Number</label>
-            <input type="tel" id="custMobile" placeholder="10-digit mobile number" maxlength="10" autocomplete="tel">
-            <div class="err">Please enter a valid 10-digit mobile number.</div>
-          </div>
-          <div class="field" id="field-city">
-            <label for="custCity">City</label>
-            <input type="text" id="custCity" placeholder="Enter your city" autocomplete="address-level2">
-            <div class="err">Please enter your city.</div>
-          </div>
-          <button type="submit" class="btn-submit">Submit</button>
-        </form>
-      </div>
-
-      <div class="login-success" id="loginSuccess">
-        <div class="tick"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <h3>Thank you, <span id="successName"></span>!</h3>
-        <p>Your details have been saved. Our team may reach out on <b id="successMobile"></b> from <b id="successCity"></b> regarding your order. For any help, call us directly at <a href="tel:9361173087" style="color:var(--maroon-dark); font-weight:600;">93611 73087</a>.</p>
-        <a class="btn-primary" style="display:inline-block; margin-top:22px;" href="#" onclick="showView('home'); return false;">Continue Shopping</a>
-      </div>
+  <!-- ================= OFFER MARQUEE ================= -->
+  <div class="offer-strip">
+    <div class="marquee-track">
+      <span>✦ FLAT 30% OFF SITEWIDE — USE CODE LAKSHMI30 ✦</span>
+      <span>✦ FREE SHIPPING ACROSS INDIA ON ORDERS ABOVE ₹1999 ✦</span>
+      <span>✦ NEW FESTIVE COLLECTION JUST LANDED ✦</span>
+      <span>✦ FLAT 30% OFF SITEWIDE — USE CODE LAKSHMI30 ✦</span>
+      <span>✦ FREE SHIPPING ACROSS INDIA ON ORDERS ABOVE ₹1999 ✦</span>
+      <span>✦ NEW FESTIVE COLLECTION JUST LANDED ✦</span>
     </div>
   </div>
-</div>
 
-<!-- ================= FOOTER ================= -->
-<footer>
-  <div class="footer-inner">
-    <div>
+  <!-- ================= HEADER ================= -->
+  <header class="main-header">
+    <div class="nav-wrap"><a href="./"></a>
       <div class="logo">
+
         <svg class="mark" viewBox="0 0 48 48">
-          <circle cx="24" cy="24" r="23" fill="#E8C877"/>
-          <path d="M24 10c5 4 8 9 8 14a8 8 0 0 1-16 0c0-5 3-10 8-14z" fill="#2A1B22"/>
-          <circle cx="24" cy="24" r="3" fill="#E8C877"/>
+          <circle cx="24" cy="24" r="23" fill="#7A1E3C" />
+          <path d="M24 10c5 4 8 9 8 14a8 8 0 0 1-16 0c0-5 3-10 8-14z" fill="#E8C877" />
+          <circle cx="24" cy="24" r="3" fill="#7A1E3C" />
         </svg>
-        <div><div class="word">LAKSHMI</div></div>
+        <div>
+          <div class="word">LAKSHMI</div>
+          <span class="tagline">Traditional Wear Boutique</span>
+        </div>
+
+      </div></a>
+      <nav class="primary-nav">
+        <a href="#home" onclick="showView('home')">Home</a>
+        <a href="#sarees" onclick="showView('home')">Sarees</a>
+        <a href="#women" onclick="showView('home')">Women</a>
+        <a href="#men" onclick="showView('home')">Men</a>
+        <a href="#kids" onclick="showView('home')">Kids</a>
+        <a href="#contact" onclick="showView('home')">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" title="Account / Login" onclick="showView('login')">
+          <svg viewBox="0 0 24 24">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+            <circle cx="12" cy="7" r="4" />
+          </svg>
+        </button>
+        <button class="icon-btn" title="Cart" onclick="openCart()">
+          <svg viewBox="0 0 24 24">
+            <circle cx="9" cy="21" r="1" />
+            <circle cx="20" cy="21" r="1" />
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+          </svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <button class="hamburger" onclick="toggleMobileNav()">
+          <svg viewBox="0 0 24 24">
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
       </div>
-      <p style="margin-top:16px;">Traditional wear crafted with heritage and heart. Sarees, kurtis, kurtas and kidswear for every celebration.</p>
-      <div class="footer-social">
-        <a href="#" aria-label="Instagram" onclick="return false;"><svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.55.55.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43C21.99 8.94 22 9.3 22 12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.64.25-1.37.42-2.43.47C15.06 21.99 14.7 22 12 22s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.7 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77A4.9 4.9 0 0 1 5.45 2.53c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.3 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2A3.2 3.2 0 1 1 12 8.8a3.2 3.2 0 0 1 0 6.4zm5.4-8.4a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg></a>
-        <a href="#" aria-label="YouTube" onclick="return false;"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.5v-7l6.3 3.5-6.3 3.5z"/></svg></a>
-        <a href="#" aria-label="Facebook" onclick="return false;"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
+    </div>
+  </header>
+
+  <!-- ================= HOME VIEW ================= -->
+  <div class="view active" id="view-home">
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <span class="eyebrow">Since Every Thread Tells A Story</span>
+        <h1>Drape yourself <br>in <em>timeless</em> tradition</h1>
+        <p>Handpicked sarees, kurtis, kurtas and kidswear crafted for every occasion — from daily grace to festive
+          glory. Shop authentic traditional wear, delivered across India.</p>
+        <div class="hero-ctas">
+          <a class="btn-primary" href="#sarees">Shop New Arrivals</a>
+          <a class="btn-ghost" href="#contact">Visit Our Store</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="badge-seal"><b>30%</b><span>Off Today</span></div>
+        <div class="arch-frame">
+          <div class="ring"></div>
+          <img src="images/saree_banarasi_gold.png" alt="Traditional saree"
+            style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top center;"
+            onerror="this.style.display='none';">
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORY TILES -->
+    <section class="section" style="padding-top:10px;">
+      <div class="cat-tiles">
+        <div class="cat-tile" onclick="scrollToCat('sarees')">
+          <img class="cat-img" src="images/saree.png" alt="Sarees">
+          <h4>Sarees</h4><span>42 designs</span>
+        </div>
+        <div class="cat-tile" onclick="scrollToCat('women')">
+          <img class="cat-img" src="images/women_anarkali.png" alt="Women">
+          <h4>Women</h4><span>68 designs</span>
+        </div>
+        <div class="cat-tile" onclick="scrollToCat('men')">
+          <img class="cat-img" src="images/men_silk_kurta.png" alt="Men">
+          <h4>Men</h4><span>31 designs</span>
+        </div>
+        <div class="cat-tile" onclick="scrollToCat('kids')">
+          <img class="cat-img" src="images/kids_pattu_silk.png" alt="Kids">
+          <h4>Kids</h4><span>24 designs</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SAREES -->
+    <section class="section" id="sarees">
+      <div class="section-head">
+        <div>
+          <h2>Sarees</h2>
+          <p>Handloom, silk & festive drapes</p>
+        </div>
+      </div>
+      <div class="product-grid" id="grid-sarees"></div>
+    </section>
+
+    <!-- WOMEN -->
+    <section class="section" id="women" style="background:var(--ivory-deep); border-radius:40px;">
+      <div class="section-head">
+        <div>
+          <h2>Women's Traditional Wear</h2>
+          <p>Kurtis, Anarkalis & festive sets</p>
+        </div>
+      </div>
+      <div class="product-grid" id="grid-women"></div>
+    </section>
+
+    <!-- MEN -->
+    <section class="section" id="men">
+      <div class="section-head">
+        <div>
+          <h2>Men's Traditional Wear</h2>
+          <p>Kurtas, dhotis & festive sets</p>
+        </div>
+      </div>
+      <div class="product-grid" id="grid-men"></div>
+    </section>
+
+    <!-- KIDS -->
+    <section class="section" id="kids" style="background:var(--ivory-deep); border-radius:40px;">
+      <div class="section-head">
+        <div>
+          <h2>Kids Traditional Wear</h2>
+          <p>Pattu pavadais, frocks & kurta sets</p>
+        </div>
+      </div>
+      <div class="product-grid" id="grid-kids"></div>
+    </section>
+
+    <!-- MORE COLLECTIONS -->
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>More Collections</h2>
+          <p>Keep scrolling — new edits every season</p>
+        </div>
+      </div>
+      <div class="collections-scroll">
+        <div class="collection-card"
+          style="background:linear-gradient(to bottom, rgba(122,30,60,0.2), rgba(122,30,60,0.9)), url('images/saree.png') center/cover;">
+          <h4>Bridal Edit</h4><span>Grand silks for the big day</span>
+        </div>
+        <div class="collection-card"
+          style="background:linear-gradient(to bottom, rgba(193,89,106,0.2), rgba(193,89,106,0.9)), url('images/womens_wear.png') center/cover;">
+          <h4>Festive Picks</h4><span>Vibrant hues for celebrations</span>
+        </div>
+        <div class="collection-card"
+          style="background:linear-gradient(to bottom, rgba(19,78,72,0.2), rgba(19,78,72,0.9)), url('images/mens_wear.png') center/cover;">
+          <h4>Handloom Classics</h4><span>Woven by master artisans</span>
+        </div>
+        <div class="collection-card"
+          style="background:linear-gradient(to bottom, rgba(204,154,46,0.2), rgba(204,154,46,0.9)), url('images/saree.png') center/cover;">
+          <h4>Office Wear Edit</h4><span>Comfort meets elegance</span>
+        </div>
+        <div class="collection-card"
+          style="background:linear-gradient(to bottom, rgba(138,74,90,0.2), rgba(90,19,41,0.9)), url('images/womens_wear.png') center/cover;">
+          <h4>Mix &amp; Match</h4><span>Build your own combination</span>
+        </div>
+        <div class="collection-card"
+          style="background:linear-gradient(to bottom, rgba(58,111,104,0.2), rgba(19,78,72,0.9)), url('images/mens_wear.png') center/cover;">
+          <h4>Daily Comfort Wear</h4><span>Soft cotton essentials</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST STRIP -->
+    <div class="trust-strip">
+      <div class="trust-inner">
+        <div>
+          <h3>2005</h3>
+          <p>Trusted heritage since</p>
+        </div>
+        <div>
+          <h3>50k+</h3>
+          <p>Happy customers</p>
+        </div>
+        <div>
+          <h3>4.8★</h3>
+          <p>Average rating</p>
+        </div>
+        <div>
+          <h3>5-6 Days</h3>
+          <p>All India shipping</p>
+        </div>
       </div>
     </div>
-    <div>
-      <h4>Shop</h4>
-      <ul>
-        <li><a href="#sarees" onclick="showView('home')">Sarees</a></li>
-        <li><a href="#women" onclick="showView('home')">Women</a></li>
-        <li><a href="#men" onclick="showView('home')">Men</a></li>
-        <li><a href="#kids" onclick="showView('home')">Kids</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4>Help</h4>
-      <ul>
-        <li><a href="#" onclick="showView('login'); return false;">Login / Account</a></li>
-        <li><a href="#" onclick="openCart(); return false;">My Cart</a></li>
-        <li><a href="#contact" onclick="showView('home')">Shipping &amp; Returns</a></li>
-        <li><a href="#contact" onclick="showView('home')">Contact Us</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4>Get In Touch</h4>
-      <p>No 3, Shree Nagar, Periyasamy Layout,<br>Coimbatore, Tamil Nadu, India</p>
-      <p style="margin-top:10px;">Call / WhatsApp:<br><a href="tel:9361173087" style="color:var(--gold-light); font-weight:600;">+91 93611 73087</a></p>
+
+    <!-- STORE / CONTACT -->
+    <section class="section" id="contact">
+      <div class="store-info">
+        <div>
+          <span class="eyebrow">Visit / Reach Us</span>
+          <h2>Our Store</h2>
+          <p>Step into LAKSHMI for a personal styling experience — feel the fabric, try the fit, and take home
+            tradition.</p>
+          <div class="contact-line">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+            +91 93611 73087
+          </div>
+          <div class="contact-line">
+            <svg viewBox="0 0 24 24">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            No 3, Shree Nagar, Periyasamy Layout, Coimbatore, Tamil Nadu, India
+          </div>
+        </div>
+        <div class="map-box">
+          <svg viewBox="0 0 300 160">
+            <rect width="300" height="160" rx="18" fill="#F3E7D6" />
+            <path d="M20 130 Q80 60 150 100 T280 60" stroke="#CC9A2E" stroke-width="3" fill="none"
+              stroke-dasharray="6 6" />
+            <circle cx="150" cy="80" r="9" fill="#7A1E3C" />
+            <circle cx="150" cy="80" r="16" fill="none" stroke="#7A1E3C" stroke-width="2" opacity="0.4" />
+          </svg>
+          <p style="font-size:.85rem; color:#6b5860;">Store Timing: 10:30 AM – 8:00 PM (All days)</p>
+          <a class="btn-primary" style="text-align:center;" href="tel:9361173087">Call Now: 93611 73087</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ================= LOGIN / CUSTOMER DETAILS VIEW ================= -->
+  <div class="view" id="view-login">
+    <div class="login-shell">
+      <div class="login-card">
+        <div class="ring-deco"></div>
+
+        <div id="loginFormWrap">
+          <h2>Welcome to LAKSHMI</h2>
+          <p class="sub">Enter your details to login and enjoy a personalised shopping experience.</p>
+          <form id="customerForm" onsubmit="return submitCustomerForm(event)" novalidate>
+            <div class="field" id="field-name">
+              <label for="custName">Full Name</label>
+              <input type="text" id="custName" placeholder="Enter your full name" autocomplete="name">
+              <div class="err">Please enter your name.</div>
+            </div>
+            <div class="field" id="field-mobile">
+              <label for="custMobile">Mobile Number</label>
+              <input type="tel" id="custMobile" placeholder="10-digit mobile number" maxlength="10" autocomplete="tel">
+              <div class="err">Please enter a valid 10-digit mobile number.</div>
+            </div>
+            <div class="field" id="field-city">
+              <label for="custCity">City</label>
+              <input type="text" id="custCity" placeholder="Enter your city" autocomplete="address-level2">
+              <div class="err">Please enter your city.</div>
+            </div>
+            <button type="submit" class="btn-submit">Submit</button>
+          </form>
+        </div>
+
+        <div class="login-success" id="loginSuccess">
+          <div class="tick"><svg viewBox="0 0 24 24">
+              <polyline points="20 6 9 17 4 12" />
+            </svg></div>
+          <h3>Thank you, <span id="successName"></span>!</h3>
+          <p>Your details have been saved. Our team may reach out on <b id="successMobile"></b> from <b
+              id="successCity"></b> regarding your order. For any help, call us directly at <a href="tel:9361173087"
+              style="color:var(--maroon-dark); font-weight:600;">93611 73087</a>.</p>
+          <a class="btn-primary" style="display:inline-block; margin-top:22px;" href="#"
+            onclick="showView('home'); return false;">Continue Shopping</a>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="footer-bottom">© 2026 LAKSHMI Traditional Wear Boutique. All rights reserved.</div>
-</footer>
 
-<!-- ================= CART DRAWER ================= -->
-<div class="overlay" id="overlay" onclick="closeCart()"></div>
-<div class="cart-drawer" id="cartDrawer">
-  <div class="cart-head">
-    <h3>Your Cart</h3>
-    <button class="cart-close" onclick="closeCart()"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="logo">
+          <svg class="mark" viewBox="0 0 48 48">
+            <circle cx="24" cy="24" r="23" fill="#E8C877" />
+            <path d="M24 10c5 4 8 9 8 14a8 8 0 0 1-16 0c0-5 3-10 8-14z" fill="#2A1B22" />
+            <circle cx="24" cy="24" r="3" fill="#E8C877" />
+          </svg>
+          <div>
+            <div class="word">LAKSHMI</div>
+          </div>
+        </div>
+        <p style="margin-top:16px;">Traditional wear crafted with heritage and heart. Sarees, kurtis, kurtas and
+          kidswear for every celebration.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram" onclick="return false;"><svg viewBox="0 0 24 24">
+              <path
+                d="M12 2c2.7 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.55.55.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43C21.99 8.94 22 9.3 22 12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.64.25-1.37.42-2.43.47C15.06 21.99 14.7 22 12 22s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.7 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77A4.9 4.9 0 0 1 5.45 2.53c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.3 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2A3.2 3.2 0 1 1 12 8.8a3.2 3.2 0 0 1 0 6.4zm5.4-8.4a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z" />
+            </svg></a>
+          <a href="#" aria-label="YouTube" onclick="return false;"><svg viewBox="0 0 24 24">
+              <path
+                d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.5v-7l6.3 3.5-6.3 3.5z" />
+            </svg></a>
+          <a href="#" aria-label="Facebook" onclick="return false;"><svg viewBox="0 0 24 24">
+              <path
+                d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z" />
+            </svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#sarees" onclick="showView('home')">Sarees</a></li>
+          <li><a href="#women" onclick="showView('home')">Women</a></li>
+          <li><a href="#men" onclick="showView('home')">Men</a></li>
+          <li><a href="#kids" onclick="showView('home')">Kids</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Help</h4>
+        <ul>
+          <li><a href="#" onclick="showView('login'); return false;">Login / Account</a></li>
+          <li><a href="#" onclick="openCart(); return false;">My Cart</a></li>
+          <li><a href="#contact" onclick="showView('home')">Shipping &amp; Returns</a></li>
+          <li><a href="#contact" onclick="showView('home')">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get In Touch</h4>
+        <p>No 3, Shree Nagar, Periyasamy Layout,<br>Coimbatore, Tamil Nadu, India</p>
+        <p style="margin-top:10px;">Call / WhatsApp:<br><a href="tel:9361173087"
+            style="color:var(--gold-light); font-weight:600;">+91 93611 73087</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 LAKSHMI Traditional Wear Boutique. All rights reserved.</div>
+  </footer>
+
+  <!-- ================= CART DRAWER ================= -->
+  <div class="overlay" id="overlay" onclick="closeCart()"></div>
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-head">
+      <h3>Your Cart</h3>
+      <button class="cart-close" onclick="closeCart()"><svg viewBox="0 0 24 24">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg></button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-foot" id="cartFoot">
+      <div class="cart-sumrow"><span>Subtotal (MRP)</span><span id="sumMrp">₹0</span></div>
+      <div class="cart-sumrow"><span>Offer Discount (30%)</span><span id="sumDiscount">-₹0</span></div>
+      <div class="cart-sumrow total"><span>Total Payable</span><span id="sumTotal">₹0</span></div>
+      <button class="btn-primary" style="width:100%; margin-top:14px; text-align:center;"
+        onclick="proceedToCheckout()">Proceed to Checkout</button>
+    </div>
   </div>
-  <div class="cart-items" id="cartItems"></div>
-  <div class="cart-foot" id="cartFoot">
-    <div class="cart-sumrow"><span>Subtotal (MRP)</span><span id="sumMrp">₹0</span></div>
-    <div class="cart-sumrow"><span>Offer Discount (30%)</span><span id="sumDiscount">-₹0</span></div>
-    <div class="cart-sumrow total"><span>Total Payable</span><span id="sumTotal">₹0</span></div>
-    <button class="btn-primary" style="width:100%; margin-top:14px; text-align:center;" onclick="proceedToCheckout()">Proceed to Checkout</button>
-  </div>
-</div>
 
-<!-- ================= TOAST ================= -->
-<div class="toast" id="toast"></div>
+  <!-- ================= TOAST ================= -->
+  <div class="toast" id="toast"></div>
 
-<!-- ================= SVG ILLUSTRATION SYMBOLS ================= -->
-<svg width="0" height="0" style="position:absolute;">
-  <defs>
-    <!-- Saree silhouette -->
-    <symbol id="ill-saree" viewBox="0 0 200 240">
-      <circle cx="100" cy="34" r="22"/>
-      <path d="M78 50 C60 70 50 110 55 160 C56 175 70 190 100 190 C130 190 144 175 145 160 C150 110 140 70 122 50 Z" opacity="0.92"/>
-      <path d="M100 56 C88 90 84 140 92 188" stroke="#fff" stroke-width="3" fill="none" opacity="0.55"/>
-      <path d="M122 60 C150 75 165 100 158 140 C155 158 140 172 118 176" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" opacity="0.85"/>
-      <g opacity="0.6"><circle cx="70" cy="182" r="3"/><circle cx="85" cy="188" r="3"/><circle cx="100" cy="190" r="3"/><circle cx="115" cy="188" r="3"/><circle cx="130" cy="182" r="3"/></g>
-    </symbol>
-    <!-- Women's kurti silhouette -->
-    <symbol id="ill-kurti" viewBox="0 0 200 240">
-      <circle cx="100" cy="32" r="20"/>
-      <path d="M72 54 L58 90 L70 96 L80 66 L78 190 L122 190 L120 66 L130 96 L142 90 L128 54 C118 46 110 44 100 44 C90 44 82 46 72 54 Z"/>
-      <path d="M80 66 Q100 78 120 66" fill="none" stroke="#fff" stroke-width="3" opacity="0.5"/>
-      <g opacity="0.6"><rect x="88" y="120" width="24" height="4" rx="2"/><rect x="84" y="140" width="32" height="4" rx="2"/><rect x="80" y="160" width="40" height="4" rx="2"/></g>
-    </symbol>
-    <!-- Men's kurta silhouette -->
-    <symbol id="ill-kurta" viewBox="0 0 200 240">
-      <circle cx="100" cy="32" r="19"/>
-      <path d="M74 52 L56 88 L68 96 L78 68 L74 194 L126 194 L122 68 L132 96 L144 88 L126 52 C116 45 108 43 100 43 C92 43 84 45 74 52 Z"/>
-      <path d="M92 52 L100 64 L108 52" fill="none" stroke="#fff" stroke-width="3" opacity="0.6"/>
-      <line x1="100" y1="64" x2="100" y2="190" stroke="#fff" stroke-width="2" opacity="0.35"/>
-    </symbol>
-    <!-- Kids frock silhouette -->
-    <symbol id="ill-kids" viewBox="0 0 200 240">
-      <circle cx="100" cy="40" r="16"/>
-      <path d="M82 58 L70 82 L80 88 L86 72 L70 170 C70 182 130 182 130 170 L114 72 L120 88 L130 82 L118 58 C112 53 106 51 100 51 C94 51 88 53 82 58 Z"/>
-      <path d="M78 130 Q100 140 122 130" fill="none" stroke="#fff" stroke-width="3" opacity="0.5"/>
-      <g opacity="0.6"><circle cx="100" cy="66" r="2.5"/><circle cx="100" cy="76" r="2.5"/><circle cx="100" cy="86" r="2.5"/></g>
-    </symbol>
-  </defs>
-</svg>
+  <!-- ================= SVG ILLUSTRATION SYMBOLS ================= -->
+  <svg width="0" height="0" style="position:absolute;">
+    <defs>
+      <!-- Saree silhouette -->
+      <symbol id="ill-saree" viewBox="0 0 200 240">
+        <circle cx="100" cy="34" r="22" />
+        <path d="M78 50 C60 70 50 110 55 160 C56 175 70 190 100 190 C130 190 144 175 145 160 C150 110 140 70 122 50 Z"
+          opacity="0.92" />
+        <path d="M100 56 C88 90 84 140 92 188" stroke="#fff" stroke-width="3" fill="none" opacity="0.55" />
+        <path d="M122 60 C150 75 165 100 158 140 C155 158 140 172 118 176" fill="none" stroke="currentColor"
+          stroke-width="10" stroke-linecap="round" opacity="0.85" />
+        <g opacity="0.6">
+          <circle cx="70" cy="182" r="3" />
+          <circle cx="85" cy="188" r="3" />
+          <circle cx="100" cy="190" r="3" />
+          <circle cx="115" cy="188" r="3" />
+          <circle cx="130" cy="182" r="3" />
+        </g>
+      </symbol>
+      <!-- Women's kurti silhouette -->
+      <symbol id="ill-kurti" viewBox="0 0 200 240">
+        <circle cx="100" cy="32" r="20" />
+        <path
+          d="M72 54 L58 90 L70 96 L80 66 L78 190 L122 190 L120 66 L130 96 L142 90 L128 54 C118 46 110 44 100 44 C90 44 82 46 72 54 Z" />
+        <path d="M80 66 Q100 78 120 66" fill="none" stroke="#fff" stroke-width="3" opacity="0.5" />
+        <g opacity="0.6">
+          <rect x="88" y="120" width="24" height="4" rx="2" />
+          <rect x="84" y="140" width="32" height="4" rx="2" />
+          <rect x="80" y="160" width="40" height="4" rx="2" />
+        </g>
+      </symbol>
+      <!-- Men's kurta silhouette -->
+      <symbol id="ill-kurta" viewBox="0 0 200 240">
+        <circle cx="100" cy="32" r="19" />
+        <path
+          d="M74 52 L56 88 L68 96 L78 68 L74 194 L126 194 L122 68 L132 96 L144 88 L126 52 C116 45 108 43 100 43 C92 43 84 45 74 52 Z" />
+        <path d="M92 52 L100 64 L108 52" fill="none" stroke="#fff" stroke-width="3" opacity="0.6" />
+        <line x1="100" y1="64" x2="100" y2="190" stroke="#fff" stroke-width="2" opacity="0.35" />
+      </symbol>
+      <!-- Kids frock silhouette -->
+      <symbol id="ill-kids" viewBox="0 0 200 240">
+        <circle cx="100" cy="40" r="16" />
+        <path
+          d="M82 58 L70 82 L80 88 L86 72 L70 170 C70 182 130 182 130 170 L114 72 L120 88 L130 82 L118 58 C112 53 106 51 100 51 C94 51 88 53 82 58 Z" />
+        <path d="M78 130 Q100 140 122 130" fill="none" stroke="#fff" stroke-width="3" opacity="0.5" />
+        <g opacity="0.6">
+          <circle cx="100" cy="66" r="2.5" />
+          <circle cx="100" cy="76" r="2.5" />
+          <circle cx="100" cy="86" r="2.5" />
+        </g>
+      </symbol>
+    </defs>
+  </svg>
 
-<script>
-/* ============ PRODUCT DATA ============ */
-const WM = "https://commons.wikimedia.org/wiki/Special:FilePath/";
-const PX = "https://images.pexels.com/photos/";
-const PRODUCTS = [
-  // Sarees
-  {id:'sr1', cat:'sarees', name:'Kanjivaram Silk Saree — Maroon', mrp:4200, icon:'ill-saree', color:'#7A1E3C', img: 'images/saree.png'},
-  {id:'sr2', cat:'sarees', name:'Banarasi Golden Zari Saree', mrp:5600, icon:'ill-saree', color:'#B5842A', img: 'images/saree_banarasi_gold.png'},
-  {id:'sr3', cat:'sarees', name:'Handloom Cotton Saree — Teal', mrp:1850, icon:'ill-saree', color:'#134E48', img: 'images/saree_teal.png'},
-  {id:'sr4', cat:'sarees', name:'Chiffon Party Wear Saree', mrp:2450, icon:'ill-saree', color:'#C1596A', img: 'images/saree_chiffon.png'},
-  // Women
-  {id:'wm1', cat:'women', name:'Anarkali Kurti Set with Dupatta', mrp:2295, icon:'ill-kurti', color:'#C1596A', img: 'images/women_anarkali.png'},
-  {id:'wm2', cat:'women', name:'Designer Kurti — Mustard', mrp:1795, icon:'ill-kurti', color:'#CC9A2E', img: 'images/women_mustard_kurti.png'},
-  {id:'wm3', cat:'women', name:'Daily Wear Cotton Kurti', mrp:995, icon:'ill-kurti', color:'#7A1E3C', img: 'images/womens_wear.png'},
-  {id:'wm4', cat:'women', name:'Festive Gown — Wine', mrp:2995, icon:'ill-kurti', color:'#5A1329', img: 'images/women_festive_gown.png'},
-  // Men
-  {id:'mn1', cat:'men', name:'Silk Kurta Pyjama Set', mrp:2495, icon:'ill-kurta', color:'#134E48', img: 'images/men_silk_kurta.png'},
-  {id:'mn2', cat:'men', name:'Cotton Nehru Jacket Set', mrp:2895, icon:'ill-kurta', color:'#2A1B22', img: 'images/men_nehru_jacket.png'},
-  {id:'mn3', cat:'men', name:'Dhoti &amp; Angavastram Set', mrp:1495, icon:'ill-kurta', color:'#CC9A2E', img: 'images/men_dhoti_angavastram.png'},
-  {id:'mn4', cat:'men', name:'Formal Cotton Kurta — White', mrp:1195, icon:'ill-kurta', color:'#7A1E3C', img: 'images/mens_wear.png'},
-  // Kids
-  {id:'kd1', cat:'kids', name:'Kids Pattu Pavadai - Traditional Pink Silk', mrp:1395, icon:'ill-kids', color:'#C1596A', img: 'images/kids_pattu_silk.png'},
-  {id:'kd2', cat:'kids', name:'Boys Dhoti Shirt Set', mrp:1095, icon:'ill-kids', color:'#134E48', img: 'images/boys_dhoti_set.png'},
-  {id:'kd3', cat:'kids', name:'Kids Shimmering Festive Frocks', mrp:995, icon:'ill-kids', color:'#CC9A2E', img: 'images/kids_festive_frocks.png'},
-  {id:'kd4', cat:'kids', name:'Kids Classic Kurta Pyjama Set', mrp:895, icon:'ill-kids', color:'#7A1E3C', img: 'images/kids_kurta_pyjama.jpg'},
-];
-const DISCOUNT = 0.30;
+  <script>
+    /* ============ PRODUCT DATA ============ */
+    const WM = "https://commons.wikimedia.org/wiki/Special:FilePath/";
+    const PX = "https://images.pexels.com/photos/";
+    const PRODUCTS = [
+      // Sarees
+      { id: 'sr1', cat: 'sarees', name: 'Kanjivaram Silk Saree — Maroon', mrp: 4200, icon: 'ill-saree', color: '#7A1E3C', img: 'images/saree.png' },
+      { id: 'sr2', cat: 'sarees', name: 'Banarasi Golden Zari Saree', mrp: 5600, icon: 'ill-saree', color: '#B5842A', img: 'images/saree_banarasi_gold.png' },
+      { id: 'sr3', cat: 'sarees', name: 'Handloom Cotton Saree — Teal', mrp: 1850, icon: 'ill-saree', color: '#134E48', img: 'images/saree_teal.png' },
+      { id: 'sr4', cat: 'sarees', name: 'Chiffon Party Wear Saree', mrp: 2450, icon: 'ill-saree', color: '#C1596A', img: 'images/saree_chiffon.png' },
+      // Women
+      { id: 'wm1', cat: 'women', name: 'Anarkali Kurti Set with Dupatta', mrp: 2295, icon: 'ill-kurti', color: '#C1596A', img: 'images/women_anarkali.png' },
+      { id: 'wm2', cat: 'women', name: 'Designer Kurti — Mustard', mrp: 1795, icon: 'ill-kurti', color: '#CC9A2E', img: 'images/women_mustard_kurti.png' },
+      { id: 'wm3', cat: 'women', name: 'Daily Wear Cotton Kurti', mrp: 995, icon: 'ill-kurti', color: '#7A1E3C', img: 'images/womens_wear.png' },
+      { id: 'wm4', cat: 'women', name: 'Festive Gown — Wine', mrp: 2995, icon: 'ill-kurti', color: '#5A1329', img: 'images/women_festive_gown.png' },
+      // Men
+      { id: 'mn1', cat: 'men', name: 'Silk Kurta Pyjama Set', mrp: 2495, icon: 'ill-kurta', color: '#134E48', img: 'images/men_silk_kurta.png' },
+      { id: 'mn2', cat: 'men', name: 'Cotton Nehru Jacket Set', mrp: 2895, icon: 'ill-kurta', color: '#2A1B22', img: 'images/men_nehru_jacket.png' },
+      { id: 'mn3', cat: 'men', name: 'Dhoti &amp; Angavastram Set', mrp: 1495, icon: 'ill-kurta', color: '#CC9A2E', img: 'images/men_dhoti_angavastram.png' },
+      { id: 'mn4', cat: 'men', name: 'Formal Cotton Kurta — White', mrp: 1195, icon: 'ill-kurta', color: '#7A1E3C', img: 'images/mens_wear.png' },
+      // Kids
+      { id: 'kd1', cat: 'kids', name: 'Kids Pattu Pavadai - Traditional Pink Silk', mrp: 1395, icon: 'ill-kids', color: '#C1596A', img: 'images/kids_pattu_silk.png' },
+      { id: 'kd2', cat: 'kids', name: 'Boys Dhoti Shirt Set', mrp: 1095, icon: 'ill-kids', color: '#134E48', img: 'images/boys_dhoti_set.png' },
+      { id: 'kd3', cat: 'kids', name: 'Kids Shimmering Festive Frocks', mrp: 995, icon: 'ill-kids', color: '#CC9A2E', img: 'images/kids_festive_frocks.png' },
+      { id: 'kd4', cat: 'kids', name: 'Kids Classic Kurta Pyjama Set', mrp: 895, icon: 'ill-kids', color: '#7A1E3C', img: 'images/kids_kurta_pyjama.jpg' },
+    ];
+    const DISCOUNT = 0.30;
 
-let cart = {}; // id -> qty
+    let cart = {}; // id -> qty
 
-function money(n){ return '₹' + Math.round(n).toLocaleString('en-IN'); }
-function salePrice(mrp){ return mrp * (1 - DISCOUNT); }
+    function money(n) { return '₹' + Math.round(n).toLocaleString('en-IN'); }
+    function salePrice(mrp) { return mrp * (1 - DISCOUNT); }
 
-/* ============ RENDER PRODUCTS ============ */
-function productCard(p){
-  const inCart = cart[p.id] || 0;
-  return `
+    /* ============ RENDER PRODUCTS ============ */
+    function productCard(p) {
+      const inCart = cart[p.id] || 0;
+      return `
   <div class="product-card" data-id="${p.id}">
     <div class="product-media" style="background:${p.color}15;">
       <div class="discount-flag">30% OFF</div>
@@ -750,8 +1889,8 @@ function productCard(p){
         <span class="off">30% off</span>
       </div>
       <div class="add-row">
-        <button class="btn-add" style="${inCart? 'display:none;':''}" onclick="addToCart('${p.id}')">Add to Cart</button>
-        <div class="qty-control ${inCart? 'active':''}">
+        <button class="btn-add" style="${inCart ? 'display:none;' : ''}" onclick="addToCart('${p.id}')">Add to Cart</button>
+        <div class="qty-control ${inCart ? 'active' : ''}">
           <button onclick="changeQty('${p.id}', -1)">−</button>
           <span class="qty-num">${inCart}</span>
           <button onclick="changeQty('${p.id}', 1)">+</button>
@@ -759,46 +1898,46 @@ function productCard(p){
       </div>
     </div>
   </div>`;
-}
+    }
 
-function renderCategory(cat){
-  const grid = document.getElementById('grid-' + cat);
-  if(!grid) return;
-  grid.innerHTML = PRODUCTS.filter(p => p.cat === cat).map(productCard).join('');
-}
-function renderAll(){
-  ['sarees','women','men','kids'].forEach(renderCategory);
-  renderCart();
-}
+    function renderCategory(cat) {
+      const grid = document.getElementById('grid-' + cat);
+      if (!grid) return;
+      grid.innerHTML = PRODUCTS.filter(p => p.cat === cat).map(productCard).join('');
+    }
+    function renderAll() {
+      ['sarees', 'women', 'men', 'kids'].forEach(renderCategory);
+      renderCart();
+    }
 
-/* ============ CART LOGIC ============ */
-function addToCart(id){
-  cart[id] = (cart[id] || 0) + 1;
-  renderAll();
-  showToast('Added to cart');
-}
-function changeQty(id, delta){
-  cart[id] = (cart[id] || 0) + delta;
-  if(cart[id] <= 0) delete cart[id];
-  renderAll();
-}
-function cartTotalCount(){
-  return Object.values(cart).reduce((a,b) => a+b, 0);
-}
-function renderCart(){
-  document.getElementById('cartCount').textContent = cartTotalCount();
-  const itemsWrap = document.getElementById('cartItems');
-  const ids = Object.keys(cart);
-  if(ids.length === 0){
-    itemsWrap.innerHTML = `<div class="cart-empty">
+    /* ============ CART LOGIC ============ */
+    function addToCart(id) {
+      cart[id] = (cart[id] || 0) + 1;
+      renderAll();
+      showToast('Added to cart');
+    }
+    function changeQty(id, delta) {
+      cart[id] = (cart[id] || 0) + delta;
+      if (cart[id] <= 0) delete cart[id];
+      renderAll();
+    }
+    function cartTotalCount() {
+      return Object.values(cart).reduce((a, b) => a + b, 0);
+    }
+    function renderCart() {
+      document.getElementById('cartCount').textContent = cartTotalCount();
+      const itemsWrap = document.getElementById('cartItems');
+      const ids = Object.keys(cart);
+      if (ids.length === 0) {
+        itemsWrap.innerHTML = `<div class="cart-empty">
       <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
       <p>Your cart is empty.<br>Start adding some traditional wear!</p>
     </div>`;
-  } else {
-    itemsWrap.innerHTML = ids.map(id => {
-      const p = PRODUCTS.find(x => x.id === id);
-      const qty = cart[id];
-      return `
+      } else {
+        itemsWrap.innerHTML = ids.map(id => {
+          const p = PRODUCTS.find(x => x.id === id);
+          const qty = cart[id];
+          return `
       <div class="cart-line">
         <div class="thumb" style="background:${p.color}15;">
           <img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;border-radius:12px;" onerror="this.onerror=null;this.outerHTML='&lt;svg viewBox=&quot;0 0 200 240&quot;&gt;&lt;use href=&quot;%23${p.icon}&quot; fill=&quot;${p.color}&quot;/&gt;&lt;/svg&gt;';">
@@ -815,103 +1954,104 @@ function renderCart(){
           <button onclick="changeQty('${id}', 1)">+</button>
         </div>
       </div>`;
-    }).join('');
-  }
-  const mrpTotal = ids.reduce((sum,id) => sum + PRODUCTS.find(p=>p.id===id).mrp * cart[id], 0);
-  const payTotal = mrpTotal * (1 - DISCOUNT);
-  document.getElementById('sumMrp').textContent = money(mrpTotal);
-  document.getElementById('sumDiscount').textContent = '-' + money(mrpTotal - payTotal);
-  document.getElementById('sumTotal').textContent = money(payTotal);
-}
-function removeFromCart(id){ delete cart[id]; renderAll(); }
+        }).join('');
+      }
+      const mrpTotal = ids.reduce((sum, id) => sum + PRODUCTS.find(p => p.id === id).mrp * cart[id], 0);
+      const payTotal = mrpTotal * (1 - DISCOUNT);
+      document.getElementById('sumMrp').textContent = money(mrpTotal);
+      document.getElementById('sumDiscount').textContent = '-' + money(mrpTotal - payTotal);
+      document.getElementById('sumTotal').textContent = money(payTotal);
+    }
+    function removeFromCart(id) { delete cart[id]; renderAll(); }
 
-function openCart(){
-  document.getElementById('cartDrawer').classList.add('active');
-  document.getElementById('overlay').classList.add('active');
-}
-function closeCart(){
-  document.getElementById('cartDrawer').classList.remove('active');
-  document.getElementById('overlay').classList.remove('active');
-}
-function proceedToCheckout(){
-  if(cartTotalCount() === 0){ showToast('Your cart is empty'); return; }
-  closeCart();
-  showView('login');
-}
+    function openCart() {
+      document.getElementById('cartDrawer').classList.add('active');
+      document.getElementById('overlay').classList.add('active');
+    }
+    function closeCart() {
+      document.getElementById('cartDrawer').classList.remove('active');
+      document.getElementById('overlay').classList.remove('active');
+    }
+    function proceedToCheckout() {
+      if (cartTotalCount() === 0) { showToast('Your cart is empty'); return; }
+      closeCart();
+      showView('login');
+    }
 
-/* ============ VIEW SWITCHING ============ */
-function showView(name){
-  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-  document.getElementById('view-' + name).classList.add('active');
-  window.scrollTo({top:0, behavior:'smooth'});
-}
-function scrollToCat(cat){
-  showView('home');
-  setTimeout(() => {
-    document.getElementById(cat).scrollIntoView({behavior:'smooth', block:'start'});
-  }, 60);
-}
-function toggleMobileNav(){
-  const nav = document.querySelector('nav.primary-nav');
-  if(nav.style.display === 'flex'){ nav.style.display = 'none'; }
-  else{
-    nav.style.display = 'flex';
-    nav.style.position = 'absolute';
-    nav.style.top = '68px';
-    nav.style.right = '20px';
-    nav.style.background = '#fff';
-    nav.style.flexDirection = 'column';
-    nav.style.padding = '18px 24px';
-    nav.style.borderRadius = '16px';
-    nav.style.boxShadow = '0 10px 30px rgba(42,27,34,.14)';
-    nav.style.gap = '16px';
-    nav.style.zIndex = '50';
-  }
-}
+    /* ============ VIEW SWITCHING ============ */
+    function showView(name) {
+      document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+      document.getElementById('view-' + name).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToCat(cat) {
+      showView('home');
+      setTimeout(() => {
+        document.getElementById(cat).scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 60);
+    }
+    function toggleMobileNav() {
+      const nav = document.querySelector('nav.primary-nav');
+      if (nav.style.display === 'flex') { nav.style.display = 'none'; }
+      else {
+        nav.style.display = 'flex';
+        nav.style.position = 'absolute';
+        nav.style.top = '68px';
+        nav.style.right = '20px';
+        nav.style.background = '#fff';
+        nav.style.flexDirection = 'column';
+        nav.style.padding = '18px 24px';
+        nav.style.borderRadius = '16px';
+        nav.style.boxShadow = '0 10px 30px rgba(42,27,34,.14)';
+        nav.style.gap = '16px';
+        nav.style.zIndex = '50';
+      }
+    }
 
-/* ============ CUSTOMER FORM ============ */
-function submitCustomerForm(e){
-  e.preventDefault();
-  const name = document.getElementById('custName').value.trim();
-  const mobile = document.getElementById('custMobile').value.trim();
-  const city = document.getElementById('custCity').value.trim();
+    /* ============ CUSTOMER FORM ============ */
+    function submitCustomerForm(e) {
+      e.preventDefault();
+      const name = document.getElementById('custName').value.trim();
+      const mobile = document.getElementById('custMobile').value.trim();
+      const city = document.getElementById('custCity').value.trim();
 
-  let valid = true;
-  toggleFieldError('field-name', name.length < 2); if(name.length < 2) valid = false;
-  const mobileOk = /^[6-9]\d{9}$/.test(mobile);
-  toggleFieldError('field-mobile', !mobileOk); if(!mobileOk) valid = false;
-  toggleFieldError('field-city', city.length < 2); if(city.length < 2) valid = false;
+      let valid = true;
+      toggleFieldError('field-name', name.length < 2); if (name.length < 2) valid = false;
+      const mobileOk = /^[6-9]\d{9}$/.test(mobile);
+      toggleFieldError('field-mobile', !mobileOk); if (!mobileOk) valid = false;
+      toggleFieldError('field-city', city.length < 2); if (city.length < 2) valid = false;
 
-  if(!valid) return false;
+      if (!valid) return false;
 
-  document.getElementById('loginFormWrap').style.display = 'none';
-  const success = document.getElementById('loginSuccess');
-  success.classList.add('active');
-  document.getElementById('successName').textContent = name;
-  document.getElementById('successMobile').textContent = mobile;
-  document.getElementById('successCity').textContent = city;
-  
-  cart = {}; // Empty the cart
-  renderAll();
-  return false;
-}
+      document.getElementById('loginFormWrap').style.display = 'none';
+      const success = document.getElementById('loginSuccess');
+      success.classList.add('active');
+      document.getElementById('successName').textContent = name;
+      document.getElementById('successMobile').textContent = mobile;
+      document.getElementById('successCity').textContent = city;
 
-function toggleFieldError(id, show){
-  const field = document.getElementById(id);
-  if(show) field.classList.add('invalid');
-  else field.classList.remove('invalid');
-}
+      cart = {}; // Empty the cart
+      renderAll();
+      return false;
+    }
 
-function showToast(msg){
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('active');
-  setTimeout(() => t.classList.remove('active'), 2500);
-}
+    function toggleFieldError(id, show) {
+      const field = document.getElementById(id);
+      if (show) field.classList.add('invalid');
+      else field.classList.remove('invalid');
+    }
 
-document.addEventListener('DOMContentLoaded', () => {
-  renderAll();
-});
-</script>
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('active');
+      setTimeout(() => t.classList.remove('active'), 2500);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderAll();
+    });
+  </script>
 </body>
+
 </html>
