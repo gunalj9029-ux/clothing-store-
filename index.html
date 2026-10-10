@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LAKSHMI — Traditional Wear Boutique</title>
+  <title>REEMASABAYA — Traditional Wear Boutique</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
     href="https://fonts.googleapis.com/css2?family=Marcellus&family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
@@ -117,7 +117,9 @@
 
     .tb-social {
       display: flex;
-      gap: 10px;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
     }
 
     .tb-social a {
@@ -505,8 +507,8 @@
     /* category quick tiles */
     .cat-tiles {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
     }
 
     .cat-tile {
@@ -556,12 +558,15 @@
     .product-card {
       background: #fff;
       border-radius: var(--radius-arch) var(--radius-arch) 12px 12px;
-      overflow: hidden;
       box-shadow: 0 6px 16px rgba(42, 27, 34, .08);
       transition: .25s;
       position: relative;
       display: flex;
       flex-direction: column;
+    }
+
+    .product-card.color-open {
+      z-index: 50;
     }
 
     .product-card:hover {
@@ -576,6 +581,7 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
+      border-radius: var(--radius-arch) var(--radius-arch) 0 0;
     }
 
     .product-photo {
@@ -680,6 +686,274 @@
       gap: 8px;
     }
 
+    .size-row {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin: 4px 0 8px;
+    }
+
+    .size-title {
+      font-size: .72rem;
+      font-weight: 600;
+      color: #7a6870;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+
+    .size-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .size-pill {
+      font-family: inherit;
+      font-size: .72rem;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 6px;
+      border: 1px solid #ddd2d6;
+      background: #faf6f7;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all .15s ease;
+      min-width: 28px;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .size-pill:hover {
+      border-color: var(--gold);
+      background: #fff;
+    }
+
+    .size-pill.active {
+      background: var(--maroon);
+      border-color: var(--maroon);
+      color: #fff;
+      box-shadow: 0 2px 6px rgba(122, 30, 60, 0.22);
+    }
+
+    /* color selector */
+    .color-row {
+      position: relative;
+      margin: 2px 0 8px;
+    }
+
+    .btn-color-toggle {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      border: 1px solid #ddd2d6;
+      background: #faf6f7;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all .2s ease;
+      color: var(--ink);
+    }
+
+    .btn-color-toggle:hover {
+      border-color: var(--gold);
+      background: #fff;
+    }
+
+    .btn-color-toggle.open {
+      border-color: var(--maroon);
+      background: #fff;
+    }
+
+    .color-swatch-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      display: inline-block;
+      flex-shrink: 0;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.18);
+    }
+
+    .color-name-text {
+      font-size: .75rem;
+      color: #666;
+      flex: 1;
+      text-align: left;
+    }
+
+    .color-name-text strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .color-toggle-badge {
+      font-family: inherit;
+      font-size: .72rem;
+      color: var(--maroon);
+      background: #fcf1f4;
+      border: 1px solid #ecc9d1;
+      border-radius: 999px;
+      padding: 3px 9px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      line-height: 1.2;
+      transition: all .2s ease;
+      white-space: nowrap;
+    }
+
+    .color-toggle-badge:hover,
+    .btn-color-toggle:hover .color-toggle-badge {
+      background: var(--maroon);
+      color: #fff;
+      border-color: var(--maroon);
+    }
+
+    .color-toggle-badge.active-open {
+      background: var(--maroon-dark);
+      color: #fff;
+      border-color: var(--maroon-dark);
+    }
+
+    .color-palette {
+      display: none;
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 0;
+      right: 0;
+      z-index: 60;
+      background: #ffffff;
+      border: 1.5px solid var(--gold-light);
+      border-radius: 12px;
+      box-shadow: 0 12px 30px rgba(42, 27, 34, 0.24);
+      padding: 10px 8px 8px;
+    }
+
+    .color-palette::after {
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      right: 32px;
+      width: 10px;
+      height: 10px;
+      background: #fff;
+      border-right: 1.5px solid var(--gold-light);
+      border-bottom: 1.5px solid var(--gold-light);
+      transform: rotate(45deg);
+    }
+
+    .color-palette.open {
+      display: block;
+      animation: popIn .18s ease-out;
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .color-palette-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      padding: 0 2px 4px;
+      border-bottom: 1px solid #f2e9ec;
+      font-size: .72rem;
+      font-weight: 600;
+      color: var(--maroon-dark);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+
+    .color-palette-close {
+      background: none;
+      border: none;
+      font-size: 1.1rem;
+      line-height: 1;
+      color: #888;
+      cursor: pointer;
+      padding: 0 4px;
+    }
+
+    .color-palette-close:hover {
+      color: var(--maroon);
+    }
+
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5px;
+    }
+
+    .color-chip {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 5px;
+      border-radius: 6px;
+      border: 1px solid #e5dad4;
+      background: #faf6f7;
+      cursor: pointer;
+      font-size: .7rem;
+      font-family: inherit;
+      font-weight: 500;
+      color: var(--ink);
+      transition: all .15s ease;
+    }
+
+    .color-chip:hover {
+      border-color: var(--gold);
+      background: #fff;
+      transform: translateY(-1px);
+    }
+
+    .color-chip.active {
+      border-color: var(--maroon);
+      background: #fbf0f3;
+      font-weight: 700;
+      color: var(--maroon-dark);
+      box-shadow: 0 1px 4px rgba(122, 30, 60, 0.15);
+    }
+
+    .color-chip .chip-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
+
+    .btn-order {
+      width: 100%;
+      margin-top: auto;
+      background: var(--maroon);
+      color: var(--ivory);
+      padding: 11px 16px;
+      border-radius: 24px;
+      font-size: .84rem;
+      font-weight: 600;
+      transition: .2s;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+    }
+
+    .btn-order:hover {
+      background: var(--maroon-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(122, 30, 60, 0.25);
+    }
+
     .btn-add {
       flex: 1;
       background: var(--maroon);
@@ -759,6 +1033,13 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
+      cursor: pointer;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .collection-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(42, 27, 34, 0.22);
     }
 
     .collection-card h4 {
@@ -913,6 +1194,7 @@
       display: flex;
       gap: 12px;
       margin-top: 16px;
+      flex-wrap: wrap;
     }
 
     .footer-social a {
@@ -930,10 +1212,15 @@
       background: var(--gold);
     }
 
+    .footer-social a:hover svg {
+      fill: var(--ink);
+    }
+
     .footer-social svg {
       width: 17px;
       height: 17px;
       fill: #fff;
+      transition: fill .2s;
     }
 
     .footer-bottom {
@@ -1311,7 +1598,21 @@
       }
 
       .cat-tiles {
-        grid-template-columns: repeat(2, 1fr);
+        display: flex;
+        overflow-x: auto;
+        gap: 14px;
+        padding-bottom: 8px;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .cat-tiles::-webkit-scrollbar {
+        display: none;
+      }
+
+      .cat-tile {
+        flex: 0 0 140px;
+        min-width: 140px;
       }
 
       .product-grid {
@@ -1336,10 +1637,6 @@
     @media (max-width:560px) {
       .hero-copy h1 {
         font-size: 2.2rem;
-      }
-
-      .cat-tiles {
-        grid-template-columns: repeat(2, 1fr);
       }
 
       .product-grid {
@@ -1375,33 +1672,41 @@
   <!-- ================= TOPBAR ================= -->
   <div class="topbar">
     <div class="tb-left">
-      <a class="tb-link" href="tel:9361173087">
+      <a class="tb-link" href="tel:+919843822332">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path
             d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
         </svg>
-        +91 93611 73087
+        +91 98438 22332
       </a>
       <a class="tb-link" href="#" onclick="return false;">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
           <circle cx="12" cy="10" r="3" />
         </svg>
-        No 3, Shree Nagar, Periyasamy Layout, Coimbatore, Tamil Nadu
+        REEMAS BURKAS Near Hudha Masjid,Saramedu main Road,Karumbu Kadai,Coimbatore-641008 tamilnadu,India
       </a>
     </div>
     <div class="tb-social">
-      <a href="#" aria-label="Instagram" onclick="return false;"><svg viewBox="0 0 24 24">
+      <a href="https://www.instagram.com/reemas_burkas?utm_source=ig_web_button_share_sheet&amp;psln=ZDNlZDc0MzIxNw=="
+        target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24">
           <path
-            d="M12 2c2.7 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.55.55.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43C21.99 8.94 22 9.3 22 12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.64.25-1.37.42-2.43.47C15.06 21.99 14.7 22 12 22s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.7 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77A4.9 4.9 0 0 1 5.45 2.53c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.3 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2A3.2 3.2 0 1 1 12 8.8a3.2 3.2 0 0 1 0 6.4zm5.4-8.4a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z" />
+            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
         </svg></a>
-      <a href="#" aria-label="YouTube" onclick="return false;"><svg viewBox="0 0 24 24">
+      <a href="https://wa.me/919843822332" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><svg
+          viewBox="0 0 24 24">
           <path
-            d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.5v-7l6.3 3.5-6.3 3.5z" />
+            d="M17.472 14.382c-.301-.15-1.78-.879-2.056-.979-.276-.101-.476-.15-.676.15s-.777.979-.952 1.179c-.176.201-.351.226-.652.076-.301-.15-1.27-.468-2.42-1.493-.894-.798-1.498-1.784-1.674-2.085-.175-.301-.019-.464.132-.614.136-.135.301-.351.451-.527.151-.175.201-.301.302-.501.1-.2.05-.376-.025-.527-.075-.15-.676-1.63-.927-2.232-.244-.587-.492-.507-.676-.516l-.577-.01c-.2 0-.526.075-.802.376s-1.053 1.028-1.053 2.508 1.078 2.909 1.228 3.11c.15.201 2.122 3.24 5.141 4.544.718.31 1.279.496 1.716.635.722.23 1.38.197 1.9.12.579-.087 1.78-.727 2.03-1.43.251-.702.251-1.303.176-1.43-.075-.126-.276-.201-.577-.352zm-5.452 7.428c-2.008 0-3.92-.533-5.59-1.545l-.4-.238-4.156 1.09 1.109-4.053-.261-.415c-1.11-1.766-1.698-3.809-1.698-5.904 0-6.195 5.04-11.235 11.236-11.235 3.003 0 5.825 1.17 7.95 3.295 2.126 2.125 3.296 4.948 3.296 7.95 0 6.196-5.041 11.235-11.236 11.235zm9.589-17.539c-2.56-2.56-5.966-3.971-9.589-3.971-7.466 0-13.541 6.075-13.541 13.541 0 2.385.623 4.715 1.808 6.768l-1.921 7.018 7.182-1.884c1.986 1.083 4.228 1.654 6.472 1.654 7.467 0 13.542-6.075 13.542-13.541 0-3.623-1.411-7.029-3.972-9.589z" />
         </svg></a>
-      <a href="#" aria-label="Facebook" onclick="return false;"><svg viewBox="0 0 24 24">
+      <a href="https://www.facebook.com/share/1JsAc2ogiL/" target="_blank" rel="noopener noreferrer"
+        aria-label="Facebook"><svg viewBox="0 0 24 24">
           <path
             d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z" />
+        </svg></a>
+      <a href="https://youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg
+          viewBox="0 0 24 24">
+          <path
+            d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.5v-7l6.3 3.5-6.3 3.5z" />
         </svg></a>
     </div>
   </div>
@@ -1409,11 +1714,9 @@
   <!-- ================= OFFER MARQUEE ================= -->
   <div class="offer-strip">
     <div class="marquee-track">
-      <span>✦ FLAT 30% OFF SITEWIDE — USE CODE LAKSHMI30 ✦</span>
-      <span>✦ FREE SHIPPING ACROSS INDIA ON ORDERS ABOVE ₹1999 ✦</span>
+      <span>✦ 50% FREE SHIPPING ACROSS INDIA ON ORDERS ABOVE ₹2999 ✦</span>
       <span>✦ NEW FESTIVE COLLECTION JUST LANDED ✦</span>
-      <span>✦ FLAT 30% OFF SITEWIDE — USE CODE LAKSHMI30 ✦</span>
-      <span>✦ FREE SHIPPING ACROSS INDIA ON ORDERS ABOVE ₹1999 ✦</span>
+      <span>✦ 50% FREE SHIPPING ACROSS INDIA ON ORDERS ABOVE ₹2999 ✦</span>
       <span>✦ NEW FESTIVE COLLECTION JUST LANDED ✦</span>
     </div>
   </div>
@@ -1422,41 +1725,28 @@
   <header class="main-header">
     <div class="nav-wrap">
       <a href="./">
-      <div class="logo">
-        <svg class="mark" viewBox="0 0 48 48">
-          <circle cx="24" cy="24" r="23" fill="#7A1E3C" />
-          <path d="M24 10c5 4 8 9 8 14a8 8 0 0 1-16 0c0-5 3-10 8-14z" fill="#E8C877" />
-          <circle cx="24" cy="24" r="3" fill="#7A1E3C" />
-        </svg>
-        <div>
-          <div class="word">LAKSHMI</div>
-          <span class="tagline">Traditional Wear Boutique</span>
+        <div class="logo">
+          <svg class="mark" viewBox="0 0 48 48">
+            <circle cx="24" cy="24" r="23" fill="#7A1E3C" />
+            <path d="M24 10c5 4 8 9 8 14a8 8 0 0 1-16 0c0-5 3-10 8-14z" fill="#E8C877" />
+            <circle cx="24" cy="24" r="3" fill="#7A1E3C" />
+          </svg>
+          <div>
+            <div class="word">REEMA SABAYA</div>
+            <span class="tagline">Custom Modest Studio</span>
+          </div>
         </div>
-      </div>
-    </a>
+      </a>
       <nav class="primary-nav">
         <a href="#home" onclick="showView('home')">Home</a>
-        <a href="#sarees" onclick="showView('home')">Sarees</a>
-        <a href="#women" onclick="showView('home')">Women</a>
-        <a href="#men" onclick="showView('home')">Men</a>
+        <a href="#sarees" onclick="showView('home')">Casual</a>
+        <a href="#women" onclick="showView('home')">Wedding</a>
+        <a href="#men" onclick="showView('home')">party</a>
         <a href="#kids" onclick="showView('home')">Kids</a>
+        <a href="#maternity" onclick="scrollToCat('maternity')">Maternity</a>
         <a href="#contact" onclick="showView('home')">Contact</a>
       </nav>
       <div class="header-actions">
-        <button class="icon-btn" title="Account / Login" onclick="showView('login')">
-          <svg viewBox="0 0 24 24">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-            <circle cx="12" cy="7" r="4" />
-          </svg>
-        </button>
-        <button class="icon-btn" title="Cart" onclick="openCart()">
-          <svg viewBox="0 0 24 24">
-            <circle cx="9" cy="21" r="1" />
-            <circle cx="20" cy="21" r="1" />
-            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-          </svg>
-          <span class="cart-count" id="cartCount">0</span>
-        </button>
         <button class="hamburger" onclick="toggleMobileNav()">
           <svg viewBox="0 0 24 24">
             <line x1="3" y1="6" x2="21" y2="6" />
@@ -1475,19 +1765,17 @@
     <section class="hero" id="home">
       <div class="hero-copy">
         <span class="eyebrow">Since Every Thread Tells A Story</span>
-        <h1>Drape yourself <br>in <em>timeless</em> tradition</h1>
-        <p>Handpicked sarees, kurtis, kurtas and kidswear crafted for every occasion — from daily grace to festive
-          glory. Shop authentic traditional wear, delivered across India.</p>
+        <h1>Drape yourself <br>in <em>timeless</em> modest grace</h1>
+        <p>Handcrafted abayas, burkas, wedding edits, party kaftans and maternity collections. Modest luxury tailored for every celebration.</p>
         <div class="hero-ctas">
-          <a class="btn-primary" href="#sarees">Shop New Arrivals</a>
+          <a class="btn-primary" href="#sarees" onclick="scrollToCat('sarees')">Shop New Arrivals</a>
           <a class="btn-ghost" href="#contact">Visit Our Store</a>
         </div>
       </div>
       <div class="hero-visual">
-        <div class="badge-seal"><b>30%</b><span>Off Today</span></div>
         <div class="arch-frame">
           <div class="ring"></div>
-          <img src="images/saree_banarasi_gold.png" alt="Traditional saree"
+          <img src="images/wedding_abaya.jpg" alt="Bridal abaya burka"
             style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top center;"
             onerror="this.style.display='none';">
         </div>
@@ -1498,52 +1786,56 @@
     <section class="section" style="padding-top:10px;">
       <div class="cat-tiles">
         <div class="cat-tile" onclick="scrollToCat('sarees')">
-          <img class="cat-img" src="images/saree.png" alt="Sarees">
-          <h4>Sarees</h4><span>42 designs</span>
+          <img class="cat-img" src="images/casual_abaya.jpg" alt="Casual">
+          <h4>Casual</h4><span>42 designs</span>
         </div>
         <div class="cat-tile" onclick="scrollToCat('women')">
-          <img class="cat-img" src="images/women_anarkali.png" alt="Women">
-          <h4>Women</h4><span>68 designs</span>
+          <img class="cat-img" src="images/wedding_abaya.jpg" alt="Wedding">
+          <h4>Wedding</h4><span>68 designs</span>
         </div>
         <div class="cat-tile" onclick="scrollToCat('men')">
-          <img class="cat-img" src="images/men_silk_kurta.png" alt="Men">
-          <h4>Men</h4><span>31 designs</span>
+          <img class="cat-img" src="images/party_kaftan.jpg" alt="Party">
+          <h4>Party</h4><span>31 designs</span>
         </div>
         <div class="cat-tile" onclick="scrollToCat('kids')">
-          <img class="cat-img" src="images/kids_pattu_silk.png" alt="Kids">
+          <img class="cat-img" src="images/kids_abaya.jpg" alt="Kids">
           <h4>Kids</h4><span>24 designs</span>
+        </div>
+        <div class="cat-tile" onclick="scrollToCat('maternity')">
+          <img class="cat-img" src="images/maternity_dress.jpg" alt="Maternity">
+          <h4>Maternity</h4><span>24 designs</span>
         </div>
       </div>
     </section>
 
-    <!-- SAREES -->
+    <!-- CASUAL -->
     <section class="section" id="sarees">
       <div class="section-head">
         <div>
-          <h2>Sarees</h2>
-          <p>Handloom, silk & festive drapes</p>
+          <h2>Casual Wear</h2>
+          <p>Everyday modest abayas, daily burkas &amp; comfort fits</p>
         </div>
       </div>
       <div class="product-grid" id="grid-sarees"></div>
     </section>
 
-    <!-- WOMEN -->
+    <!-- WEDDING -->
     <section class="section" id="women" style="background:var(--ivory-deep); border-radius:40px;">
       <div class="section-head">
         <div>
-          <h2>Women's Traditional Wear</h2>
-          <p>Kurtis, Anarkalis & festive sets</p>
+          <h2>Wedding &amp; Bridal Wear</h2>
+          <p>Luxury hand-embroidered bridal burkas &amp; wedding edits</p>
         </div>
       </div>
       <div class="product-grid" id="grid-women"></div>
     </section>
 
-    <!-- MEN -->
+    <!-- PARTY -->
     <section class="section" id="men">
       <div class="section-head">
         <div>
-          <h2>Men's Traditional Wear</h2>
-          <p>Kurtas, dhotis & festive sets</p>
+          <h2>Party Wear</h2>
+          <p>Designer kaftans, flowing gowns &amp; festive shimmer edits</p>
         </div>
       </div>
       <div class="product-grid" id="grid-men"></div>
@@ -1553,11 +1845,22 @@
     <section class="section" id="kids" style="background:var(--ivory-deep); border-radius:40px;">
       <div class="section-head">
         <div>
-          <h2>Kids Traditional Wear</h2>
-          <p>Pattu pavadais, frocks & kurta sets</p>
+          <h2>Kids Modest Wear</h2>
+          <p>Festive kids abayas, modest frocks &amp; celebration sets</p>
         </div>
       </div>
       <div class="product-grid" id="grid-kids"></div>
+    </section>
+
+    <!-- MATERNITY -->
+    <section class="section" id="maternity">
+      <div class="section-head">
+        <div>
+          <h2>Maternity Wear</h2>
+          <p>Comfortable, elegant & modest maternity collection</p>
+        </div>
+      </div>
+      <div class="product-grid" id="grid-maternity"></div>
     </section>
 
     <!-- MORE COLLECTIONS -->
@@ -1565,33 +1868,33 @@
       <div class="section-head">
         <div>
           <h2>More Collections</h2>
-          <p>Keep scrolling — new edits every season</p>
+          <p>Explore exclusive modest edits for every celebration</p>
         </div>
       </div>
       <div class="collections-scroll">
-        <div class="collection-card"
-          style="background:linear-gradient(to bottom, rgba(122,30,60,0.2), rgba(122,30,60,0.9)), url('images/saree.png') center/cover;">
-          <h4>Bridal Edit</h4><span>Grand silks for the big day</span>
+        <div class="collection-card" onclick="scrollToCat('sarees')"
+          style="background:linear-gradient(to bottom, rgba(30,20,25,0.2), rgba(30,20,25,0.88)), url('images/casual_abaya.jpg') center/cover;">
+          <h4>Casual Wear</h4><span>Everyday modest abayas &amp; daily fits</span>
         </div>
-        <div class="collection-card"
-          style="background:linear-gradient(to bottom, rgba(193,89,106,0.2), rgba(193,89,106,0.9)), url('images/womens_wear.png') center/cover;">
-          <h4>Festive Picks</h4><span>Vibrant hues for celebrations</span>
+        <div class="collection-card" onclick="scrollToCat('women')"
+          style="background:linear-gradient(to bottom, rgba(122,30,60,0.25), rgba(90,19,41,0.9)), url('images/wedding_abaya.jpg') center/cover;">
+          <h4>Wedding &amp; Bridal</h4><span>Royal zardozi burkas &amp; bridal gowns</span>
         </div>
-        <div class="collection-card"
-          style="background:linear-gradient(to bottom, rgba(19,78,72,0.2), rgba(19,78,72,0.9)), url('images/mens_wear.png') center/cover;">
-          <h4>Handloom Classics</h4><span>Woven by master artisans</span>
+        <div class="collection-card" onclick="scrollToCat('men')"
+          style="background:linear-gradient(to bottom, rgba(19,78,72,0.25), rgba(10,45,40,0.9)), url('images/party_kaftan.jpg') center/cover;">
+          <h4>Party Wear</h4><span>Glamorous designer kaftans &amp; gowns</span>
         </div>
-        <div class="collection-card"
-          style="background:linear-gradient(to bottom, rgba(204,154,46,0.2), rgba(204,154,46,0.9)), url('images/saree.png') center/cover;">
-          <h4>Office Wear Edit</h4><span>Comfort meets elegance</span>
+        <div class="collection-card" onclick="scrollToCat('kids')"
+          style="background:linear-gradient(to bottom, rgba(193,89,106,0.2), rgba(122,30,60,0.9)), url('images/kids_abaya.jpg') center/cover;">
+          <h4>Kids Modest</h4><span>Adorable festive abayas &amp; frocks</span>
         </div>
-        <div class="collection-card"
-          style="background:linear-gradient(to bottom, rgba(138,74,90,0.2), rgba(90,19,41,0.9)), url('images/womens_wear.png') center/cover;">
-          <h4>Mix &amp; Match</h4><span>Build your own combination</span>
+        <div class="collection-card" onclick="scrollToCat('maternity')"
+          style="background:linear-gradient(to bottom, rgba(122,30,60,0.2), rgba(90,19,41,0.9)), url('images/maternity_dress.jpg') center/cover;">
+          <h4>Maternity Edits</h4><span>Comfortable feeding-friendly modest wear</span>
         </div>
-        <div class="collection-card"
-          style="background:linear-gradient(to bottom, rgba(58,111,104,0.2), rgba(19,78,72,0.9)), url('images/mens_wear.png') center/cover;">
-          <h4>Daily Comfort Wear</h4><span>Soft cotton essentials</span>
+        <div class="collection-card" onclick="scrollToCat('sarees')"
+          style="background:linear-gradient(to bottom, rgba(20,40,65,0.2), rgba(15,25,45,0.9)), url('images/images1.png') center/cover;">
+          <h4>Custom Burka Studio</h4><span>Tailored designer modest abayas</span>
         </div>
       </div>
     </section>
@@ -1600,11 +1903,11 @@
     <div class="trust-strip">
       <div class="trust-inner">
         <div>
-          <h3>2005</h3>
+          <h3>2019</h3>
           <p>Trusted heritage since</p>
         </div>
         <div>
-          <h3>50k+</h3>
+          <h3>1L+</h3>
           <p>Happy customers</p>
         </div>
         <div>
@@ -1612,7 +1915,7 @@
           <p>Average rating</p>
         </div>
         <div>
-          <h3>5-6 Days</h3>
+          <h3>8-10 Days</h3>
           <p>All India shipping</p>
         </div>
       </div>
@@ -1631,14 +1934,14 @@
               <path
                 d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
             </svg>
-            +91 93611 73087
+            +91 98438 22332
           </div>
           <div class="contact-line">
             <svg viewBox="0 0 24 24">
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
               <circle cx="12" cy="10" r="3" />
             </svg>
-            No 3, Shree Nagar, Periyasamy Layout, Coimbatore, Tamil Nadu, India
+            REEMAS BURKAS Near Hudha Masjid,Saramedu main Road,Karumbu Kadai,Coimbatore-641008 tamilnadu,India
           </div>
         </div>
         <div class="map-box">
@@ -1649,8 +1952,8 @@
             <circle cx="150" cy="80" r="9" fill="#7A1E3C" />
             <circle cx="150" cy="80" r="16" fill="none" stroke="#7A1E3C" stroke-width="2" opacity="0.4" />
           </svg>
-          <p style="font-size:.85rem; color:#6b5860;">Store Timing: 10:30 AM – 8:00 PM (All days)</p>
-          <a class="btn-primary" style="text-align:center;" href="tel:9361173087">Call Now: 93611 73087</a>
+          <p style="font-size:.85rem; color:#6b5860;">Store Timing: 10:30 AM – 11:00 PM (All days)</p>
+          <a class="btn-primary" style="text-align:center;" href="tel:+919843822332">Call Now: 98438 22332</a>
         </div>
       </div>
     </section>
@@ -1664,7 +1967,7 @@
         <div class="ring-deco"></div>
 
         <div id="loginFormWrap">
-          <h2>Welcome to LAKSHMI</h2>
+          <h2>Welcome to REEMA SABAYA</h2>
           <p class="sub">Enter your details to login and enjoy a personalised shopping experience.</p>
           <form id="customerForm" onsubmit="return submitCustomerForm(event)" novalidate>
             <div class="field" id="field-name">
@@ -1692,8 +1995,8 @@
             </svg></div>
           <h3>Thank you, <span id="successName"></span>!</h3>
           <p>Your details have been saved. Our team may reach out on <b id="successMobile"></b> from <b
-              id="successCity"></b> regarding your order. For any help, call us directly at <a href="tel:9361173087"
-              style="color:var(--maroon-dark); font-weight:600;">93611 73087</a>.</p>
+              id="successCity"></b> regarding your order. For any help, call us directly at <a href="tel:+919843822332"
+              style="color:var(--maroon-dark); font-weight:600;">98438 22332</a>.</p>
           <a class="btn-primary" style="display:inline-block; margin-top:22px;" href="#"
             onclick="showView('home'); return false;">Continue Shopping</a>
         </div>
@@ -1712,52 +2015,61 @@
             <circle cx="24" cy="24" r="3" fill="#E8C877" />
           </svg>
           <div>
-            <div class="word">LAKSHMI</div>
+            <div class="word">REEMA SABAYA</div>
+            <span class="tagline" style="color:var(--gold-light);">Custom Modest Studio</span>
           </div>
         </div>
         <p style="margin-top:16px;">Traditional wear crafted with heritage and heart. Sarees, kurtis, kurtas and
           kidswear for every celebration.</p>
         <div class="footer-social">
-          <a href="#" aria-label="Instagram" onclick="return false;"><svg viewBox="0 0 24 24">
+          <a href="https://www.instagram.com/reemas_burkas?utm_source=ig_web_button_share_sheet&amp;psln=ZDNlZDc0MzIxNw=="
+            target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24">
               <path
-                d="M12 2c2.7 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.55.55.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43C21.99 8.94 22 9.3 22 12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.64.25-1.37.42-2.43.47C15.06 21.99 14.7 22 12 22s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.7 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77A4.9 4.9 0 0 1 5.45 2.53c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.3 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2A3.2 3.2 0 1 1 12 8.8a3.2 3.2 0 0 1 0 6.4zm5.4-8.4a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z" />
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
             </svg></a>
-          <a href="#" aria-label="YouTube" onclick="return false;"><svg viewBox="0 0 24 24">
+          <a href="https://wa.me/919843822332" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><svg
+              viewBox="0 0 24 24">
               <path
-                d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.5v-7l6.3 3.5-6.3 3.5z" />
+                d="M17.472 14.382c-.301-.15-1.78-.879-2.056-.979-.276-.101-.476-.15-.676.15s-.777.979-.952 1.179c-.176.201-.351.226-.652.076-.301-.15-1.27-.468-2.42-1.493-.894-.798-1.498-1.784-1.674-2.085-.175-.301-.019-.464.132-.614.136-.135.301-.351.451-.527.151-.175.201-.301.302-.501.1-.2.05-.376-.025-.527-.075-.15-.676-1.63-.927-2.232-.244-.587-.492-.507-.676-.516l-.577-.01c-.2 0-.526.075-.802.376s-1.053 1.028-1.053 2.508 1.078 2.909 1.228 3.11c.15.201 2.122 3.24 5.141 4.544.718.31 1.279.496 1.716.635.722.23 1.38.197 1.9.12.579-.087 1.78-.727 2.03-1.43.251-.702.251-1.303.176-1.43-.075-.126-.276-.201-.577-.352zm-5.452 7.428c-2.008 0-3.92-.533-5.59-1.545l-.4-.238-4.156 1.09 1.109-4.053-.261-.415c-1.11-1.766-1.698-3.809-1.698-5.904 0-6.195 5.04-11.235 11.236-11.235 3.003 0 5.825 1.17 7.95 3.295 2.126 2.125 3.296 4.948 3.296 7.95 0 6.196-5.041 11.235-11.236 11.235zm9.589-17.539c-2.56-2.56-5.966-3.971-9.589-3.971-7.466 0-13.541 6.075-13.541 13.541 0 2.385.623 4.715 1.808 6.768l-1.921 7.018 7.182-1.884c1.986 1.083 4.228 1.654 6.472 1.654 7.467 0 13.542-6.075 13.542-13.541 0-3.623-1.411-7.029-3.972-9.589z" />
             </svg></a>
-          <a href="#" aria-label="Facebook" onclick="return false;"><svg viewBox="0 0 24 24">
+          <a href="https://www.facebook.com/share/1JsAc2ogiL/" target="_blank" rel="noopener noreferrer"
+            aria-label="Facebook"><svg viewBox="0 0 24 24">
               <path
                 d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z" />
+            </svg></a>
+          <a href="https://youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg
+              viewBox="0 0 24 24">
+              <path
+                d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.5v-7l6.3 3.5-6.3 3.5z" />
             </svg></a>
         </div>
       </div>
       <div>
         <h4>Shop</h4>
         <ul>
-          <li><a href="#sarees" onclick="showView('home')">Sarees</a></li>
-          <li><a href="#women" onclick="showView('home')">Women</a></li>
-          <li><a href="#men" onclick="showView('home')">Men</a></li>
-          <li><a href="#kids" onclick="showView('home')">Kids</a></li>
+          <li><a href="#sarees" onclick="scrollToCat('sarees')">Casual Wear</a></li>
+          <li><a href="#women" onclick="scrollToCat('women')">Wedding &amp; Bridal</a></li>
+          <li><a href="#men" onclick="scrollToCat('men')">Party Wear</a></li>
+          <li><a href="#kids" onclick="scrollToCat('kids')">Kids Collection</a></li>
+          <li><a href="#maternity" onclick="scrollToCat('maternity')">Maternity Edits</a></li>
         </ul>
       </div>
       <div>
         <h4>Help</h4>
         <ul>
           <li><a href="#" onclick="showView('login'); return false;">Login / Account</a></li>
-          <li><a href="#" onclick="openCart(); return false;">My Cart</a></li>
           <li><a href="#contact" onclick="showView('home')">Shipping &amp; Returns</a></li>
           <li><a href="#contact" onclick="showView('home')">Contact Us</a></li>
         </ul>
       </div>
       <div>
         <h4>Get In Touch</h4>
-        <p>No 3, Shree Nagar, Periyasamy Layout,<br>Coimbatore, Tamil Nadu, India</p>
-        <p style="margin-top:10px;">Call / WhatsApp:<br><a href="tel:9361173087"
-            style="color:var(--gold-light); font-weight:600;">+91 93611 73087</a></p>
+        <p>REEMAS BURKAS Near Hudha Masjid,Saramedu main Road,Karumbu Kadai,Coimbatore-641008 tamilnadu,India</p>
+        <p style="margin-top:10px;">Call / WhatsApp:<br><a href="tel:+919843822332"
+            style="color:var(--gold-light); font-weight:600;">+91 98438 22332</a></p>
       </div>
     </div>
-    <div class="footer-bottom">© 2026 LAKSHMI Traditional Wear Boutique. All rights reserved.</div>
+    <div class="footer-bottom">© 2026 REEMA SABAYA Custom Modest Studio. All rights reserved.</div>
   </footer>
 
   <!-- ================= CART DRAWER ================= -->
@@ -1772,8 +2084,7 @@
     </div>
     <div class="cart-items" id="cartItems"></div>
     <div class="cart-foot" id="cartFoot">
-      <div class="cart-sumrow"><span>Subtotal (MRP)</span><span id="sumMrp">₹0</span></div>
-      <div class="cart-sumrow"><span>Offer Discount (30%)</span><span id="sumDiscount">-₹0</span></div>
+      <div class="cart-sumrow"><span>Subtotal</span><span id="sumMrp">₹0</span></div>
       <div class="cart-sumrow total"><span>Total Payable</span><span id="sumTotal">₹0</span></div>
       <button class="btn-primary" style="width:100%; margin-top:14px; text-align:center;"
         onclick="proceedToCheckout()">Proceed to Checkout</button>
@@ -1842,62 +2153,204 @@
     const WM = "https://commons.wikimedia.org/wiki/Special:FilePath/";
     const PX = "https://images.pexels.com/photos/";
     const PRODUCTS = [
-      // Sarees
-      { id: 'sr1', cat: 'sarees', name: 'Kanjivaram Silk Saree — Maroon', mrp: 4200, icon: 'ill-saree', color: '#7A1E3C', img: 'images/saree.png' },
-      { id: 'sr2', cat: 'sarees', name: 'Banarasi Golden Zari Saree', mrp: 5600, icon: 'ill-saree', color: '#B5842A', img: 'images/saree_banarasi_gold.png' },
-      { id: 'sr3', cat: 'sarees', name: 'Handloom Cotton Saree — Teal', mrp: 1850, icon: 'ill-saree', color: '#134E48', img: 'images/saree_teal.png' },
-      { id: 'sr4', cat: 'sarees', name: 'Chiffon Party Wear Saree', mrp: 2450, icon: 'ill-saree', color: '#C1596A', img: 'images/saree_chiffon.png' },
-      // Women
-      { id: 'wm1', cat: 'women', name: 'Anarkali Kurti Set with Dupatta', mrp: 2295, icon: 'ill-kurti', color: '#C1596A', img: 'images/women_anarkali.png' },
-      { id: 'wm2', cat: 'women', name: 'Designer Kurti — Mustard', mrp: 1795, icon: 'ill-kurti', color: '#CC9A2E', img: 'images/women_mustard_kurti.png' },
-      { id: 'wm3', cat: 'women', name: 'Daily Wear Cotton Kurti', mrp: 995, icon: 'ill-kurti', color: '#7A1E3C', img: 'images/womens_wear.png' },
-      { id: 'wm4', cat: 'women', name: 'Festive Gown — Wine', mrp: 2995, icon: 'ill-kurti', color: '#5A1329', img: 'images/women_festive_gown.png' },
-      // Men
-      { id: 'mn1', cat: 'men', name: 'Silk Kurta Pyjama Set', mrp: 2495, icon: 'ill-kurta', color: '#134E48', img: 'images/men_silk_kurta.png' },
-      { id: 'mn2', cat: 'men', name: 'Cotton Nehru Jacket Set', mrp: 2895, icon: 'ill-kurta', color: '#2A1B22', img: 'images/men_nehru_jacket.png' },
-      { id: 'mn3', cat: 'men', name: 'Dhoti &amp; Angavastram Set', mrp: 1495, icon: 'ill-kurta', color: '#CC9A2E', img: 'images/men_dhoti_angavastram.png' },
-      { id: 'mn4', cat: 'men', name: 'Formal Cotton Kurta — White', mrp: 1195, icon: 'ill-kurta', color: '#7A1E3C', img: 'images/mens_wear.png' },
-      // Kids
-      { id: 'kd1', cat: 'kids', name: 'Kids Pattu Pavadai - Traditional Pink Silk', mrp: 1395, icon: 'ill-kids', color: '#C1596A', img: 'images/kids_pattu_silk.png' },
-      { id: 'kd2', cat: 'kids', name: 'Boys Dhoti Shirt Set', mrp: 1095, icon: 'ill-kids', color: '#134E48', img: 'images/boys_dhoti_set.png' },
-      { id: 'kd3', cat: 'kids', name: 'Kids Shimmering Festive Frocks', mrp: 995, icon: 'ill-kids', color: '#CC9A2E', img: 'images/kids_festive_frocks.png' },
-      { id: 'kd4', cat: 'kids', name: 'Kids Classic Kurta Pyjama Set', mrp: 895, icon: 'ill-kids', color: '#7A1E3C', img: 'images/kids_kurta_pyjama.jpg' },
+      // Casual Wear
+      { id: 'sr1', cat: 'sarees', name: 'Everyday Minimal Abaya — Beige', mrp: 2195, icon: 'ill-saree', color: '#B5842A', img: 'images/casual_abaya.jpg' },
+      { id: 'sr2', cat: 'sarees', name: 'Front-Open Embroidered Burka — Navy', mrp: 2450, icon: 'ill-saree', color: '#1E3A5F', img: 'images/images1.png' },
+      { id: 'sr3', cat: 'sarees', name: 'Comfort Daily Cotton Abaya — Olive', mrp: 1850, icon: 'ill-saree', color: '#134E48', img: 'images/saree_teal.png' },
+      { id: 'sr4', cat: 'sarees', name: 'Classic Black Umbrella Cut Burka', mrp: 1995, icon: 'ill-saree', color: '#2A1B22', img: 'images/womens_wear.png' },
+      // Wedding & Bridal Wear
+      { id: 'wm1', cat: 'women', name: 'Luxury Zardozi Bridal Abaya — Maroon', mrp: 5800, icon: 'ill-kurti', color: '#7A1E3C', img: 'images/wedding_abaya.jpg' },
+      { id: 'wm2', cat: 'women', name: 'Royal Velvet Wedding Gown with Veil', mrp: 4950, icon: 'ill-kurti', color: '#5A1329', img: 'images/women_festive_gown.png' },
+      { id: 'wm3', cat: 'women', name: 'Golden Embellished Bridal Burka', mrp: 5200, icon: 'ill-kurti', color: '#B5842A', img: 'images/saree_banarasi_gold.png' },
+      { id: 'wm4', cat: 'women', name: 'Handcrafted Lace Wedding Abaya Set', mrp: 4450, icon: 'ill-kurti', color: '#C1596A', img: 'images/women_anarkali.png' },
+      // Party Wear
+      { id: 'mn1', cat: 'men', name: 'Emerald Sequin Designer Kaftan Gown', mrp: 3495, icon: 'ill-kurta', color: '#134E48', img: 'images/party_kaftan.jpg' },
+      { id: 'mn2', cat: 'men', name: 'Shimmer Pleated Party Wear Abaya', mrp: 3195, icon: 'ill-kurta', color: '#CC9A2E', img: 'images/women_mustard_kurti.png' },
+      { id: 'mn3', cat: 'men', name: 'Chiffon Layered Festive Kaftan', mrp: 2950, icon: 'ill-kurta', color: '#C1596A', img: 'images/saree_chiffon.png' },
+      { id: 'mn4', cat: 'men', name: 'Silk Finish Designer Party Burka', mrp: 3250, icon: 'ill-kurta', color: '#7A1E3C', img: 'images/mens_wear.png' },
+      // Kids Modest Wear
+      { id: 'kd1', cat: 'kids', name: 'Girls Pastel Pink Festive Abaya with Hijab', mrp: 1495, icon: 'ill-kids', color: '#C1596A', img: 'images/kids_abaya.jpg' },
+      { id: 'kd2', cat: 'kids', name: 'Junior Lace Flared Festive Frock', mrp: 1195, icon: 'ill-kids', color: '#CC9A2E', img: 'images/kids_festive_frocks.png' },
+      { id: 'kd3', cat: 'kids', name: 'Boys Traditional Kurta Set', mrp: 1095, icon: 'ill-kids', color: '#134E48', img: 'images/boys_dhoti_set.png' },
+      { id: 'kd4', cat: 'kids', name: 'Kids Daily Comfort Cotton Dress Set', mrp: 895, icon: 'ill-kids', color: '#7A1E3C', img: 'images/child_dress.png' },
+      // Maternity Wear
+      { id: 'mt1', cat: 'maternity', name: 'Pleated Modest Maternity Maxi Gown — Wine', mrp: 2695, icon: 'ill-kurti', color: '#7A1E3C', img: 'images/maternity_dress.jpg' },
+      { id: 'mt2', cat: 'maternity', name: 'Feeding Friendly Emerald Maternity Kurti', mrp: 2195, icon: 'ill-kurti', color: '#134E48', img: 'images/maternity_kurti.jpg' },
+      { id: 'mt3', cat: 'maternity', name: 'Comfort Modest Maternity Abaya — Navy', mrp: 2850, icon: 'ill-kurti', color: '#1E3A5F', img: 'images/images1.png' },
+      { id: 'mt4', cat: 'maternity', name: 'A-Line Modest Maternity Floral Dress', mrp: 2450, icon: 'ill-kurti', color: '#C1596A', img: 'images/women_anarkali.png' },
     ];
-    const DISCOUNT = 0.30;
-
     let cart = {}; // id -> qty
 
     function money(n) { return '₹' + Math.round(n).toLocaleString('en-IN'); }
-    function salePrice(mrp) { return mrp * (1 - DISCOUNT); }
+
+    const SIZES = ['S', 'M', 'L', 'XL', 'XXL', 'XXXL'];
+    const COLORS = [
+      { name: 'Black', hex: '#1A1A1A' },
+      { name: 'Pink', hex: '#F4A7B9' },
+      { name: 'Almond', hex: '#EED9C4' },
+      { name: 'Brown', hex: '#6D4C41' },
+      { name: 'Lavender', hex: '#B39DDB' },
+      { name: 'Purple', hex: '#6A1B9A' },
+      { name: 'Green', hex: '#2E7D32' },
+      { name: 'Peach', hex: '#FFBE98' },
+      { name: 'White', hex: '#FFFFFF', border: true }
+    ];
+
+    let selectedSizes = {}; // id -> selectedSize
+    let selectedColors = {}; // id -> selectedColor
 
     /* ============ RENDER PRODUCTS ============ */
     function productCard(p) {
-      const inCart = cart[p.id] || 0;
+      const activeSize = selectedSizes[p.id] || 'M';
+      const activeColor = selectedColors[p.id] || null;
+      const activeColorObj = activeColor ? (COLORS.find(c => c.name === activeColor) || COLORS[0]) : null;
+
+      const sizeButtons = SIZES.map(s => `
+        <button type="button" 
+          class="size-pill ${s === activeSize ? 'active' : ''}" 
+          data-size="${s}" 
+          onclick="selectSize('${p.id}', '${s}')">${s}</button>
+      `).join('');
+
+      const colorChips = COLORS.map(c => `
+        <button type="button" 
+          class="color-chip ${c.name === activeColor ? 'active' : ''}" 
+          data-color="${c.name}"
+          onclick="selectColor(event, '${p.id}', '${c.name}', '${c.hex}', ${Boolean(c.border)})">
+          <span class="chip-dot" style="background:${c.hex}; ${c.border ? 'border:1px solid #ccc;' : ''}"></span>
+          <span>${c.name}</span>
+        </button>
+      `).join('');
+
       return `
   <div class="product-card" data-id="${p.id}">
     <div class="product-media" style="background:${p.color}15;">
-      <div class="discount-flag">30% OFF</div>
-      <div class="wishlist-dot"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></div>
       <img class="product-photo" src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.onerror=null;this.outerHTML='&lt;svg viewBox=&quot;0 0 200 240&quot; width=&quot;58%&quot;&gt;&lt;use href=&quot;%23${p.icon}&quot; fill=&quot;${p.color}&quot;/&gt;&lt;/svg&gt;';" />
     </div>
     <div class="product-info">
       <span class="cat-label">${p.cat}</span>
       <h4>${p.name}</h4>
       <div class="price-row">
-        <span class="now">${money(salePrice(p.mrp))}</span>
-        <span class="was">${money(p.mrp)}</span>
-        <span class="off">30% off</span>
+        <span class="now">${money(p.mrp)}</span>
       </div>
-      <div class="add-row">
-        <button class="btn-add" style="${inCart ? 'display:none;' : ''}" onclick="addToCart('${p.id}')">Add to Cart</button>
-        <div class="qty-control ${inCart ? 'active' : ''}">
-          <button onclick="changeQty('${p.id}', -1)">−</button>
-          <span class="qty-num">${inCart}</span>
-          <button onclick="changeQty('${p.id}', 1)">+</button>
+      <div class="size-row">
+        <span class="size-title">Size:</span>
+        <div class="size-pills" id="sizes-${p.id}">
+          ${sizeButtons}
         </div>
       </div>
+      <div class="color-row">
+        <div class="btn-color-toggle" id="color-btn-${p.id}" onclick="toggleColorDrawer(event, '${p.id}')">
+          <span class="color-swatch-dot" id="dot-${p.id}" style="${activeColorObj ? `background:${activeColorObj.hex}; ${activeColorObj.border ? 'border:1px solid #ccc;' : ''}` : 'display:none;'}"></span>
+          <span class="color-name-text">Colour: <strong id="color-name-${p.id}" style="${activeColor ? '' : 'color:#888;font-weight:normal;'}">${activeColor ? activeColor : 'Select'}</strong></span>
+          <button type="button" class="color-toggle-badge" id="badge-${p.id}" data-id="${p.id}" onclick="toggleColorDrawer(event, '${p.id}')">${activeColor ? 'Change ▾' : 'Choose Colour ▾'}</button>
+        </div>
+        <div class="color-palette" id="palette-${p.id}">
+          <div class="color-palette-head">
+            <span>Choose Colour</span>
+            <button type="button" class="color-palette-close" onclick="closeAllColorDrawers()">&times;</button>
+          </div>
+          <div class="color-grid">
+            ${colorChips}
+          </div>
+        </div>
+      </div>
+      <button class="btn-order" onclick="orderProduct('${p.id}')">Click to Order</button>
     </div>
   </div>`;
+    }
+
+    function selectSize(id, size) {
+      selectedSizes[id] = size;
+      const wrap = document.getElementById('sizes-' + id);
+      if (wrap) {
+        wrap.querySelectorAll('.size-pill').forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.size === size);
+        });
+      }
+    }
+
+    function closeAllColorDrawers() {
+      document.querySelectorAll('.color-palette.open').forEach(p => p.classList.remove('open'));
+      document.querySelectorAll('.btn-color-toggle.open').forEach(b => b.classList.remove('open'));
+      document.querySelectorAll('.color-toggle-badge').forEach(b => {
+        const id = b.dataset.id;
+        b.textContent = (id && selectedColors[id]) ? 'Change ▾' : 'Choose Colour ▾';
+        b.classList.remove('active-open');
+      });
+      document.querySelectorAll('.product-card.color-open').forEach(c => c.classList.remove('color-open'));
+    }
+
+    function toggleColorDrawer(e, id) {
+      if (e) e.stopPropagation();
+      const palette = document.getElementById('palette-' + id);
+      const btn = document.getElementById('color-btn-' + id);
+      const badge = document.getElementById('badge-' + id);
+      const card = btn ? btn.closest('.product-card') : null;
+      const willOpen = palette && !palette.classList.contains('open');
+
+      closeAllColorDrawers();
+
+      if (willOpen && palette) {
+        palette.classList.add('open');
+        if (btn) btn.classList.add('open');
+        if (badge) {
+          badge.textContent = 'Close ▴';
+          badge.classList.add('active-open');
+        }
+        if (card) card.classList.add('color-open');
+      }
+    }
+
+    function selectColor(e, id, colorName, hex, hasBorder) {
+      if (e) e.stopPropagation();
+      selectedColors[id] = colorName;
+      const label = document.getElementById('color-name-' + id);
+      if (label) {
+        label.textContent = colorName;
+        label.style.color = 'var(--ink)';
+        label.style.fontWeight = '600';
+      }
+      const dot = document.getElementById('dot-' + id);
+      if (dot) {
+        dot.style.display = 'inline-block';
+        dot.style.background = hex;
+        dot.style.border = hasBorder ? '1px solid #ccc' : 'none';
+      }
+      const palette = document.getElementById('palette-' + id);
+      if (palette) {
+        palette.querySelectorAll('.color-chip').forEach(chip => {
+          chip.classList.toggle('active', chip.dataset.color === colorName);
+        });
+      }
+      closeAllColorDrawers();
+    }
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.color-row')) {
+        closeAllColorDrawers();
+      }
+    });
+
+    function orderProduct(id) {
+      const p = PRODUCTS.find(x => x.id === id);
+      if (!p) return;
+      const size = selectedSizes[id] || 'M';
+      const color = selectedColors[id];
+      if (!color) {
+        toggleColorDrawer(null, id);
+        showToast(`Please choose a colour for ${p.name} first!`);
+        const btn = document.getElementById('color-btn-' + id);
+        if (btn) {
+          btn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          btn.style.boxShadow = '0 0 0 3px rgba(122, 30, 60, 0.35)';
+          setTimeout(() => { if (btn) btn.style.boxShadow = ''; }, 1600);
+        }
+        return;
+      }
+      const text = encodeURIComponent(`Hi REEMA SABAYA, I would like to order:\n• ${p.name}\n• Colour: ${color}\n• Size: ${size}\n• Price: ${money(p.mrp)}`);
+      window.open(`https://wa.me/919843822332?text=${text}`, '_blank');
+      showToast(`Opening WhatsApp (${color}, Size ${size})...`);
     }
 
     function renderCategory(cat) {
@@ -1906,7 +2359,7 @@
       grid.innerHTML = PRODUCTS.filter(p => p.cat === cat).map(productCard).join('');
     }
     function renderAll() {
-      ['sarees', 'women', 'men', 'kids'].forEach(renderCategory);
+      ['sarees', 'women', 'men', 'kids', 'maternity'].forEach(renderCategory);
       renderCart();
     }
 
@@ -1925,12 +2378,12 @@
       return Object.values(cart).reduce((a, b) => a + b, 0);
     }
     function renderCart() {
-      document.getElementById('cartCount').textContent = cartTotalCount();
+      const cartCountEl = document.getElementById('cartCount');
+      if (cartCountEl) cartCountEl.textContent = cartTotalCount();
       const itemsWrap = document.getElementById('cartItems');
       const ids = Object.keys(cart);
       if (ids.length === 0) {
         itemsWrap.innerHTML = `<div class="cart-empty">
-      <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
       <p>Your cart is empty.<br>Start adding some traditional wear!</p>
     </div>`;
       } else {
@@ -1945,7 +2398,7 @@
         <div class="cart-line-info">
           <h5>${p.name}</h5>
           <span class="cat-label">${p.cat}</span>
-          <div class="line-price">${money(salePrice(p.mrp) * qty)}</div>
+          <div class="line-price">${money(p.mrp * qty)}</div>
           <div class="cart-remove" onclick="removeFromCart('${id}')">Remove</div>
         </div>
         <div class="qty-control active">
@@ -1956,11 +2409,11 @@
       </div>`;
         }).join('');
       }
-      const mrpTotal = ids.reduce((sum, id) => sum + PRODUCTS.find(p => p.id === id).mrp * cart[id], 0);
-      const payTotal = mrpTotal * (1 - DISCOUNT);
-      document.getElementById('sumMrp').textContent = money(mrpTotal);
-      document.getElementById('sumDiscount').textContent = '-' + money(mrpTotal - payTotal);
-      document.getElementById('sumTotal').textContent = money(payTotal);
+      const total = ids.reduce((sum, id) => sum + PRODUCTS.find(p => p.id === id).mrp * cart[id], 0);
+      document.getElementById('sumMrp').textContent = money(total);
+      const sumDiscEl = document.getElementById('sumDiscount');
+      if (sumDiscEl) sumDiscEl.textContent = '-₹0';
+      document.getElementById('sumTotal').textContent = money(total);
     }
     function removeFromCart(id) { delete cart[id]; renderAll(); }
 
@@ -1987,7 +2440,10 @@
     function scrollToCat(cat) {
       showView('home');
       setTimeout(() => {
-        document.getElementById(cat).scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const target = document.getElementById(cat) || document.getElementById(cat.toLowerCase());
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
       }, 60);
     }
     function toggleMobileNav() {
