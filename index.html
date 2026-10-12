@@ -4,7 +4,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>REEMASABAYA — Traditional Wear Boutique</title>
+  <title>REEMA SABAYA — Custom Modest Studio | Abayas, Burkas &amp; Kaftans</title>
+  <meta name="description"
+    content="REEMA SABAYA Custom Modest Studio in Coimbatore. Handcrafted everyday abayas, bridal burkas, designer party kaftans, and maternity modest collections. Visit our boutique or order directly on WhatsApp.">
+  
+  <!-- LocalBusiness JSON-LD Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["ClothingStore", "LocalBusiness"],
+    "name": "REEMA SABAYA Custom Modest Studio",
+    "alternateName": "REEMAS BURKAS",
+    "description": "Custom modest wear studio in Coimbatore specializing in handcrafted everyday abayas, luxury bridal burkas, designer party kaftans, and maternity wear.",
+  
+    "telephone": "+919843822332",
+    "email": "reemasabhaya9@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Near Hudha Masjid, Saramedu Main Road, Karumbu Kadai",
+      "addressLocality": "Coimbatore",
+      "addressRegion": "Tamil Nadu",
+      "postalCode": "641008",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 10.977410989183863,
+      "longitude": 76.96018237504471
+    },
+    "hasMap": "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3916.8139577204133!2d76.96018237504471!3d10.977410989183863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTDCsDU4JzM4LjciTiA3NsKwNTcnNDUuOSJF!5e0!3m2!1sen!2sin!4v1791705420618!5m2!1sen!2sin",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "10:30",
+        "closes": "23:00"
+      }
+    ],
+    "sameAs": [
+      "https://www.instagram.com/reemas_burkas?utm_source=ig_web_button_share_sheet&psln=ZDNlZDc0MzIxNw==",
+      "https://www.facebook.com/share/1JsAc2ogiL/"
+    ]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
     href="https://fonts.googleapis.com/css2?family=Marcellus&family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
@@ -323,49 +373,234 @@
       stroke-width: 1.8;
     }
 
-    /* ---------- HERO ---------- */
-    .hero {
+    /* ---------- HERO SHOWCASE (FULL BANNER) ---------- */
+    .hero-showcase {
       max-width: 1240px;
-      margin: 0 auto;
-      padding: 56px 24px 40px;
-      display: grid;
-      grid-template-columns: 1.05fr 1fr;
-      gap: 50px;
-      align-items: center;
+      margin: 12px auto 28px;
+      padding: 0 24px;
     }
 
-    .hero-copy .eyebrow {
-      margin-bottom: 14px;
+    .hero-banner-frame {
+      width: 100%;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 2px solid rgba(204, 154, 46, 0.45);
+      box-shadow: 0 16px 45px rgba(42, 27, 34, 0.12);
+      background: #000;
+      position: relative;
+      cursor: zoom-in;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+
+    .hero-banner-frame:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 55px rgba(42, 27, 34, 0.18);
+    }
+
+    .hero-full-banner {
+      width: 100%;
+      height: auto;
       display: block;
+      object-fit: contain;
     }
 
-    .hero-copy h1 {
-      font-size: 3.1rem;
-      line-height: 1.12;
+    .banner-expand-badge {
+      position: absolute;
+      bottom: 12px;
+      right: 14px;
+      background: rgba(26, 16, 20, 0.85);
+      color: #fff;
+      border: 1px solid rgba(204, 154, 46, 0.7);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      backdrop-filter: blur(8px);
+      transition: all .25s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      pointer-events: none;
+    }
+
+    .hero-banner-frame:hover .banner-expand-badge {
+      background: var(--maroon);
+      border-color: var(--gold-light);
+      transform: scale(1.05);
+    }
+
+    /* BANNER LIGHTBOX MODAL */
+    .banner-lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(14, 10, 12, 0.94);
+      z-index: 99999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      backdrop-filter: blur(8px);
+      cursor: zoom-out;
+    }
+
+    .banner-lightbox.active {
+      display: flex;
+      animation: fadeInLightbox .2s ease-out;
+    }
+
+    @keyframes fadeInLightbox {
+      from { opacity: 0; transform: scale(.98); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .banner-lightbox-content {
+      position: relative;
+      max-width: 96vw;
+      max-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: default;
+    }
+
+    .banner-lightbox-img {
+      max-width: 100%;
+      max-height: 84vh;
+      width: auto;
+      height: auto;
+      border-radius: 12px;
+      border: 2px solid var(--gold);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.85);
+      object-fit: contain;
+      background: #000;
+    }
+
+    .banner-lightbox-close {
+      position: absolute;
+      top: -14px;
+      right: -14px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--maroon);
+      color: #fff;
+      border: 2px solid var(--gold-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+      transition: transform .2s, background .2s;
+    }
+
+    .banner-lightbox-close:hover {
+      background: var(--maroon-dark);
+      transform: scale(1.1);
+    }
+
+    .banner-lightbox-caption {
+      margin-top: 12px;
+      color: var(--gold-light);
+      font-size: .88rem;
+      letter-spacing: .5px;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .hero-action-strip {
+      margin-top: 18px;
+      background: var(--ivory);
+      border: 1px solid rgba(204, 154, 46, 0.25);
+      border-radius: 22px;
+      padding: 24px 34px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      box-shadow: 0 8px 24px rgba(42, 27, 34, 0.05);
+      flex-wrap: wrap;
+    }
+
+    .hero-action-strip .hero-copy {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .hero-action-strip .eyebrow {
+      font-size: .72rem;
+      letter-spacing: 1.8px;
+      margin-bottom: 6px;
+      display: block;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .hero-action-strip h1 {
+      font-size: 1.8rem;
+      line-height: 1.25;
       color: var(--maroon-dark);
-      margin-bottom: 18px;
+      margin-bottom: 6px;
     }
 
-    .hero-copy h1 em {
+    .hero-action-strip h1 em {
       font-style: normal;
       color: var(--gold);
-      border-bottom: 3px solid var(--gold-light);
+      border-bottom: 2.5px solid var(--gold-light);
     }
 
-    .hero-copy p {
-      font-size: 1.02rem;
+    .hero-action-strip p {
+      font-size: .88rem;
       color: #5c4a52;
-      max-width: 440px;
-      margin-bottom: 28px;
-      line-height: 1.65;
+      max-width: 620px;
+      line-height: 1.55;
     }
 
-    .hero-ctas {
+    .hero-action-strip .hero-ctas {
       display: flex;
-      gap: 16px;
+      gap: 12px;
       align-items: center;
       flex-wrap: wrap;
     }
+
+    .hero-action-strip .btn-primary {
+      background: var(--maroon);
+      color: var(--ivory);
+      font-weight: 600;
+      padding: 12px 26px;
+      border-radius: 26px;
+      font-size: .88rem;
+      letter-spacing: .3px;
+      transition: .2s;
+      box-shadow: 0 4px 14px rgba(122, 30, 60, 0.22);
+      white-space: nowrap;
+    }
+
+    .hero-action-strip .btn-primary:hover {
+      background: var(--maroon-dark);
+      transform: translateY(-2px);
+    }
+
+    .hero-action-strip .btn-ghost {
+      padding: 12px 22px;
+      border-radius: 26px;
+      font-weight: 600;
+      font-size: .88rem;
+      border: 1.5px solid var(--maroon);
+      color: var(--maroon);
+      background: transparent;
+      transition: .2s;
+      white-space: nowrap;
+    }
+
+    .hero-action-strip .btn-ghost:hover {
+      background: var(--maroon);
+      color: var(--ivory);
+      transform: translateY(-2px);
+    }
+
 
     .btn-primary {
       background: var(--maroon);
@@ -399,11 +634,6 @@
       color: var(--ivory);
     }
 
-    .hero-visual {
-      position: relative;
-      display: flex;
-      justify-content: center;
-    }
 
     .arch-frame {
       width: 100%;
@@ -548,11 +778,69 @@
       color: #8a7880;
     }
 
-    /* ---------- PRODUCT GRID ---------- */
+    /* ---------- PRODUCT CAROUSEL / SINGLE ROW SLIDER ---------- */
+    .slider-head-nav {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .slider-nav-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(204, 154, 46, 0.4);
+      background: #ffffff;
+      color: var(--maroon-dark);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all .2s ease;
+      box-shadow: 0 2px 8px rgba(42, 27, 34, 0.08);
+      font-family: inherit;
+    }
+
+    .slider-nav-btn svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      stroke-width: 2.4;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .slider-nav-btn:hover {
+      background: var(--maroon);
+      color: #ffffff;
+      border-color: var(--maroon);
+      transform: scale(1.08);
+      box-shadow: 0 4px 12px rgba(122, 30, 60, 0.22);
+    }
+
+    .product-slider-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
     .product-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      gap: 22px;
+      padding: 10px 4px 20px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      scroll-snap-type: x mandatory;
+    }
+
+    .product-grid::-webkit-scrollbar {
+      display: none;
     }
 
     .product-card {
@@ -563,6 +851,64 @@
       position: relative;
       display: flex;
       flex-direction: column;
+      flex: 0 0 calc((100% - (3 * 22px)) / 4);
+      min-width: calc((100% - (3 * 22px)) / 4);
+      max-width: calc((100% - (3 * 22px)) / 4);
+      scroll-snap-align: start;
+    }
+
+    /* Floating Dock Arrow at the end/start of the collection row */
+    .slider-dock-arrow {
+      position: absolute;
+      top: 48%;
+      transform: translateY(-50%);
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 2px solid var(--gold);
+      color: var(--maroon);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 30;
+      box-shadow: 0 8px 24px rgba(42, 27, 34, 0.22);
+      transition: all .25s ease;
+      opacity: 0.98;
+    }
+
+    .slider-dock-arrow svg {
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
+      stroke-width: 2.6;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .slider-dock-arrow.prev {
+      left: -18px;
+    }
+
+    .slider-dock-arrow.next {
+      right: -18px;
+    }
+
+    .slider-dock-arrow:hover {
+      background: var(--maroon);
+      color: #ffffff;
+      border-color: var(--maroon);
+      transform: translateY(-50%) scale(1.12);
+      box-shadow: 0 10px 28px rgba(122, 30, 60, 0.35);
+      opacity: 1;
+    }
+
+    .slider-dock-arrow.at-start {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-50%) scale(0.8);
     }
 
     .product-card.color-open {
@@ -789,34 +1135,12 @@
     }
 
     .color-toggle-badge {
-      font-family: inherit;
-      font-size: .72rem;
+      font-size: .7rem;
       color: var(--maroon);
-      background: #fcf1f4;
-      border: 1px solid #ecc9d1;
-      border-radius: 999px;
-      padding: 3px 9px;
       font-weight: 600;
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      gap: 4px;
-      cursor: pointer;
-      line-height: 1.2;
-      transition: all .2s ease;
-      white-space: nowrap;
-    }
-
-    .color-toggle-badge:hover,
-    .btn-color-toggle:hover .color-toggle-badge {
-      background: var(--maroon);
-      color: #fff;
-      border-color: var(--maroon);
-    }
-
-    .color-toggle-badge.active-open {
-      background: var(--maroon-dark);
-      color: #fff;
-      border-color: var(--maroon-dark);
+      gap: 3px;
     }
 
     .color-palette {
@@ -837,7 +1161,7 @@
       content: "";
       position: absolute;
       bottom: -6px;
-      right: 32px;
+      left: 24px;
       width: 10px;
       height: 10px;
       background: #fff;
@@ -1086,61 +1410,271 @@
       margin-top: 4px;
     }
 
-    /* ---------- STORE INFO ---------- */
-    .store-info {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: center;
-      background: var(--blush);
-      border-radius: 32px;
-      padding: 40px;
-      margin: 0 24px;
+    /* ---------- CONTACT & STORE LOCATION ---------- */
+    .contact-wrapper {
+      background: linear-gradient(145deg, rgba(243, 222, 221, 0.5) 0%, rgba(243, 231, 214, 0.65) 100%);
+      border-radius: 36px;
+      padding: 44px;
+      border: 1px solid rgba(204, 154, 46, 0.28);
+      box-shadow: 0 10px 36px rgba(42, 27, 34, 0.07);
     }
 
-    .store-info h2 {
-      color: var(--maroon-dark);
-      font-size: 1.9rem;
-      margin-bottom: 14px;
+    .contact-head {
+      margin-bottom: 34px;
+      max-width: 640px;
     }
 
-    .store-info p {
-      color: #6b5860;
-      margin-bottom: 10px;
-      line-height: 1.6;
-      font-size: .95rem;
-    }
-
-    .store-info .contact-line {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 600;
+    .contact-head h2 {
+      font-size: 2.25rem;
       color: var(--maroon-dark);
       margin-top: 6px;
     }
 
-    .store-info .contact-line svg {
-      width: 18px;
-      height: 18px;
-      stroke: var(--maroon-dark);
-      fill: none;
-      stroke-width: 1.8;
+    .contact-head p {
+      color: #6b5860;
+      font-size: .96rem;
+      margin-top: 8px;
+      line-height: 1.6;
     }
 
-    .map-box {
-      background: #fff;
-      border-radius: 24px;
-      padding: 26px;
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    /* Left Info Card */
+    .contact-card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 34px 30px;
       box-shadow: var(--shadow);
+      border: 1px solid rgba(204, 154, 46, 0.22);
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      justify-content: space-between;
     }
 
-    .map-box svg {
+    .contact-card-title h3 {
+      font-family: 'Marcellus', serif;
+      font-size: 1.5rem;
+      color: var(--maroon);
+      margin-bottom: 4px;
+    }
+
+    .contact-card-title .studio-tag {
+      font-size: .72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .contact-card-title p {
+      color: #7a6870;
+      font-size: .88rem;
+      line-height: 1.55;
+    }
+
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin: 26px 0 28px;
+    }
+
+    .contact-row {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .contact-icon-pill {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(122, 30, 60, 0.08), rgba(204, 154, 46, 0.16));
+      border: 1px solid rgba(204, 154, 46, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--maroon);
+      box-shadow: 0 4px 10px rgba(122, 30, 60, 0.06);
+    }
+
+    .contact-icon-pill svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--maroon);
+      fill: none;
+      stroke-width: 1.9;
+    }
+
+    .contact-row-text {
+      flex: 1;
+    }
+
+    .contact-row-text .label {
+      font-size: .72rem;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .contact-row-text .val,
+    .contact-row-text a {
+      font-size: .92rem;
+      color: var(--ink);
+      line-height: 1.5;
+      display: block;
+    }
+
+    .contact-row-text a:hover {
+      color: var(--maroon);
+      text-decoration: underline;
+    }
+
+    .contact-card-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding-top: 14px;
+      border-top: 1px solid var(--ivory-deep);
+    }
+
+    .btn-contact-call {
+      flex: 1;
+      min-width: 140px;
+      background: var(--maroon);
+      color: var(--ivory);
+      padding: 13px 18px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: .88rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: .2s;
+      box-shadow: 0 4px 14px rgba(122, 30, 60, 0.25);
+    }
+
+    .btn-contact-call:hover {
+      background: var(--maroon-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-contact-wa {
+      flex: 1;
+      min-width: 140px;
+      background: #1b8a5a;
+      color: #fff;
+      padding: 13px 18px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: .88rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: .2s;
+      box-shadow: 0 4px 14px rgba(27, 138, 90, 0.25);
+    }
+
+    .btn-contact-wa:hover {
+      background: #156d47;
+      transform: translateY(-2px);
+    }
+
+    /* Right Map Card */
+    .map-card {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 12px;
+      box-shadow: 0 8px 24px rgba(42, 27, 34, 0.08);
+      border: 1px solid rgba(204, 154, 46, 0.22);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .map-card-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4px 8px 10px;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .map-live-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .74rem;
+      font-weight: 600;
+      color: var(--maroon-dark);
+      background: rgba(204, 154, 46, 0.12);
+      padding: 4px 10px;
+      border-radius: 20px;
+      border: 1px solid rgba(204, 154, 46, 0.25);
+    }
+
+    .map-live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10B981;
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+      animation: livePulse 2s infinite;
+    }
+
+    @keyframes livePulse {
+      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+
+    .map-dir-link {
+      font-size: .75rem;
+      font-weight: 600;
+      color: var(--maroon);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: .2s;
+    }
+
+    .map-dir-link:hover {
+      color: var(--maroon-dark);
+      text-decoration: underline;
+    }
+
+    .map-embed-container {
       width: 100%;
-      height: 160px;
+      height: 260px;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      background: var(--ivory-deep);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .map-embed-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100% !important;
+      border: 0;
+      display: block;
     }
 
     /* ---------- FOOTER ---------- */
@@ -1580,21 +2114,28 @@
         display: flex;
       }
 
-      .hero {
-        grid-template-columns: 1fr;
+      .hero-showcase {
+        margin: 10px auto 20px;
+        padding: 0 16px;
+      }
+
+      .hero-banner-frame {
+        border-radius: 14px;
+      }
+
+      .hero-action-strip {
+        padding: 20px 20px;
+        flex-direction: column;
         text-align: center;
+        gap: 16px;
       }
 
-      .hero-copy p {
-        margin: 0 auto 28px;
+      .hero-action-strip p {
+        margin: 0 auto;
       }
 
-      .hero-ctas {
+      .hero-action-strip .hero-ctas {
         justify-content: center;
-      }
-
-      .hero-visual {
-        order: -1;
       }
 
       .cat-tiles {
@@ -1624,6 +2165,24 @@
         margin: 0 16px;
       }
 
+      .contact-wrapper {
+        padding: 30px 22px;
+        border-radius: 28px;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 26px;
+      }
+
+      .map-card {
+        padding: 10px;
+      }
+
+      .map-embed-container {
+        height: 240px;
+      }
+
       .footer-inner {
         grid-template-columns: 1fr 1fr;
         gap: 28px;
@@ -1635,14 +2194,84 @@
     }
 
     @media (max-width:560px) {
-      .hero-copy h1 {
-        font-size: 2.2rem;
+      .hero-showcase {
+        margin: 6px auto 16px;
+        padding: 0 10px;
+      }
+
+      .hero-banner-frame {
+        border-radius: 10px;
+      }
+
+      .hero-action-strip {
+        padding: 16px 14px;
+        border-radius: 14px;
+      }
+
+      .hero-action-strip h1 {
+        font-size: 1.35rem;
+      }
+
+      .hero-action-strip p {
+        font-size: .82rem;
+      }
+
+      .contact-wrapper {
+        padding: 22px 14px;
+        border-radius: 22px;
+      }
+
+      .contact-head h2 {
+        font-size: 1.8rem;
+      }
+
+      .contact-card {
+        padding: 24px 18px;
+        border-radius: 20px;
+      }
+
+      .contact-card-actions {
+        flex-direction: column;
+      }
+
+      .btn-contact-call,
+      .btn-contact-wa {
+        width: 100%;
+      }
+
+      .map-card {
+        border-radius: 18px;
+        padding: 8px;
+      }
+
+      .map-embed-container {
+        height: 210px;
+        border-radius: 14px;
       }
 
       .product-grid {
-        grid-template-columns: repeat(2, 1fr);
         gap: 14px;
+        padding-bottom: 14px;
       }
+
+      .product-card {
+        flex: 0 0 calc((100% - 14px) / 2);
+        min-width: calc((100% - 14px) / 2);
+        max-width: calc((100% - 14px) / 2);
+      }
+
+      .slider-dock-arrow {
+        width: 36px;
+        height: 36px;
+      }
+
+      .slider-dock-arrow svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      .slider-dock-arrow.prev { left: -8px; }
+      .slider-dock-arrow.next { right: -8px; }
 
       .product-info h4 {
         font-size: .85rem;
@@ -1714,9 +2343,9 @@
   <!-- ================= OFFER MARQUEE ================= -->
   <div class="offer-strip">
     <div class="marquee-track">
-      <span>✦ 50% FREE SHIPPING ACROSS INDIA ON ORDERS ABOVE ₹2999 ✦</span>
+      <span>✦ 25% FREE SHIPPING ACROSS INDIA ON ORDERS ABOVE ₹2999 ✦</span>
       <span>✦ NEW FESTIVE COLLECTION JUST LANDED ✦</span>
-      <span>✦ 50% FREE SHIPPING ACROSS INDIA ON ORDERS ABOVE ₹2999 ✦</span>
+      <span>✦ 25% FREE SHIPPING ACROSS INDIA ON ORDERS ABOVE ₹2999 ✦</span>
       <span>✦ NEW FESTIVE COLLECTION JUST LANDED ✦</span>
     </div>
   </div>
@@ -1739,12 +2368,12 @@
       </a>
       <nav class="primary-nav">
         <a href="#home" onclick="showView('home')">Home</a>
-        <a href="#sarees" onclick="showView('home')">Casual</a>
-        <a href="#women" onclick="showView('home')">Wedding</a>
-        <a href="#men" onclick="showView('home')">party</a>
+        <a href="#casual" onclick="showView('home')">Casual</a>
+        <a href="#wedding" onclick="showView('home')">Wedding</a>
+        <a href="#party" onclick="showView('home')">Party</a>
         <a href="#kids" onclick="showView('home')">Kids</a>
         <a href="#maternity" onclick="scrollToCat('maternity')">Maternity</a>
-        <a href="#contact" onclick="showView('home')">Contact</a>
+        <a href="#contact" onclick="scrollToCat('contact')">Contact</a>
       </nav>
       <div class="header-actions">
         <button class="hamburger" onclick="toggleMobileNav()">
@@ -1761,23 +2390,30 @@
   <!-- ================= HOME VIEW ================= -->
   <div class="view active" id="view-home">
 
-    <!-- HERO -->
-    <section class="hero" id="home">
-      <div class="hero-copy">
-        <span class="eyebrow">Since Every Thread Tells A Story</span>
-        <h1>Drape yourself <br>in <em>timeless</em> modest grace</h1>
-        <p>Handcrafted abayas, burkas, wedding edits, party kaftans and maternity collections. Modest luxury tailored for every celebration.</p>
-        <div class="hero-ctas">
-          <a class="btn-primary" href="#sarees" onclick="scrollToCat('sarees')">Shop New Arrivals</a>
-          <a class="btn-ghost" href="#contact">Visit Our Store</a>
+    <!-- HERO SHOWCASE (FULL BANNER) -->
+    <section class="hero-showcase" id="home">
+      <div class="hero-banner-frame" onclick="openBannerModal()" title="Click to view full image in high resolution">
+        <img src="images/reemas_garments_banner.jpg" alt="Reemas Garments — Islamic Elegant Wear" class="hero-full-banner" />
+        <div class="banner-expand-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <polyline points="9 21 3 21 3 15"></polyline>
+            <line x1="21" y1="3" x2="14" y2="10"></line>
+            <line x1="3" y1="21" x2="10" y2="14"></line>
+          </svg>
+          <span>Full Image</span>
         </div>
       </div>
-      <div class="hero-visual">
-        <div class="arch-frame">
-          <div class="ring"></div>
-          <img src="images/wedding_abaya.jpg" alt="Bridal abaya burka"
-            style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top center;"
-            onerror="this.style.display='none';">
+
+      <div class="hero-action-strip">
+        <div class="hero-copy">
+          <span class="eyebrow">Since Every Thread Tells A Story</span>
+          <h1>Drape yourself in <em>timeless</em> modest grace</h1>
+          <p>Handcrafted abayas, burkas, wedding edits, party kaftans and maternity collections. Modest luxury tailored for every celebration.</p>
+        </div>
+        <div class="hero-ctas">
+          <a class="btn-primary" href="#casual" onclick="scrollToCat('casual')">Shop New Arrivals</a>
+          <a class="btn-ghost" href="#contact">Visit Our Store</a>
         </div>
       </div>
     </section>
@@ -1785,15 +2421,15 @@
     <!-- CATEGORY TILES -->
     <section class="section" style="padding-top:10px;">
       <div class="cat-tiles">
-        <div class="cat-tile" onclick="scrollToCat('sarees')">
+        <div class="cat-tile" onclick="scrollToCat('casual')">
           <img class="cat-img" src="images/casual_abaya.jpg" alt="Casual">
           <h4>Casual</h4><span>42 designs</span>
         </div>
-        <div class="cat-tile" onclick="scrollToCat('women')">
+        <div class="cat-tile" onclick="scrollToCat('wedding')">
           <img class="cat-img" src="images/wedding_abaya.jpg" alt="Wedding">
           <h4>Wedding</h4><span>68 designs</span>
         </div>
-        <div class="cat-tile" onclick="scrollToCat('men')">
+        <div class="cat-tile" onclick="scrollToCat('party')">
           <img class="cat-img" src="images/party_kaftan.jpg" alt="Party">
           <h4>Party</h4><span>31 designs</span>
         </div>
@@ -1809,36 +2445,84 @@
     </section>
 
     <!-- CASUAL -->
-    <section class="section" id="sarees">
+    <section class="section" id="casual">
       <div class="section-head">
         <div>
           <h2>Casual Wear</h2>
           <p>Everyday modest abayas, daily burkas &amp; comfort fits</p>
         </div>
+        <div class="slider-head-nav">
+          <button type="button" class="slider-nav-btn prev" onclick="scrollSlider('casual', -1)" aria-label="Previous Casual products" title="Previous">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <button type="button" class="slider-nav-btn next" onclick="scrollSlider('casual', 1)" aria-label="Next Casual products" title="Next: View remaining products">
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
       </div>
-      <div class="product-grid" id="grid-sarees"></div>
+      <div class="product-slider-wrapper">
+        <button type="button" class="slider-dock-arrow prev at-start" id="arrow-prev-casual" onclick="scrollSlider('casual', -1)" aria-label="Previous products" title="Previous">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <div class="product-grid" id="grid-casual" onscroll="updateSliderArrows('casual')"></div>
+        <button type="button" class="slider-dock-arrow next" id="arrow-next-casual" onclick="scrollSlider('casual', 1)" aria-label="Next products" title="Next: View remaining products">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
     </section>
 
     <!-- WEDDING -->
-    <section class="section" id="women" style="background:var(--ivory-deep); border-radius:40px;">
+    <section class="section" id="wedding" style="background:var(--ivory-deep); border-radius:40px;">
       <div class="section-head">
         <div>
           <h2>Wedding &amp; Bridal Wear</h2>
           <p>Luxury hand-embroidered bridal burkas &amp; wedding edits</p>
         </div>
+        <div class="slider-head-nav">
+          <button type="button" class="slider-nav-btn prev" onclick="scrollSlider('wedding', -1)" aria-label="Previous Wedding products" title="Previous">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <button type="button" class="slider-nav-btn next" onclick="scrollSlider('wedding', 1)" aria-label="Next Wedding products" title="Next: View remaining products">
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
       </div>
-      <div class="product-grid" id="grid-women"></div>
+      <div class="product-slider-wrapper">
+        <button type="button" class="slider-dock-arrow prev at-start" id="arrow-prev-wedding" onclick="scrollSlider('wedding', -1)" aria-label="Previous products" title="Previous">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <div class="product-grid" id="grid-wedding" onscroll="updateSliderArrows('wedding')"></div>
+        <button type="button" class="slider-dock-arrow next" id="arrow-next-wedding" onclick="scrollSlider('wedding', 1)" aria-label="Next products" title="Next: View remaining products">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
     </section>
 
     <!-- PARTY -->
-    <section class="section" id="men">
+    <section class="section" id="party">
       <div class="section-head">
         <div>
           <h2>Party Wear</h2>
           <p>Designer kaftans, flowing gowns &amp; festive shimmer edits</p>
         </div>
+        <div class="slider-head-nav">
+          <button type="button" class="slider-nav-btn prev" onclick="scrollSlider('party', -1)" aria-label="Previous Party products" title="Previous">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <button type="button" class="slider-nav-btn next" onclick="scrollSlider('party', 1)" aria-label="Next Party products" title="Next: View remaining products">
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
       </div>
-      <div class="product-grid" id="grid-men"></div>
+      <div class="product-slider-wrapper">
+        <button type="button" class="slider-dock-arrow prev at-start" id="arrow-prev-party" onclick="scrollSlider('party', -1)" aria-label="Previous products" title="Previous">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <div class="product-grid" id="grid-party" onscroll="updateSliderArrows('party')"></div>
+        <button type="button" class="slider-dock-arrow next" id="arrow-next-party" onclick="scrollSlider('party', 1)" aria-label="Next products" title="Next: View remaining products">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
     </section>
 
     <!-- KIDS -->
@@ -1848,8 +2532,24 @@
           <h2>Kids Modest Wear</h2>
           <p>Festive kids abayas, modest frocks &amp; celebration sets</p>
         </div>
+        <div class="slider-head-nav">
+          <button type="button" class="slider-nav-btn prev" onclick="scrollSlider('kids', -1)" aria-label="Previous Kids products" title="Previous">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <button type="button" class="slider-nav-btn next" onclick="scrollSlider('kids', 1)" aria-label="Next Kids products" title="Next: View remaining products">
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
       </div>
-      <div class="product-grid" id="grid-kids"></div>
+      <div class="product-slider-wrapper">
+        <button type="button" class="slider-dock-arrow prev at-start" id="arrow-prev-kids" onclick="scrollSlider('kids', -1)" aria-label="Previous products" title="Previous">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <div class="product-grid" id="grid-kids" onscroll="updateSliderArrows('kids')"></div>
+        <button type="button" class="slider-dock-arrow next" id="arrow-next-kids" onclick="scrollSlider('kids', 1)" aria-label="Next products" title="Next: View remaining products">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
     </section>
 
     <!-- MATERNITY -->
@@ -1859,8 +2559,24 @@
           <h2>Maternity Wear</h2>
           <p>Comfortable, elegant & modest maternity collection</p>
         </div>
+        <div class="slider-head-nav">
+          <button type="button" class="slider-nav-btn prev" onclick="scrollSlider('maternity', -1)" aria-label="Previous Maternity products" title="Previous">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <button type="button" class="slider-nav-btn next" onclick="scrollSlider('maternity', 1)" aria-label="Next Maternity products" title="Next: View remaining products">
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
       </div>
-      <div class="product-grid" id="grid-maternity"></div>
+      <div class="product-slider-wrapper">
+        <button type="button" class="slider-dock-arrow prev at-start" id="arrow-prev-maternity" onclick="scrollSlider('maternity', -1)" aria-label="Previous products" title="Previous">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <div class="product-grid" id="grid-maternity" onscroll="updateSliderArrows('maternity')"></div>
+        <button type="button" class="slider-dock-arrow next" id="arrow-next-maternity" onclick="scrollSlider('maternity', 1)" aria-label="Next products" title="Next: View remaining products">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
     </section>
 
     <!-- MORE COLLECTIONS -->
@@ -1872,15 +2588,15 @@
         </div>
       </div>
       <div class="collections-scroll">
-        <div class="collection-card" onclick="scrollToCat('sarees')"
+        <div class="collection-card" onclick="scrollToCat('casual')"
           style="background:linear-gradient(to bottom, rgba(30,20,25,0.2), rgba(30,20,25,0.88)), url('images/casual_abaya.jpg') center/cover;">
           <h4>Casual Wear</h4><span>Everyday modest abayas &amp; daily fits</span>
         </div>
-        <div class="collection-card" onclick="scrollToCat('women')"
+        <div class="collection-card" onclick="scrollToCat('wedding')"
           style="background:linear-gradient(to bottom, rgba(122,30,60,0.25), rgba(90,19,41,0.9)), url('images/wedding_abaya.jpg') center/cover;">
           <h4>Wedding &amp; Bridal</h4><span>Royal zardozi burkas &amp; bridal gowns</span>
         </div>
-        <div class="collection-card" onclick="scrollToCat('men')"
+        <div class="collection-card" onclick="scrollToCat('party')"
           style="background:linear-gradient(to bottom, rgba(19,78,72,0.25), rgba(10,45,40,0.9)), url('images/party_kaftan.jpg') center/cover;">
           <h4>Party Wear</h4><span>Glamorous designer kaftans &amp; gowns</span>
         </div>
@@ -1892,7 +2608,7 @@
           style="background:linear-gradient(to bottom, rgba(122,30,60,0.2), rgba(90,19,41,0.9)), url('images/maternity_dress.jpg') center/cover;">
           <h4>Maternity Edits</h4><span>Comfortable feeding-friendly modest wear</span>
         </div>
-        <div class="collection-card" onclick="scrollToCat('sarees')"
+        <div class="collection-card" onclick="scrollToCat('casual')"
           style="background:linear-gradient(to bottom, rgba(20,40,65,0.2), rgba(15,25,45,0.9)), url('images/images1.png') center/cover;">
           <h4>Custom Burka Studio</h4><span>Tailored designer modest abayas</span>
         </div>
@@ -1923,37 +2639,126 @@
 
     <!-- STORE / CONTACT -->
     <section class="section" id="contact">
-      <div class="store-info">
-        <div>
+      <div class="contact-wrapper">
+        <div class="contact-head">
           <span class="eyebrow">Visit / Reach Us</span>
-          <h2>Our Store</h2>
-          <p>Step into LAKSHMI for a personal styling experience — feel the fabric, try the fit, and take home
-            tradition.</p>
-          <div class="contact-line">
-            <svg viewBox="0 0 24 24">
-              <path
-                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-            </svg>
-            +91 98438 22332
-          </div>
-          <div class="contact-line">
-            <svg viewBox="0 0 24 24">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-              <circle cx="12" cy="10" r="3" />
-            </svg>
-            REEMAS BURKAS Near Hudha Masjid,Saramedu main Road,Karumbu Kadai,Coimbatore-641008 tamilnadu,India
-          </div>
+          <h2>Contact &amp; Store Location</h2>
+          <p>Step into REEMA SABAYA for a personal styling experience — feel the fabric, try the fit, and celebrate modest elegance. Visit our Coimbatore studio or connect directly online.</p>
         </div>
-        <div class="map-box">
-          <svg viewBox="0 0 300 160">
-            <rect width="300" height="160" rx="18" fill="#F3E7D6" />
-            <path d="M20 130 Q80 60 150 100 T280 60" stroke="#CC9A2E" stroke-width="3" fill="none"
-              stroke-dasharray="6 6" />
-            <circle cx="150" cy="80" r="9" fill="#7A1E3C" />
-            <circle cx="150" cy="80" r="16" fill="none" stroke="#7A1E3C" stroke-width="2" opacity="0.4" />
-          </svg>
-          <p style="font-size:.85rem; color:#6b5860;">Store Timing: 10:30 AM – 11:00 PM (All days)</p>
-          <a class="btn-primary" style="text-align:center;" href="tel:+919843822332">Call Now: 98438 22332</a>
+
+        <div class="contact-grid">
+          <!-- Left: Client Info Card -->
+          <div class="contact-card">
+            <div>
+              <div class="contact-card-title">
+                <span class="studio-tag">Custom Modest Studio</span>
+                <h3>REEMA SABAYA</h3>
+                <p>Specializing in handcrafted daily abayas, luxury bridal burkas, designer party kaftans, and modest maternity edits.</p>
+              </div>
+
+              <div class="contact-list">
+                <!-- Address -->
+                <div class="contact-row">
+                  <div class="contact-icon-pill" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                  </div>
+                  <div class="contact-row-text">
+                    <span class="label">Boutique Address</span>
+                    <p class="val">REEMAS BURKAS Near Hudha Masjid, Saramedu Main Road, Karumbu Kadai, Coimbatore – 641008, Tamil Nadu, India</p>
+                  </div>
+                </div>
+
+                <!-- Operating Hours -->
+                <div class="contact-row">
+                  <div class="contact-icon-pill" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" />
+                      <polyline points="12 6 12 12 16 14" />
+                    </svg>
+                  </div>
+                  <div class="contact-row-text">
+                    <span class="label">Operating Hours</span>
+                    <p class="val"><strong>10:30 AM – 11:00 PM</strong></p>
+                    <p style="font-size:.82rem; color:#7a6870; margin-top:2px;">Monday – Sunday (Open All 7 Days)</p>
+                  </div>
+                </div>
+
+                <!-- Phone -->
+                <div class="contact-row">
+                  <div class="contact-icon-pill" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                  </div>
+                  <div class="contact-row-text">
+                    <span class="label">Phone / WhatsApp</span>
+                    <a href="tel:+919843822332" class="val" style="font-weight:600;">+91 98438 22332</a>
+                  </div>
+                </div>
+
+                <!-- Email -->
+                <div class="contact-row">
+                  <a href="mailto:reemasabhaya9@gmail.com?subject=Enquiry%20%E2%80%94%20REEMA%20SABAYA" onclick="openDirectMail(event)" class="contact-icon-pill" aria-label="Email reemasabhaya9@gmail.com" title="Open direct mailbox" style="text-decoration:none; cursor:pointer;">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                      <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                  </a>
+                  <div class="contact-row-text">
+                    <span class="label">Email Address</span>
+                    <a href="mailto:reemasabhaya9@gmail.com?subject=Enquiry%20%E2%80%94%20REEMA%20SABAYA" onclick="openDirectMail(event)" class="val" title="Click to open direct mailbox" style="cursor:pointer;">reemasabhaya9@gmail.com</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Action Buttons -->
+            <div class="contact-card-actions">
+              <a class="btn-contact-call" href="tel:+919843822332">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+                Call: 98438 22332
+              </a>
+              <a class="btn-contact-wa" href="https://wa.me/919843822332?text=Hi%20REEMA%20SABAYA%2C%20I%20would%20like%20to%20visit%20your%20store." target="_blank" rel="noopener noreferrer">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.691.074-1.115-.062-.271-.087-.624-.206-1.077-.402-1.884-.814-3.114-2.709-3.21-2.834-.096-.126-.777-1.034-.777-1.972 0-.938.491-1.4.666-1.593.175-.193.382-.241.51-.241.127 0 .255.002.366.007.117.006.274-.044.428.328.16.386.545 1.332.593 1.43.048.097.08.212.016.338-.064.126-.096.204-.191.315-.096.112-.202.25-.288.336-.096.096-.197.2-.085.392.112.193.498.823 1.07 1.332.738.657 1.36.861 1.553.957.193.097.306.085.42-.048.113-.133.483-.563.611-.756.128-.193.256-.161.43-.097.175.064 1.107.522 1.299.619.191.096.319.144.366.225.048.08.048.467-.096.872z" />
+                </svg>
+                Chat on WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <!-- Right: Google Maps Embed Card -->
+          <div class="map-card">
+            <div class="map-card-bar">
+              <span class="map-live-tag">
+                <span class="map-live-dot"></span>
+                Coimbatore Boutique Location
+              </span>
+              <a class="map-dir-link" href="https://maps.google.com/?q=10.977410989183863,76.96018237504471" target="_blank" rel="noopener noreferrer">
+                Open in Maps ↗
+              </a>
+            </div>
+            <div class="map-embed-container">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3916.8139577204133!2d76.96018237504471!3d10.977410989183863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTDCsDU4JzM4LjciTiA3NsKwNTcnNDUuOSJF!5e0!3m2!1sen!2sin!4v1791705420618!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+                title="REEMA SABAYA Boutique Location">
+              </iframe>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -2019,8 +2824,7 @@
             <span class="tagline" style="color:var(--gold-light);">Custom Modest Studio</span>
           </div>
         </div>
-        <p style="margin-top:16px;">Traditional wear crafted with heritage and heart. Sarees, kurtis, kurtas and
-          kidswear for every celebration.</p>
+        <p style="margin-top:16px;">Modest wear crafted with heritage and heart. Handcrafted abayas, bridal burkas, designer kaftans and maternity edits for every celebration.</p>
         <div class="footer-social">
           <a href="https://www.instagram.com/reemas_burkas?utm_source=ig_web_button_share_sheet&amp;psln=ZDNlZDc0MzIxNw=="
             target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24">
@@ -2047,9 +2851,9 @@
       <div>
         <h4>Shop</h4>
         <ul>
-          <li><a href="#sarees" onclick="scrollToCat('sarees')">Casual Wear</a></li>
-          <li><a href="#women" onclick="scrollToCat('women')">Wedding &amp; Bridal</a></li>
-          <li><a href="#men" onclick="scrollToCat('men')">Party Wear</a></li>
+          <li><a href="#casual" onclick="scrollToCat('casual')">Casual Wear</a></li>
+          <li><a href="#wedding" onclick="scrollToCat('wedding')">Wedding &amp; Bridal</a></li>
+          <li><a href="#party" onclick="scrollToCat('party')">Party Wear</a></li>
           <li><a href="#kids" onclick="scrollToCat('kids')">Kids Collection</a></li>
           <li><a href="#maternity" onclick="scrollToCat('maternity')">Maternity Edits</a></li>
         </ul>
@@ -2057,9 +2861,8 @@
       <div>
         <h4>Help</h4>
         <ul>
-          <li><a href="#" onclick="showView('login'); return false;">Login / Account</a></li>
-          <li><a href="#contact" onclick="showView('home')">Shipping &amp; Returns</a></li>
-          <li><a href="#contact" onclick="showView('home')">Contact Us</a></li>
+          <li><a href="#contact" onclick="scrollToCat('contact')">Shipping &amp; Returns</a></li>
+          <li><a href="#contact" onclick="scrollToCat('contact')">Contact Us</a></li>
         </ul>
       </div>
       <div>
@@ -2093,6 +2896,15 @@
 
   <!-- ================= TOAST ================= -->
   <div class="toast" id="toast"></div>
+
+  <!-- ================= BANNER LIGHTBOX MODAL ================= -->
+  <div class="banner-lightbox" id="bannerLightbox" onclick="closeBannerModal(event)" role="dialog" aria-modal="true" aria-label="Full Banner View">
+    <div class="banner-lightbox-content">
+      <button class="banner-lightbox-close" onclick="closeBannerModal()" aria-label="Close Full Banner View">✕</button>
+      <img src="images/reemas_garments_banner.jpg" alt="Reemas Garments — Islamic Elegant Wear" class="banner-lightbox-img" />
+      <div class="banner-lightbox-caption">✨ Reemas Garments — Islamic Elegant Wear · Handcrafted Abayas &amp; Workshop Facility</div>
+    </div>
+  </div>
 
   <!-- ================= SVG ILLUSTRATION SYMBOLS ================= -->
   <svg width="0" height="0" style="position:absolute;">
@@ -2149,35 +2961,62 @@
   </svg>
 
   <script>
+    /* ============ CATEGORY LABELS ============ */
+    const CATEGORY_NAMES = {
+      casual: 'Casual',
+      wedding: 'Wedding',
+      party: 'Party',
+      kids: 'Kids',
+      maternity: 'Maternity',
+      sarees: 'Casual',
+      women: 'Wedding',
+      men: 'Party'
+    };
+
     /* ============ PRODUCT DATA ============ */
     const WM = "https://commons.wikimedia.org/wiki/Special:FilePath/";
     const PX = "https://images.pexels.com/photos/";
     const PRODUCTS = [
       // Casual Wear
-      { id: 'sr1', cat: 'sarees', name: 'Everyday Minimal Abaya — Beige', mrp: 2195, icon: 'ill-saree', color: '#B5842A', img: 'images/casual_abaya.jpg' },
-      { id: 'sr2', cat: 'sarees', name: 'Front-Open Embroidered Burka — Navy', mrp: 2450, icon: 'ill-saree', color: '#1E3A5F', img: 'images/images1.png' },
-      { id: 'sr3', cat: 'sarees', name: 'Comfort Daily Cotton Abaya — Olive', mrp: 1850, icon: 'ill-saree', color: '#134E48', img: 'images/saree_teal.png' },
-      { id: 'sr4', cat: 'sarees', name: 'Classic Black Umbrella Cut Burka', mrp: 1995, icon: 'ill-saree', color: '#2A1B22', img: 'images/womens_wear.png' },
+      { id: 'sr1', cat: 'casual', name: 'Elegant Embellished Layered Abaya — Teal Blue', mrp: 2195, icon: 'ill-saree', color: '#B5842A', img: 'images/images.png' },
+      { id: 'sr2', cat: 'casual', name: 'Classic Everyday Panel Abaya — Dusty Mauve', mrp: 2450, icon: 'ill-saree', color: '#1E3A5F', img: 'images/images1.png' },
+      { id: 'sr3', cat: 'casual', name: 'Casual Everyday Buttoned design Abaya — Blue', mrp: 1850, icon: 'ill-saree', color: '#134E48', img: 'images/images2.jpg' },
+      { id: 'sr4', cat: 'casual', name: 'Classic Black Umbrella Cut Burka', mrp: 1995, icon: 'ill-saree', color: '#2A1B22', img: 'images/casual_black_burka.jpg' },
+      { id: 'sr5', cat: 'casual', name: 'Classic Everyday Panel Abaya — Dusty Mauve', mrp: 2450, icon: 'ill-saree', color: '#1E3A5F', img: 'images/images1.png' },
+      { id: 'sr6', cat: 'casual', name: 'Casual Everyday Buttoned design Abaya — Blue', mrp: 1850, icon: 'ill-saree', color: '#134E48', img: 'images/images2.jpg' },
+      { id: 'sr7', cat: 'casual', name: 'Classic Black Umbrella Cut Burka', mrp: 1995, icon: 'ill-saree', color: '#2A1B22', img: 'images/casual_black_burka.jpg' },
       // Wedding & Bridal Wear
-      { id: 'wm1', cat: 'women', name: 'Luxury Zardozi Bridal Abaya — Maroon', mrp: 5800, icon: 'ill-kurti', color: '#7A1E3C', img: 'images/wedding_abaya.jpg' },
-      { id: 'wm2', cat: 'women', name: 'Royal Velvet Wedding Gown with Veil', mrp: 4950, icon: 'ill-kurti', color: '#5A1329', img: 'images/women_festive_gown.png' },
-      { id: 'wm3', cat: 'women', name: 'Golden Embellished Bridal Burka', mrp: 5200, icon: 'ill-kurti', color: '#B5842A', img: 'images/saree_banarasi_gold.png' },
-      { id: 'wm4', cat: 'women', name: 'Handcrafted Lace Wedding Abaya Set', mrp: 4450, icon: 'ill-kurti', color: '#C1596A', img: 'images/women_anarkali.png' },
+      { id: 'wm1', cat: 'wedding', name: 'Luxury Zardozi Bridal Abaya — Maroon', mrp: 5800, icon: 'ill-kurti', color: '#7A1E3C', img: 'images/wedding_abaya.jpg' },
+      { id: 'wm2', cat: 'wedding', name: 'Royal Velvet Wedding Gown with Veil', mrp: 4950, icon: 'ill-kurti', color: '#5A1329', img: 'images/women_festive_gown.png' },
+      { id: 'wm3', cat: 'wedding', name: 'Golden Embellished Bridal Burka', mrp: 5200, icon: 'ill-kurti', color: '#B5842A', img: 'images/bridal_gold_burka.jpg' },
+      { id: 'wm4', cat: 'wedding', name: 'Handcrafted Lace Wedding Abaya Set', mrp: 4450, icon: 'ill-kurti', color: '#C1596A', img: 'images/images2.png' },
+      { id: 'wm5', cat: 'wedding', name: 'Royal Velvet Wedding Gown with Veil', mrp: 4950, icon: 'ill-kurti', color: '#5A1329', img: 'images/women_festive_gown.png' },
+      { id: 'wm6', cat: 'wedding', name: 'Golden Embellished Bridal Burka', mrp: 5200, icon: 'ill-kurti', color: '#B5842A', img: 'images/bridal_gold_burka.jpg' },
+      { id: 'wm7', cat: 'wedding', name: 'Handcrafted Lace Wedding Abaya Set', mrp: 4450, icon: 'ill-kurti', color: '#C1596A', img: 'images/images2.png' },
       // Party Wear
-      { id: 'mn1', cat: 'men', name: 'Emerald Sequin Designer Kaftan Gown', mrp: 3495, icon: 'ill-kurta', color: '#134E48', img: 'images/party_kaftan.jpg' },
-      { id: 'mn2', cat: 'men', name: 'Shimmer Pleated Party Wear Abaya', mrp: 3195, icon: 'ill-kurta', color: '#CC9A2E', img: 'images/women_mustard_kurti.png' },
-      { id: 'mn3', cat: 'men', name: 'Chiffon Layered Festive Kaftan', mrp: 2950, icon: 'ill-kurta', color: '#C1596A', img: 'images/saree_chiffon.png' },
-      { id: 'mn4', cat: 'men', name: 'Silk Finish Designer Party Burka', mrp: 3250, icon: 'ill-kurta', color: '#7A1E3C', img: 'images/mens_wear.png' },
+      { id: 'mn1', cat: 'party', name: 'Emerald Sequin Designer Kaftan Gown', mrp: 3495, icon: 'ill-kurta', color: '#134E48', img: 'images/party_kaftan.jpg' },
+      { id: 'mn2', cat: 'party', name: 'Shimmer Pleated Party Wear Abaya', mrp: 3195, icon: 'ill-kurta', color: '#CC9A2E', img: 'images/images2.png' },
+      { id: 'mn3', cat: 'party', name: 'Chiffon Layered Festive Kaftan', mrp: 2950, icon: 'ill-kurta', color: '#C1596A', img: 'images/party_kaftan.jpg' },
+      { id: 'mn4', cat: 'party', name: 'Silk Finish Designer Party Burka', mrp: 3250, icon: 'ill-kurta', color: '#7A1E3C', img: 'images/party_burka_silk.jpg' },
+      { id: 'mn5', cat: 'party', name: 'Shimmer Pleated Party Wear Abaya', mrp: 3195, icon: 'ill-kurta', color: '#CC9A2E', img: 'images/images2.png' },
+      { id: 'mn6', cat: 'party', name: 'Chiffon Layered Festive Kaftan', mrp: 2950, icon: 'ill-kurta', color: '#C1596A', img: 'images/party_kaftan.jpg' },
+      { id: 'mn7', cat: 'party', name: 'Silk Finish Designer Party Burka', mrp: 3250, icon: 'ill-kurta', color: '#7A1E3C', img: 'images/party_burka_silk.jpg' },
       // Kids Modest Wear
       { id: 'kd1', cat: 'kids', name: 'Girls Pastel Pink Festive Abaya with Hijab', mrp: 1495, icon: 'ill-kids', color: '#C1596A', img: 'images/kids_abaya.jpg' },
       { id: 'kd2', cat: 'kids', name: 'Junior Lace Flared Festive Frock', mrp: 1195, icon: 'ill-kids', color: '#CC9A2E', img: 'images/kids_festive_frocks.png' },
       { id: 'kd3', cat: 'kids', name: 'Boys Traditional Kurta Set', mrp: 1095, icon: 'ill-kids', color: '#134E48', img: 'images/boys_dhoti_set.png' },
       { id: 'kd4', cat: 'kids', name: 'Kids Daily Comfort Cotton Dress Set', mrp: 895, icon: 'ill-kids', color: '#7A1E3C', img: 'images/child_dress.png' },
+      { id: 'kd5', cat: 'kids', name: 'Junior Lace Flared Festive Frock', mrp: 1195, icon: 'ill-kids', color: '#CC9A2E', img: 'images/kids_festive_frocks.png' },
+      { id: 'kd6', cat: 'kids', name: 'Boys Traditional Kurta Set', mrp: 1095, icon: 'ill-kids', color: '#134E48', img: 'images/boys_dhoti_set.png' },
+      { id: 'kd7', cat: 'kids', name: 'Kids Daily Comfort Cotton Dress Set', mrp: 895, icon: 'ill-kids', color: '#7A1E3C', img: 'images/child_dress.png' },
       // Maternity Wear
       { id: 'mt1', cat: 'maternity', name: 'Pleated Modest Maternity Maxi Gown — Wine', mrp: 2695, icon: 'ill-kurti', color: '#7A1E3C', img: 'images/maternity_dress.jpg' },
       { id: 'mt2', cat: 'maternity', name: 'Feeding Friendly Emerald Maternity Kurti', mrp: 2195, icon: 'ill-kurti', color: '#134E48', img: 'images/maternity_kurti.jpg' },
       { id: 'mt3', cat: 'maternity', name: 'Comfort Modest Maternity Abaya — Navy', mrp: 2850, icon: 'ill-kurti', color: '#1E3A5F', img: 'images/images1.png' },
-      { id: 'mt4', cat: 'maternity', name: 'A-Line Modest Maternity Floral Dress', mrp: 2450, icon: 'ill-kurti', color: '#C1596A', img: 'images/women_anarkali.png' },
+      { id: 'mt4', cat: 'maternity', name: 'A-Line Modest Maternity Floral Dress', mrp: 2450, icon: 'ill-kurti', color: '#C1596A', img: 'images/maternity_dress.jpg' },
+      { id: 'mt5', cat: 'maternity', name: 'Feeding Friendly Emerald Maternity Kurti', mrp: 2195, icon: 'ill-kurti', color: '#134E48', img: 'images/maternity_kurti.jpg' },
+      { id: 'mt6', cat: 'maternity', name: 'Comfort Modest Maternity Abaya — Navy', mrp: 2850, icon: 'ill-kurti', color: '#1E3A5F', img: 'images/images1.png' },
+      { id: 'mt7', cat: 'maternity', name: 'A-Line Modest Maternity Floral Dress', mrp: 2450, icon: 'ill-kurti', color: '#C1596A', img: 'images/maternity_dress.jpg' },
     ];
     let cart = {}; // id -> qty
 
@@ -2222,13 +3061,15 @@
         </button>
       `).join('');
 
+      const displayCategory = CATEGORY_NAMES[p.cat] || p.cat;
+
       return `
   <div class="product-card" data-id="${p.id}">
     <div class="product-media" style="background:${p.color}15;">
       <img class="product-photo" src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.onerror=null;this.outerHTML='&lt;svg viewBox=&quot;0 0 200 240&quot; width=&quot;58%&quot;&gt;&lt;use href=&quot;%23${p.icon}&quot; fill=&quot;${p.color}&quot;/&gt;&lt;/svg&gt;';" />
     </div>
     <div class="product-info">
-      <span class="cat-label">${p.cat}</span>
+      <span class="cat-label">${displayCategory}</span>
       <h4>${p.name}</h4>
       <div class="price-row">
         <span class="now">${money(p.mrp)}</span>
@@ -2358,9 +3199,60 @@
       if (!grid) return;
       grid.innerHTML = PRODUCTS.filter(p => p.cat === cat).map(productCard).join('');
     }
+
     function renderAll() {
-      ['sarees', 'women', 'men', 'kids', 'maternity'].forEach(renderCategory);
+      const cats = ['casual', 'wedding', 'party', 'kids', 'maternity'];
+      cats.forEach(renderCategory);
       renderCart();
+      setTimeout(() => cats.forEach(updateSliderArrows), 120);
+    }
+
+    /* ============ PRODUCT CAROUSEL SLIDER CONTROLS ============ */
+    function scrollSlider(cat, dir) {
+      const grid = document.getElementById('grid-' + cat);
+      if (!grid) return;
+      const card = grid.querySelector('.product-card');
+      const step = card ? (card.offsetWidth + 22) * 3 : (grid.clientWidth * 0.85);
+      const maxScroll = grid.scrollWidth - grid.clientWidth;
+
+      if (dir > 0) {
+        if (grid.scrollLeft >= maxScroll - 20) {
+          // If already at the end, smoothly cycle back to start
+          grid.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          grid.scrollBy({ left: step, behavior: 'smooth' });
+        }
+      } else {
+        if (grid.scrollLeft <= 20) {
+          // If at start, cycle to end
+          grid.scrollTo({ left: maxScroll, behavior: 'smooth' });
+        } else {
+          grid.scrollBy({ left: -step, behavior: 'smooth' });
+        }
+      }
+
+      setTimeout(() => updateSliderArrows(cat), 360);
+    }
+
+    function updateSliderArrows(cat) {
+      const grid = document.getElementById('grid-' + cat);
+      if (!grid) return;
+      const prevBtn = document.getElementById('arrow-prev-' + cat);
+      const nextBtn = document.getElementById('arrow-next-' + cat);
+      const maxScroll = grid.scrollWidth - grid.clientWidth;
+
+      if (prevBtn) {
+        prevBtn.classList.toggle('at-start', grid.scrollLeft <= 15);
+      }
+      if (nextBtn) {
+        if (grid.scrollLeft >= maxScroll - 20) {
+          nextBtn.setAttribute('title', 'Back to first products ↺');
+          nextBtn.classList.add('at-end');
+        } else {
+          nextBtn.setAttribute('title', 'Next: View remaining products →');
+          nextBtn.classList.remove('at-end');
+        }
+      }
     }
 
     /* ============ CART LOGIC ============ */
@@ -2384,12 +3276,13 @@
       const ids = Object.keys(cart);
       if (ids.length === 0) {
         itemsWrap.innerHTML = `<div class="cart-empty">
-      <p>Your cart is empty.<br>Start adding some traditional wear!</p>
+      <p>Your cart is empty.<br>Start adding some modest wear!</p>
     </div>`;
       } else {
         itemsWrap.innerHTML = ids.map(id => {
           const p = PRODUCTS.find(x => x.id === id);
           const qty = cart[id];
+          const displayCat = CATEGORY_NAMES[p.cat] || p.cat;
           return `
       <div class="cart-line">
         <div class="thumb" style="background:${p.color}15;">
@@ -2397,7 +3290,7 @@
         </div>
         <div class="cart-line-info">
           <h5>${p.name}</h5>
-          <span class="cat-label">${p.cat}</span>
+          <span class="cat-label">${displayCat}</span>
           <div class="line-price">${money(p.mrp * qty)}</div>
           <div class="cart-remove" onclick="removeFromCart('${id}')">Remove</div>
         </div>
@@ -2439,8 +3332,10 @@
     }
     function scrollToCat(cat) {
       showView('home');
+      const aliasMap = { sarees: 'casual', women: 'wedding', men: 'party' };
+      const targetId = aliasMap[cat] || cat;
       setTimeout(() => {
-        const target = document.getElementById(cat) || document.getElementById(cat.toLowerCase());
+        const target = document.getElementById(targetId) || document.getElementById(cat) || document.getElementById(cat.toLowerCase());
         if (target) {
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
@@ -2503,6 +3398,46 @@
       t.classList.add('active');
       setTimeout(() => t.classList.remove('active'), 2500);
     }
+
+    function openDirectMail(e) {
+      const email = 'reemasabhaya9@gmail.com';
+      const subject = encodeURIComponent('Enquiry — REEMA SABAYA');
+      const body = encodeURIComponent('Hi REEMA SABAYA,\n\nI would like to enquire about your modest collection / custom designs.\n\n');
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+      if (!isMobile) {
+        if (e && e.preventDefault) e.preventDefault();
+        // Directly open Gmail web compose in a new tab on desktop browsers
+        const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`;
+        const win = window.open(gmailUrl, '_blank', 'noopener,noreferrer');
+        if (!win || win.closed || typeof win.closed === 'undefined') {
+          window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+        }
+      }
+    }
+
+    function openBannerModal() {
+      const modal = document.getElementById('bannerLightbox');
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeBannerModal(e) {
+      if (e && e.target && e.target.classList.contains('banner-lightbox-img')) return;
+      const modal = document.getElementById('bannerLightbox');
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeBannerModal();
+      }
+    });
 
     document.addEventListener('DOMContentLoaded', () => {
       renderAll();
