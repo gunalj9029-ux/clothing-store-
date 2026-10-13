@@ -373,62 +373,86 @@
       stroke-width: 1.8;
     }
 
-    /* ---------- HERO SHOWCASE (FULL BANNER) ---------- */
-    .hero-showcase {
+    /* ---------- HERO ---------- */
+    .hero {
       max-width: 1240px;
-      margin: 12px auto 28px;
-      padding: 0 24px;
-    }
-
-    .hero-banner-frame {
-      width: 100%;
-      border-radius: 18px;
-      overflow: hidden;
-      border: 2px solid rgba(204, 154, 46, 0.45);
-      box-shadow: 0 16px 45px rgba(42, 27, 34, 0.12);
-      background: #000;
-      position: relative;
-      cursor: zoom-in;
-      transition: transform .3s ease, box-shadow .3s ease;
-    }
-
-    .hero-banner-frame:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 20px 55px rgba(42, 27, 34, 0.18);
-    }
-
-    .hero-full-banner {
-      width: 100%;
-      height: auto;
-      display: block;
-      object-fit: contain;
-    }
-
-    .banner-expand-badge {
-      position: absolute;
-      bottom: 12px;
-      right: 14px;
-      background: rgba(26, 16, 20, 0.85);
-      color: #fff;
-      border: 1px solid rgba(204, 154, 46, 0.7);
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: .75rem;
-      font-weight: 600;
-      letter-spacing: .5px;
-      display: inline-flex;
+      margin: 0 auto;
+      padding: 56px 24px 40px;
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 50px;
       align-items: center;
-      gap: 6px;
-      backdrop-filter: blur(8px);
-      transition: all .25s ease;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      pointer-events: none;
     }
 
-    .hero-banner-frame:hover .banner-expand-badge {
+    .hero-copy .eyebrow {
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .hero-copy h1 {
+      font-size: 3.1rem;
+      line-height: 1.12;
+      color: var(--maroon-dark);
+      margin-bottom: 18px;
+    }
+
+    .hero-copy h1 em {
+      font-style: normal;
+      color: var(--gold);
+      border-bottom: 3px solid var(--gold-light);
+    }
+
+    .hero-copy p {
+      font-size: 1.02rem;
+      color: #5c4a52;
+      max-width: 440px;
+      margin-bottom: 28px;
+      line-height: 1.65;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .badge-seal {
+      position: absolute;
+      top: -14px;
+      right: -10px;
+      width: 118px;
+      height: 118px;
+      border-radius: 50%;
       background: var(--maroon);
-      border-color: var(--gold-light);
-      transform: scale(1.05);
+      color: var(--ivory);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(122, 30, 60, .4);
+      border: 3px solid var(--gold-light);
+      transform: rotate(12deg);
+      z-index: 5;
+    }
+
+    .badge-seal b {
+      font-size: 1.7rem;
+      font-family: 'Marcellus', serif;
+      line-height: 1;
+    }
+
+    .badge-seal span {
+      font-size: .62rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 2px;
     }
 
     /* BANNER LIGHTBOX MODAL */
@@ -508,97 +532,6 @@
       letter-spacing: .5px;
       text-align: center;
       font-weight: 500;
-    }
-
-    .hero-action-strip {
-      margin-top: 18px;
-      background: var(--ivory);
-      border: 1px solid rgba(204, 154, 46, 0.25);
-      border-radius: 22px;
-      padding: 24px 34px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 30px;
-      box-shadow: 0 8px 24px rgba(42, 27, 34, 0.05);
-      flex-wrap: wrap;
-    }
-
-    .hero-action-strip .hero-copy {
-      flex: 1;
-      min-width: 280px;
-    }
-
-    .hero-action-strip .eyebrow {
-      font-size: .72rem;
-      letter-spacing: 1.8px;
-      margin-bottom: 6px;
-      display: block;
-      color: var(--gold);
-      font-weight: 600;
-    }
-
-    .hero-action-strip h1 {
-      font-size: 1.8rem;
-      line-height: 1.25;
-      color: var(--maroon-dark);
-      margin-bottom: 6px;
-    }
-
-    .hero-action-strip h1 em {
-      font-style: normal;
-      color: var(--gold);
-      border-bottom: 2.5px solid var(--gold-light);
-    }
-
-    .hero-action-strip p {
-      font-size: .88rem;
-      color: #5c4a52;
-      max-width: 620px;
-      line-height: 1.55;
-    }
-
-    .hero-action-strip .hero-ctas {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .hero-action-strip .btn-primary {
-      background: var(--maroon);
-      color: var(--ivory);
-      font-weight: 600;
-      padding: 12px 26px;
-      border-radius: 26px;
-      font-size: .88rem;
-      letter-spacing: .3px;
-      transition: .2s;
-      box-shadow: 0 4px 14px rgba(122, 30, 60, 0.22);
-      white-space: nowrap;
-    }
-
-    .hero-action-strip .btn-primary:hover {
-      background: var(--maroon-dark);
-      transform: translateY(-2px);
-    }
-
-    .hero-action-strip .btn-ghost {
-      padding: 12px 22px;
-      border-radius: 26px;
-      font-weight: 600;
-      font-size: .88rem;
-      border: 1.5px solid var(--maroon);
-      color: var(--maroon);
-      background: transparent;
-      transition: .2s;
-      white-space: nowrap;
-    }
-
-    .hero-action-strip .btn-ghost:hover {
-      background: var(--maroon);
-      color: var(--ivory);
-      transform: translateY(-2px);
     }
 
 
@@ -1410,6 +1343,282 @@
       margin-top: 4px;
     }
 
+    /* ---------- ABOUT US & HIGHLIGHTS ---------- */
+    .about-section {
+      padding-top: 54px;
+      padding-bottom: 26px;
+    }
+
+    .about-wrapper {
+      background: linear-gradient(150deg, #ffffff 0%, rgba(243, 222, 221, 0.45) 45%, rgba(243, 231, 214, 0.65) 100%);
+      border-radius: 36px;
+      padding: 48px;
+      border: 1px solid rgba(204, 154, 46, 0.28);
+      box-shadow: 0 14px 40px rgba(42, 27, 34, 0.07);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-wrapper::before {
+      content: "";
+      position: absolute;
+      top: -70px;
+      right: -70px;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232, 200, 119, 0.22), transparent 70%);
+      pointer-events: none;
+    }
+
+    .about-wrapper::after {
+      content: "";
+      position: absolute;
+      bottom: -60px;
+      left: -60px;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(122, 30, 60, 0.08), transparent 70%);
+      pointer-events: none;
+    }
+
+    .about-story-grid {
+      display: grid;
+      grid-template-columns: 1.22fr 0.78fr;
+      gap: 40px;
+      align-items: center;
+      margin-bottom: 48px;
+    }
+
+    .about-story-content .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+
+    .about-story-content h2 {
+      font-size: 2.45rem;
+      color: var(--maroon-dark);
+      margin-bottom: 18px;
+      line-height: 1.2;
+    }
+
+    .about-lead-text {
+      font-size: 1.02rem;
+      line-height: 1.8;
+      color: #3f2e36;
+      margin-bottom: 14px;
+    }
+
+    .about-lead-text strong {
+      color: var(--maroon-dark);
+      font-weight: 600;
+    }
+
+    .about-sub-text {
+      font-size: .95rem;
+      line-height: 1.7;
+      color: #635058;
+      margin-bottom: 24px;
+    }
+
+    .about-badges-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .about-badge-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: #ffffff;
+      border: 1px solid rgba(204, 154, 46, 0.28);
+      border-radius: 20px;
+      font-size: .82rem;
+      font-weight: 500;
+      color: var(--maroon-dark);
+      box-shadow: 0 2px 10px rgba(42, 27, 34, 0.04);
+      transition: transform .2s ease;
+    }
+
+    .about-badge-item:hover {
+      transform: translateY(-2px);
+      border-color: var(--gold);
+    }
+
+    .about-badge-item svg {
+      width: 15px;
+      height: 15px;
+      color: var(--gold);
+    }
+
+    /* Media showcase card */
+    .about-media-card {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 14px 34px rgba(42, 27, 34, 0.12);
+      border: 6px solid #ffffff;
+      background: #111;
+      aspect-ratio: 16/10;
+      cursor: pointer;
+    }
+
+    .about-media-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform .6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .about-media-card:hover img {
+      transform: scale(1.04);
+    }
+
+    .about-media-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(42, 27, 34, 0.78) 0%, rgba(42, 27, 34, 0.12) 50%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 20px 22px;
+      color: #ffffff;
+      transition: background .3s ease;
+    }
+
+    .about-badge-year {
+      display: inline-block;
+      font-family: 'Marcellus', serif;
+      font-size: 1.5rem;
+      color: var(--gold-light);
+      margin-bottom: 2px;
+      letter-spacing: .5px;
+    }
+
+    .about-badge-caption {
+      font-size: .82rem;
+      opacity: .92;
+      line-height: 1.45;
+      color: var(--ivory);
+    }
+
+    /* Highlights subsection */
+    .about-highlights-wrap {
+      border-top: 1px dashed rgba(204, 154, 46, 0.35);
+      padding-top: 38px;
+    }
+
+    .highlights-header {
+      margin-bottom: 28px;
+    }
+
+    .highlights-header .eyebrow {
+      display: inline-block;
+      margin-bottom: 6px;
+    }
+
+    .highlights-header h3 {
+      font-size: 1.95rem;
+      color: var(--maroon-dark);
+      letter-spacing: .3px;
+    }
+
+    .highlights-header p {
+      color: #6b5860;
+      font-size: .94rem;
+      margin-top: 6px;
+    }
+
+    .highlights-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      max-width: 100%;
+    }
+
+    .highlight-line-item {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(204, 154, 46, 0.18);
+      transition: transform .22s ease;
+      background: transparent;
+    }
+
+    .highlight-line-item:first-child {
+      padding-top: 8px;
+    }
+
+    .highlight-line-item:last-child {
+      border-bottom: none;
+      padding-bottom: 4px;
+    }
+
+    .highlight-line-item:hover {
+      transform: translateX(4px);
+    }
+
+    .highlight-line-icon {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(122, 30, 60, 0.08);
+      color: var(--maroon);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      top: 3px;
+      transition: background-color .2s ease, transform .2s ease;
+    }
+
+    .highlight-line-item:hover .highlight-line-icon {
+      background: var(--maroon);
+      color: var(--gold-light);
+      transform: scale(1.1);
+    }
+
+    .highlight-line-icon svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    .highlight-line-text {
+      flex: 1;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 6px 10px;
+      font-size: .96rem;
+      line-height: 1.65;
+    }
+
+    .highlight-line-title {
+      font-family: 'Marcellus', serif;
+      font-size: 1.1rem;
+      color: var(--maroon-dark);
+      font-weight: 600;
+      letter-spacing: .2px;
+      margin: 0;
+      white-space: nowrap;
+    }
+
+    .highlight-line-desc {
+      color: #55444c;
+      font-size: .95rem;
+      margin: 0;
+      line-height: 1.65;
+    }
+
     /* ---------- CONTACT & STORE LOCATION ---------- */
     .contact-wrapper {
       background: linear-gradient(145deg, rgba(243, 222, 221, 0.5) 0%, rgba(243, 231, 214, 0.65) 100%);
@@ -2114,28 +2323,21 @@
         display: flex;
       }
 
-      .hero-showcase {
-        margin: 10px auto 20px;
-        padding: 0 16px;
-      }
-
-      .hero-banner-frame {
-        border-radius: 14px;
-      }
-
-      .hero-action-strip {
-        padding: 20px 20px;
-        flex-direction: column;
+      .hero {
+        grid-template-columns: 1fr;
         text-align: center;
-        gap: 16px;
       }
 
-      .hero-action-strip p {
-        margin: 0 auto;
+      .hero-copy p {
+        margin: 0 auto 28px;
       }
 
-      .hero-action-strip .hero-ctas {
+      .hero-ctas {
         justify-content: center;
+      }
+
+      .hero-visual {
+        order: -1;
       }
 
       .cat-tiles {
@@ -2191,29 +2393,60 @@
       .trust-inner {
         grid-template-columns: repeat(2, 1fr);
       }
+
+      .about-wrapper {
+        padding: 34px 24px;
+        border-radius: 28px;
+      }
+
+      .about-story-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .about-media-card {
+        max-width: 480px;
+        margin: 0 auto;
+        aspect-ratio: 16/10;
+        width: 100%;
+      }
     }
 
     @media (max-width:560px) {
-      .hero-showcase {
-        margin: 6px auto 16px;
-        padding: 0 10px;
+      .hero-copy h1 {
+        font-size: 2.2rem;
       }
 
-      .hero-banner-frame {
-        border-radius: 10px;
+      .about-wrapper {
+        padding: 24px 16px;
+        border-radius: 22px;
       }
 
-      .hero-action-strip {
-        padding: 16px 14px;
-        border-radius: 14px;
+      .about-story-content h2 {
+        font-size: 1.85rem;
       }
 
-      .hero-action-strip h1 {
-        font-size: 1.35rem;
+      .about-lead-text {
+        font-size: .94rem;
       }
 
-      .hero-action-strip p {
-        font-size: .82rem;
+      .about-sub-text {
+        font-size: .88rem;
+      }
+
+      .highlight-line-item {
+        align-items: flex-start;
+        gap: 12px;
+        padding: 13px 0;
+      }
+
+      .highlight-line-title {
+        white-space: normal;
+        font-size: 1.02rem;
+      }
+
+      .highlight-line-desc {
+        font-size: .9rem;
       }
 
       .contact-wrapper {
@@ -2373,6 +2606,7 @@
         <a href="#party" onclick="showView('home')">Party</a>
         <a href="#kids" onclick="showView('home')">Kids</a>
         <a href="#maternity" onclick="scrollToCat('maternity')">Maternity</a>
+        <a href="#about" onclick="scrollToCat('about')">About</a>
         <a href="#contact" onclick="scrollToCat('contact')">Contact</a>
       </nav>
       <div class="header-actions">
@@ -2390,30 +2624,27 @@
   <!-- ================= HOME VIEW ================= -->
   <div class="view active" id="view-home">
 
-    <!-- HERO SHOWCASE (FULL BANNER) -->
-    <section class="hero-showcase" id="home">
-      <div class="hero-banner-frame" onclick="openBannerModal()" title="Click to view full image in high resolution">
-        <img src="images/reemas_garments_banner.jpg" alt="Reemas Garments — Islamic Elegant Wear" class="hero-full-banner" />
-        <div class="banner-expand-badge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="15 3 21 3 21 9"></polyline>
-            <polyline points="9 21 3 21 3 15"></polyline>
-            <line x1="21" y1="3" x2="14" y2="10"></line>
-            <line x1="3" y1="21" x2="10" y2="14"></line>
-          </svg>
-          <span>Full Image</span>
-        </div>
-      </div>
-
-      <div class="hero-action-strip">
-        <div class="hero-copy">
-          <span class="eyebrow">Since Every Thread Tells A Story</span>
-          <h1>Drape yourself in <em>timeless</em> modest grace</h1>
-          <p>Handcrafted abayas, burkas, wedding edits, party kaftans and maternity collections. Modest luxury tailored for every celebration.</p>
-        </div>
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <span class="eyebrow">Since Every Thread Tells A Story</span>
+        <h1>Drape yourself <br>in <em>timeless</em> modest grace</h1>
+        <p>Handcrafted abayas, burkas, wedding edits, party kaftans and maternity collections. Modest luxury tailored for every celebration.</p>
         <div class="hero-ctas">
           <a class="btn-primary" href="#casual" onclick="scrollToCat('casual')">Shop New Arrivals</a>
           <a class="btn-ghost" href="#contact">Visit Our Store</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="arch-frame">
+          <div class="ring"></div>
+          <img src="images/wedding_abaya.jpg" alt="Bridal abaya burka"
+            style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top center;"
+            onerror="this.style.display='none';">
+          <div class="badge-seal">
+            <b>100%</b>
+            <span>Modest Elegance</span>
+          </div>
         </div>
       </div>
     </section>
@@ -2636,6 +2867,141 @@
         </div>
       </div>
     </div>
+
+    <!-- ================= ABOUT US & HIGHLIGHTS ================= -->
+    <section class="section about-section" id="about">
+      <div class="about-wrapper">
+        <div class="about-story-grid">
+          <!-- Story Content -->
+          <div class="about-story-content">
+            <span class="eyebrow">✦ Heritage &amp; Handcraft ✦</span>
+            <h2>About Us</h2>
+            <p class="about-lead-text">
+              Started in 2019, <strong>Reemas Garments</strong> makes modest, everyday clothing designed for real comfort and long-lasting quality. Instead of selling standard market clothes, we create our own designs in-house to ensure breathable fabrics, neat tailoring, and affordable prices.
+            </p>
+            <p class="about-sub-text">
+              From lightweight everyday wear to specialized maternity pieces, we make clothing that helps every woman feel comfortable and confident.
+            </p>
+            <div class="about-badges-row">
+              <span class="about-badge-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+                Est. 2019
+              </span>
+              <span class="about-badge-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                100% In-House Made
+              </span>
+              <span class="about-badge-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+                Real Comfort &amp; Fit
+              </span>
+            </div>
+          </div>
+
+          <!-- Studio Showcase Media -->
+          <div class="about-media-card" onclick="openBannerModal()" title="Click to view full image in high resolution">
+            <img src="images/reemas_garments_banner.jpg" alt="Reemas Garments Studio &amp; Tailoring" onerror="this.onerror=null;this.src='images/casual_abaya.jpg';">
+            <div class="about-media-overlay">
+              <span class="about-badge-year">Reemas Garments</span>
+              <p class="about-badge-caption">Bespoke modest elegance, designed with passion for everyday comfort.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Highlights Subsection -->
+        <div class="about-highlights-wrap">
+          <div class="highlights-header">
+            <span class="eyebrow">✦ Why Women Choose Us ✦</span>
+            <h3>Highlights</h3>
+            <p>Every piece is thoughtfully crafted to blend modest grace, premium comfort, and honesty.</p>
+          </div>
+
+          <div class="highlights-list">
+            <!-- 1. In-House Designs -->
+            <div class="highlight-line-item">
+              <span class="highlight-line-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="6" cy="6" r="3"></circle>
+                  <circle cx="6" cy="18" r="3"></circle>
+                  <line x1="20" y1="4" x2="8.12" y2="15.88"></line>
+                  <line x1="14.47" y1="14.48" x2="20" y2="20"></line>
+                  <line x1="8.12" y1="8.12" x2="12" y2="12"></line>
+                </svg>
+              </span>
+              <div class="highlight-line-text">
+                <h4 class="highlight-line-title">In-House Designs:</h4>
+                <p class="highlight-line-desc">Created by us from scratch to ensure better fabric, fit, and durability.</p>
+              </div>
+            </div>
+
+            <!-- 2. College & Everyday Wear -->
+            <div class="highlight-line-item">
+              <span class="highlight-line-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path>
+                  <line x1="16" y1="8" x2="2" y2="22"></line>
+                  <line x1="17.5" y1="15" x2="9" y2="15"></line>
+                </svg>
+              </span>
+              <div class="highlight-line-text">
+                <h4 class="highlight-line-title">College &amp; Everyday Wear:</h4>
+                <p class="highlight-line-desc">Lightweight, practical burqas and abayas made for easy daily movement.</p>
+              </div>
+            </div>
+
+            <!-- 3. Specialized Maternity Line -->
+            <div class="highlight-line-item">
+              <span class="highlight-line-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+                </svg>
+              </span>
+              <div class="highlight-line-text">
+                <h4 class="highlight-line-title">Specialized Maternity Line:</h4>
+                <p class="highlight-line-desc">Extra room, gentle drapes, and all-day comfort for expecting mothers.</p>
+              </div>
+            </div>
+
+            <!-- 4. Affordable Pricing -->
+            <div class="highlight-line-item">
+              <span class="highlight-line-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+                  <line x1="12" y1="6" x2="12" y2="8"></line>
+                  <line x1="12" y1="16" x2="12" y2="18"></line>
+                </svg>
+              </span>
+              <div class="highlight-line-text">
+                <h4 class="highlight-line-title">Affordable Pricing:</h4>
+                <p class="highlight-line-desc">Premium quality without high markups—putting customer satisfaction before profit.</p>
+              </div>
+            </div>
+
+            <!-- 5. Customer-First Promise -->
+            <div class="highlight-line-item">
+              <span class="highlight-line-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  <polyline points="9 12 11 14 15 10"></polyline>
+                </svg>
+              </span>
+              <div class="highlight-line-text">
+                <h4 class="highlight-line-title">Customer-First Promise:</h4>
+                <p class="highlight-line-desc">Every design is shaped by what real women actually need and ask for.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- STORE / CONTACT -->
     <section class="section" id="contact">
@@ -2861,6 +3227,7 @@
       <div>
         <h4>Help</h4>
         <ul>
+          <li><a href="#about" onclick="scrollToCat('about')">About Us</a></li>
           <li><a href="#contact" onclick="scrollToCat('contact')">Shipping &amp; Returns</a></li>
           <li><a href="#contact" onclick="scrollToCat('contact')">Contact Us</a></li>
         </ul>
@@ -2987,7 +3354,7 @@
       { id: 'sr7', cat: 'casual', name: 'Elegant Ruffled Stripe Abaya', mrp: 1995, icon: 'ill-saree', color: '#2A1B22', img: 'images/images6.jpg' },
       { id: 'sr7', cat: 'casual', name: 'Elegant Ruffled Button Abaya', mrp: 1995, icon: 'ill-saree', color: '#2A1B22', img: 'images/images7.jpg' },
       // Wedding & Bridal Wear
-      { id: 'wm1', cat: 'wedding', name: 'Luxury Zardozi Bridal Abaya — Maroon', mrp: 5800, icon: 'ill-kurti', color: '#7A1E3C', img: 'images/wedding_abaya.jpg' },
+      { id: 'wm1', cat: 'wedding', name: 'Luxury Zardozi Bridal Abaya — Maroon', mrp: 5800, icon: 'ill-kurti', color: '#7A1E3C', img: 'images/images8.png' },
       { id: 'wm2', cat: 'wedding', name: 'Royal Velvet Wedding Gown with Veil', mrp: 4950, icon: 'ill-kurti', color: '#5A1329', img: 'images/women_festive_gown.png' },
       { id: 'wm3', cat: 'wedding', name: 'Golden Embellished Bridal Burka', mrp: 5200, icon: 'ill-kurti', color: '#B5842A', img: 'images/bridal_gold_burka.jpg' },
       { id: 'wm4', cat: 'wedding', name: 'Handcrafted Lace Wedding Abaya Set', mrp: 4450, icon: 'ill-kurti', color: '#C1596A', img: 'images/images2.png' },
